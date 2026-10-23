@@ -85,7 +85,7 @@ and automated pipelines.
 
 <!-- ============ TYPING TAGLINE ============ -->
 <h3 align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=4000&pause=800&color=A371F7&center=true&vCenter=true&width=650&lines=🔭 Currently:+RAG+%26+Multi-Agent+systems;🛡️+Building+offensive+security+tooling;📱+Shipping+cross-platform+apps;🌍+Passionate+about+Arabic+NLP" alt="Focus"/>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&duration=4000&pause=800&color=A371F7&center=true&vCenter=true&width=650&lines=%F0%9F%94%AD+Currently%3A+RAG+%26+Multi-Agent+systems%3B%F0%9F%9B%A1%EF%B8%8F+Building+offensive+security+tooling%3B%F0%9F%93%B1+Shipping+cross-platform+apps%3B%F0%9F%8C%8D+Passionate+about+Arabic+NLP" alt="Focus"/>
 </h3>
 
 <br>
@@ -94,22 +94,17 @@ and automated pipelines.
 <h1 align="center">📊 the stats</h1>
 
 <p align="center">
-  <a href="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=A371F7&icon_color=58A6FF&text_color=C9D1D9">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117&title_color=A371F7&icon_color=58A6FF&text_color=C9D1D9"/>
-      <img src="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&include_all_commits=true&count_private=true&hide_border=true" height="165" alt="GitHub stats"/>
-    </picture>
+  <a href="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&include_all_commits=true&count_private=true">
+    <img src="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&include_all_commits=true&count_private=true" height="165" alt="GitHub stats"/>
   </a>
-  <a href="https://github-readme-streak-stats.herokuapp.com/?user=Medgleiguem&theme=radical&hide_border=true&background=0D1117&ring=A371F7&fire=3FB950&currStreakNum=C9D1D9&sideNums=C9D1D9">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Medgleiguem&theme=radical&hide_border=true&background=0D1117&ring=A371F7&fire=3FB950" height="165" alt="GitHub Streak"/>
+  <a href="https://github-readme-streak-stats.herokuapp.com/?user=Medgleiguem&theme=radical">
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Medgleiguem&theme=radical" height="165" alt="GitHub Streak"/>
   </a>
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Medgleiguem&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=A371F7&text_color=C9D1D9" height="165" alt="Top languages"/>
-  <a href="https://github-profile-trophy.vercel.app/?username=Medgleiguem&theme=radical&no-frame=true&no-bg=true&column=7&margin-w=8">
-    <img src="https://github-profile-trophy.vercel.app/?username=Medgleiguem&theme=radical&no-frame=true&no-bg=true&column=7&margin-w=8" height="165" alt="Trophies"/>
-  </a>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Medgleiguem&layout=compact&theme=radical" height="165" alt="Top languages"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&hide_border=true&card_width=450&hide=stars,issues&rank_icon=percentile" height="165" alt="Extra stats"/>
 </p>
 
 <br>
@@ -123,11 +118,17 @@ and automated pipelines.
 
 <br>
 
-<!-- ============ ACTIVITY GRAPH ============ -->
+<!-- ============ CONTRIBUTION INSIGHTS ============ -->
 <h1 align="center">📈 contribution pulse</h1>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Medgleiguem&theme=radical&hide_border=true&bg_color=0d1117&color=C9D1D9&line=A371F7&point=3FB950&area=true" alt="Activity Graph" width="100%"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Medgleiguem&theme=radical" alt="Repos per language" width="48%"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Medgleiguem&theme=radical" alt="Most commit language" width="48%"/>
+</p>
+
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Medgleiguem&theme=radical" alt="Stats overview" width="48%"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Medgleiguem&theme=radical&border=true" alt="Repos per language" width="48%"/>
 </p>
 
 <br>
