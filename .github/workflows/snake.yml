@@ -1,0 +1,37 @@
+name: generate-snake
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate snake animation
+        uses: Platane/snk/svg-only@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake-dark.svg?color_snake=#3FB950&color_dots=#1F6FEB,#A371F7,#3FB950,#FF6B6B,#F778BA
+
+      - name: Commit
+        run: |
+          mkdir -p output
+          cp dist/github-snake-dark.svg output/github-snake-dark.svg
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git diff --quiet && git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "chore: update snake animation"
+          git push
