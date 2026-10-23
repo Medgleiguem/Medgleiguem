@@ -94,8 +94,8 @@ and automated pipelines.
 <h1 align="center">📊 the stats</h1>
 
 <p align="center">
-  <a href="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&include_all_commits=true&count_private=true">
-    <img src="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&include_all_commits=true&count_private=true" height="165" alt="GitHub stats"/>
+  <a href="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical">
+    <img src="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical" height="165" alt="GitHub stats"/>
   </a>
   <a href="https://github-readme-streak-stats.herokuapp.com/?user=Medgleiguem&theme=radical">
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=Medgleiguem&theme=radical" height="165" alt="GitHub Streak"/>
@@ -104,7 +104,7 @@ and automated pipelines.
 
 <p align="center">
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Medgleiguem&layout=compact&theme=radical" height="165" alt="Top languages"/>
-  <img src="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&hide_border=true&card_width=450&hide=stars,issues&rank_icon=percentile" height="165" alt="Extra stats"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Medgleiguem&theme=radical" height="165" alt="Summary stats"/>
 </p>
 
 <br>
@@ -124,11 +124,6 @@ and automated pipelines.
 <p align="center">
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Medgleiguem&theme=radical" alt="Repos per language" width="48%"/>
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Medgleiguem&theme=radical" alt="Most commit language" width="48%"/>
-</p>
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Medgleiguem&theme=radical" alt="Stats overview" width="48%"/>
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Medgleiguem&theme=radical&border=true" alt="Repos per language" width="48%"/>
 </p>
 
 <br>
