@@ -94,8 +94,8 @@ and automated pipelines.
 <h1 align="center">📊 the stats</h1>
 
 <p align="center">
-  <a href="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical">
-    <img src="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical" height="165" alt="GitHub stats"/>
+  <a href="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&cache_seconds=14000">
+    <img src="https://github-readme-stats.vercel.app/api?username=Medgleiguem&show_icons=true&theme=radical&cache_seconds=14000" height="165" alt="GitHub stats"/>
   </a>
   <a href="https://github-readme-streak-stats.herokuapp.com/?user=Medgleiguem&theme=radical">
     <img src="https://github-readme-streak-stats.herokuapp.com/?user=Medgleiguem&theme=radical" height="165" alt="GitHub Streak"/>
@@ -103,7 +103,7 @@ and automated pipelines.
 </p>
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Medgleiguem&layout=compact&theme=radical" height="165" alt="Top languages"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Medgleiguem&layout=compact&theme=radical&cache_seconds=14000" height="165" alt="Top languages"/>
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Medgleiguem&theme=radical" height="165" alt="Summary stats"/>
 </p>
 
