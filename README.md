@@ -1,115 +1,143 @@
 <h1><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/entrance-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/entrance-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/entrance-mobile.svg" />
-  <img src="./assets/entrance.svg" alt="MGL / Medgleiguem — original anime hacker workspace. AI, data, security and systems. Animated rain, CRT sweep and a restrained glitch effect." width="100%" />
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/observatory-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/observatory-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/observatory-mobile.svg" />
+  <img src="./assets/observatory.svg" alt="Med Gleiguem — AI, data, identity, language and computer vision. Original anime coastal observatory with animated signals and scene drift." width="100%" />
 </picture></h1>
 
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/terminal-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/terminal-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/terminal-mobile.svg" />
-  <img src="./assets/terminal.svg" alt="RAG and knowledge systems; ELT and analytics; payments, identity and vision; CTFs and low-resource Arabic NLP." width="100%" />
-</picture>
+I build systems that connect evidence, data and identity — and research tools for the languages and gestures around me.
 
-<a id="projects"></a>
+[Systems](#systems) · [Research](#research) · [Workbench](#workbench) · [Email](mailto:medgleiguem00@gmail.com) · [LinkedIn](https://www.linkedin.com/in/med-gleiguem/)
+
+<a id="systems"></a>
+
+## 01 · Evidence into decisions
+
+Retrieval boundaries, document identity, and review that remains a human responsibility. The engineering briefs explain the constraints and decisions behind these private systems.
+
+### Health Ministry AI
+
+**Source-grounded assistance with a human decision boundary.** Ministry and domain context follow retrieval into a dossier workflow, keeping evidence, decisions and follow-up connected.
+
+`FastAPI · pgvector · Next.js` · [Engineering brief ↗](./work/health-ministry.md)
+
+
+### Central Bank / RKF
+
+**Evidence keeps its identity and version context.** A canonical registry, review boundaries and hybrid retrieval preserve provenance across legal and financial material.
+
+`Python · PostgreSQL · React` · [Engineering brief ↗](./work/central-bank.md)
+
+
+### ARE Intelligence
+
+**Regulatory sources become working evidence.** Source context connects search, obligations and decision views. The current system uses lexical retrieval; generated answers are disabled.
+
+`FastAPI · React · ECharts` · [Engineering brief ↗](./work/are-intelligence.md)
+
+
+### National Knowledge Base
+
+**A source library with inspectable evidence.** Imports retain provenance; private previews and initial dataset review stay distinct from publication and customer retrieval.
+
+`Django · pgvector · Docling` · [Engineering brief ↗](./work/national-knowledge.md)
+
 
 <h2><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/section-projects-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/section-projects-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/section-projects-mobile.svg" />
-  <img src="./assets/section-projects.svg" alt="./projects — selected private systems" width="100%" />
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/exchange-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/exchange-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/exchange-mobile.svg" />
+  <img src="./assets/exchange.svg" alt="02 · Data with a destination. An original anime exchange hall with three animated data lanes." width="100%" />
 </picture></h2>
 
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/systems-ai-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/systems-ai-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/systems-ai-mobile.svg" />
-  <img src="./assets/systems-ai.svg" alt="Four private AI and knowledge projects: Ministry of Health AI assistant, Central Bank RAG and RKF, ARE regulatory intelligence, and the Mauritania National Knowledge Base. Animated project scope diagrams, with concise descriptions and verified technologies." width="100%" />
-</picture>
+### ANRPTS / BI Houwiyeti
 
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/systems-platforms-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/systems-platforms-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/systems-platforms-mobile.svg" />
-  <img src="./assets/systems-platforms.svg" alt="Four private data and fintech projects: ANRPTS BI Houwiyeti analytics, Taazour Aoun, Taazour Pay, and KYC Identity. Animated scope diagrams for ELT, eligibility, household payments and biometric verification." width="100%" />
-</picture>
+**From operational sources to analytical views.** Source contracts and incremental acquisition separate ingestion from transformation. A read-only dashboard boundary keeps analytical access distinct from operational changes.
+
+`Python · Airflow · dbt · PostgreSQL · Next.js` · [Engineering brief ↗](./work/anrpts.md)
+
+
+<h2><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/identity-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/identity-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/identity-mobile.svg" />
+  <img src="./assets/identity.svg" alt="03 · Identity, then the next step. Synthetic landmarks, credential and signal instruments illustrate distinct verification stages." width="100%" />
+</picture></h2>
+
+### KYC Identity
+
+**Capture, liveness and matching stay distinct.** Partner journeys connect browser capture and vision services to casework and meaningful results. The original platform and v2 remain separate tracks.
+
+`TypeScript · Python · Computer vision` · [Engineering brief ↗](./work/kyc-identity.md)
+
+
+### Taazour Aoun
+
+**A beneficiary journey with explicit transfer states.** Eligibility, OTP/eKYC and wallet selection form a disbursement workflow. Integration status is documented in the brief.
+
+`Next.js · TypeScript · MongoDB` · [Engineering brief ↗](./work/taazour-aoun.md)
+
+
+### Taazour Pay
+
+**Payment orchestration across a household boundary.** Provider adapters separate the journey from external payment implementations; a durable household lock controls duplicate success.
+
+`Next.js · MongoDB · Redis · BullMQ` · [Engineering brief ↗](./work/taazour-pay.md)
+
 
 <a id="research"></a>
 
-<h2><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/section-research-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/section-research-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/section-research-mobile.svg" />
-  <img src="./assets/section-research.svg" alt="./research — Hassaniya and sign-language technology" width="100%" />
-</picture></h2>
+## 04 · Language, gesture, structure
+
+Local questions, explicit methods. Research in progress.
 
 <picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/research-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/research-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/research-mobile.svg" />
-  <img src="./assets/research.svg" alt="Research in progress: Hassaniya Laghn poetry corpus, metre checking and computational prosody; Mauritanian Sign Language corpus and hand-detection/normalization research." width="100%" />
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/research-methods-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/research-methods-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/research-methods-mobile.svg" />
+  <img src="./assets/research-methods.svg" alt="Illustrative Hassaniya scansion marks and synthetic hand landmarks. Animated research methods, not validated metre examples or recognition results." width="100%" />
 </picture>
 
-<a id="arsenal"></a>
+### Hassaniya Laghn
 
-<h2><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/section-arsenal-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/section-arsenal-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/section-arsenal-mobile.svg" />
-  <img src="./assets/section-arsenal.svg" alt="./arsenal — tools behind the projects" width="100%" />
-</picture></h2>
+**Language as structure, not just text.** Corpus preparation and explicit metre and rhyme rules make poetic assumptions inspectable and testable.
+
+`Python · Corpus engineering · Prosody` · [Engineering brief ↗](./work/hassaniya-laghn.md)
+
+
+### Mauritanian Sign Language
+
+**Better evidence before recognition claims.** Traceable image preparation, quality checks, deduplication and subject-aware splits support research evaluation.
+
+`Python · MediaPipe · Dataset pipelines` · [Engineering brief ↗](./work/mauritanian-sign-language.md)
+
+
+<a id="workbench"></a>
+
+## 05 · At the workbench
 
 <picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/arsenal-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/arsenal-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/arsenal-mobile.svg" />
-  <img src="./assets/arsenal.svg" alt="Technical loadout: Python, TypeScript, JavaScript, C, React, Next.js, Flutter, Airflow, PostgreSQL, MySQL, MongoDB, scikit-learn, PyTorch, OpenCV, Flask, Django, Spring Boot, Capacitor, Docker, Ansible, Linux, Git, GitHub Actions and Bash." width="100%" />
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/workbench-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/workbench-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/workbench-mobile.svg" />
+  <img src="./assets/workbench.svg" alt="Actual GitHub-visible contribution counts in up to twelve seven-day calendar buckets. The chart prints its date window and snapshot date." width="100%" />
 </picture>
 
-<a id="activity"></a>
+[Activity data](./data/activity.json) · [Daily refresh](https://github.com/Medgleiguem/Medgleiguem/actions/workflows/profile-activity.yml)
 
-<h2><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/section-activity-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/section-activity-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/section-activity-mobile.svg" />
-  <img src="./assets/section-activity.svg" alt="./activity — real GitHub contributions" width="100%" />
-</picture></h2>
+### Tools in the work
 
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/activity-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/activity-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/activity-mobile.svg" />
-  <img src="./assets/activity.svg" alt="Auto-refreshed GitHub contributions, active days, streaks, calendar and public-repository language shares. The actual data window and update date are printed on the card." width="100%" />
-</picture>
-
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/skyline-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/skyline-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/skyline-mobile.svg" />
-  <img src="./assets/skyline.svg" alt="Animated weekly contribution skyline, based on actual GitHub counts. The phone view shows the latest 27 weeks with its window labeled." width="100%" />
-</picture>
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/contributions-static.svg" />
-  <img src="./output/github-snake-dark.svg" alt="Animated contribution snake following my GitHub calendar." width="100%" />
-</picture>
-
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/signoff-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/signoff-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/signoff-mobile.svg" />
-  <img src="./assets/signoff.svg" alt="See you in the next commit. CTFs, chess and Arabic poetry." width="100%" />
-</picture>
-
-<p align="center">
-<a href="mailto:medgleiguem00@gmail.com"><img src="./assets/contact-email.svg" alt="Talk about a project" height="38" /></a>
-<a href="https://www.linkedin.com/in/med-gleiguem/"><img src="./assets/contact-linkedin.svg" alt="LinkedIn" height="38" /></a>
-</p>
+Python · TypeScript · SQL  
+FastAPI · Django · Next.js · React  
+PostgreSQL · pgvector · Airflow · dbt · Redis · Computer vision
 
 <details>
-<summary><img src="./assets/contact-side-quests.svg" alt="Smaller side projects" height="32" /></summary>
+<summary>Other public work</summary>
 
-[Sonora](https://github.com/Medgleiguem/sonora-music-hub) · [AI Diwan](https://el-mejlise.vercel.app) · [Activity refresh](https://github.com/Medgleiguem/Medgleiguem/actions/workflows/profile-activity.yml)
+[Sonora](https://github.com/Medgleiguem/sonora-music-hub) · [AI Diwan](https://el-mejlise.vercel.app)
 
 </details>
+
+---
+
+**Med Gleiguem / Mauritania** · [Email](mailto:medgleiguem00@gmail.com) · [LinkedIn](https://www.linkedin.com/in/med-gleiguem/) · [Public repositories](https://github.com/Medgleiguem?tab=repositories)

@@ -1,6 +1,6 @@
 # The Observatory — art-led anime GitHub profile
 
-Design proposal, 24 October 2026. Selected approach: the user chose “Art-led anime world — immersive illustration and project-themed animation.” This choice supersedes the earlier recommendation of an editorial engineering studio.
+Approved design, 24 October 2026. Selected approach: the user chose “Art-led anime world — immersive illustration and project-themed animation.” This choice supersedes the earlier recommendation of an editorial engineering studio.
 
 ## Intent
 
@@ -122,7 +122,7 @@ Precise typography, crop positions, motion path coordinates, compression setting
 
 ## Approval boundary
 
-The user has selected the art-led approach. This document and its moving visual study make that choice concrete for design review. Final profile implementation follows approval of this design, unless the user explicitly opts out of further design questions.
+The user selected the art-led approach and approved this design and its moving study with “yes” on 24 October 2026. Implementation and publication proceed under that approval and the existing profile task authorization.
 
 ## Review evidence
 

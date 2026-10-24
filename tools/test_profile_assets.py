@@ -4,6 +4,8 @@ import unittest
 import verify_profile
 import generate_assets
 import xml.etree.ElementTree as ET
+from pathlib import Path
+import tempfile
 
 
 class SVGImageBoundaryTests(unittest.TestCase):
@@ -45,6 +47,24 @@ class SVGImageBoundaryTests(unittest.TestCase):
         self.assertIn('circle', tags)
         self.assertIn('path', tags)
         self.assertEqual(root.find('.//{http://www.w3.org/2000/svg}circle').get('opacity'), '.7')
+
+    def test_local_briefs_are_checked_without_treating_external_links_as_files(self):
+        self.assertTrue(hasattr(verify_profile, 'validate_local_links'), 'Local brief validation is missing')
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root/'brief.md').write_text('# A real brief')
+            verify_profile.validate_local_links('[Brief](./brief.md#method) [Mail](mailto:me@example.com) [GitHub](https://github.com) [Section](#research)', root, root)
+            with self.assertRaisesRegex(AssertionError, 'Missing local'):
+                verify_profile.validate_local_links('[Brief](./missing.md)', root, root)
+
+    def test_public_links_cannot_escape_the_repository(self):
+        self.assertTrue(hasattr(verify_profile, 'validate_local_links'), 'Local brief validation is missing')
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root/'repo').mkdir()
+            (root/'unpublished.md').write_text('Not in the public repository')
+            with self.assertRaisesRegex(AssertionError, 'outside'):
+                verify_profile.validate_local_links('<a href="../unpublished.md">Broken public brief</a>', root/'repo', root/'repo')
 
 
 if __name__=='__main__':unittest.main()

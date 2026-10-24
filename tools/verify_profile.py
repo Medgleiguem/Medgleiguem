@@ -4,7 +4,7 @@ from html.parser import HTMLParser
 import base64
 from pathlib import Path
 import re
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +19,25 @@ class AssetReferences(HTMLParser):
             assert (ROOT / value).is_file(), f'Missing image: {value}'
             if tag == 'img':
                 assert attrs.get('alt'), f'Missing alternative text: {value}'
+
+
+def validate_local_links(source, base=ROOT, repository=ROOT):
+    """Reject missing public briefs and links that resolve outside the checkout."""
+    links = re.findall(r'(?<!!)\[[^\]]+\]\(([^\s\)]+)\)', source)
+
+    class Links(HTMLParser):
+        def handle_starttag(self, tag, attrs):
+            if tag == 'a' and dict(attrs).get('href'):
+                links.append(dict(attrs)['href'])
+
+    Links().feed(source)
+    for value in links:
+        url = urlparse(value)
+        if url.scheme or url.netloc or not url.path:
+            continue
+        target = (base/unquote(url.path)).resolve()
+        assert target.is_relative_to(repository.resolve()), f'Local link outside repository: {value}'
+        assert target.is_file(), f'Missing local link: {value}'
 
 
 def validate_svg(source):
@@ -50,6 +69,9 @@ def validate_svg(source):
 def main():
     readme = (ROOT / 'README.md').read_text()
     AssetReferences().feed(readme)
+    validate_local_links(readme)
+    for brief in (ROOT/'work').glob('*.md'):
+        validate_local_links(brief.read_text(), brief.parent)
     for value in re.findall(r'https://[^\s"<>\)]+', readme):
         url = urlparse(value)
         if url.netloc == 'github.com' and url.path.lower().startswith('/medgleiguem/'):
@@ -58,7 +80,7 @@ def main():
     for path in (ROOT / 'assets').rglob('*.svg'):
         validate_svg(path.read_text())
         count += 1
-    print(f'Validated {count} SVGs, README image paths, alt text and repository links.')
+    print(f'Validated {count} SVGs, image paths, alt text, local briefs and repository links.')
 
 
 if __name__ == '__main__':
