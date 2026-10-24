@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="316" viewBox="0 0 600 316" role="img" aria-labelledby="title desc">
+<title id="title">Tools in the work</title><desc id="desc">Python, TypeScript, SQL, FastAPI, Django, React, Next.js, PostgreSQL, pgvector, Airflow, dbt, Redis</desc>
+<defs><clipPath id="frame"><rect width="600" height="316" /></clipPath>
+<linearGradient id="shade"><stop stop-color="#030b17" stop-opacity=".84" /><stop offset=".6" stop-color="#030b17" stop-opacity=".17" /><stop offset="1" stop-color="#030b17" stop-opacity="0" /></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08121f" stop-opacity="0" /><stop offset="1" stop-color="#08121f" /></linearGradient></defs>
+<style>
+text{font-family:Consolas,'Liberation Mono',monospace}
+.serif{font-family:Georgia,'Liberation Serif',serif}
+.camera{transform-origin:center;}
+.flow{stroke-dasharray:10 210;}
+.fast{}.slow{}
+.glow{}
+.rotor{transform-origin:1380px 223px;}
+.trace{stroke-dasharray:600;}
+.meter{}
+
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.flow{stroke-dasharray:none;opacity:.4}.trace{stroke-dasharray:none;stroke-dashoffset:0}}
+</style><g clip-path="url(#frame)"><rect width="600" height="316" fill="#08121f" /><text x="26" y="32" font-size="20" fill="#dbb277" letter-spacing="1">TOOLS IN THE WORK</text><text x="26.0" y="81" font-size="23" fill="#e8edf2">Python</text><path d="M26.0 96h160.0" stroke="#2c465b" /><path class="flow" style="" d="M26.0 96h160.0" stroke="#9bc9e3" /><text x="210.0" y="81" font-size="23" fill="#e8edf2">TypeScript</text><path d="M210.0 96h160.0" stroke="#2c465b" /><path class="flow" style="" d="M210.0 96h160.0" stroke="#9bc9e3" /><text x="394.0" y="81" font-size="23" fill="#e8edf2">SQL</text><path d="M394.0 96h160.0" stroke="#2c465b" /><path class="flow" style="" d="M394.0 96h160.0" stroke="#9bc9e3" /><text x="26.0" y="143" font-size="23" fill="#e8edf2">FastAPI</text><path d="M26.0 158h160.0" stroke="#2c465b" /><path class="flow" style="" d="M26.0 158h160.0" stroke="#9bc9e3" /><text x="210.0" y="143" font-size="23" fill="#e8edf2">Django</text><path d="M210.0 158h160.0" stroke="#2c465b" /><path class="flow" style="" d="M210.0 158h160.0" stroke="#9bc9e3" /><text x="394.0" y="143" font-size="23" fill="#e8edf2">React</text><path d="M394.0 158h160.0" stroke="#2c465b" /><path class="flow" style="" d="M394.0 158h160.0" stroke="#9bc9e3" /><text x="26.0" y="205" font-size="23" fill="#e8edf2">Next.js</text><path d="M26.0 220h160.0" stroke="#2c465b" /><path class="flow" style="" d="M26.0 220h160.0" stroke="#9bc9e3" /><text x="210.0" y="205" font-size="23" fill="#e8edf2">PostgreSQL</text><path d="M210.0 220h160.0" stroke="#2c465b" /><path class="flow" style="" d="M210.0 220h160.0" stroke="#9bc9e3" /><text x="394.0" y="205" font-size="23" fill="#e8edf2">pgvector</text><path d="M394.0 220h160.0" stroke="#2c465b" /><path class="flow" style="" d="M394.0 220h160.0" stroke="#9bc9e3" /><text x="26.0" y="267" font-size="23" fill="#e8edf2">Airflow</text><path d="M26.0 282h160.0" stroke="#2c465b" /><path class="flow" style="" d="M26.0 282h160.0" stroke="#9bc9e3" /><text x="210.0" y="267" font-size="23" fill="#e8edf2">dbt</text><path d="M210.0 282h160.0" stroke="#2c465b" /><path class="flow" style="" d="M210.0 282h160.0" stroke="#9bc9e3" /><text x="394.0" y="267" font-size="23" fill="#e8edf2">Redis</text><path d="M394.0 282h160.0" stroke="#2c465b" /><path class="flow" style="" d="M394.0 282h160.0" stroke="#9bc9e3" /></g><style>*{animation:none!important}.flow,.trace{stroke-dasharray:none!important;stroke-dashoffset:0!important}.meter{opacity:1!important}</style></svg>

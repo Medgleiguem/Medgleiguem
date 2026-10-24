@@ -1,6 +1,6 @@
 # Maintaining the observatory
 
-The profile uses an original dark anime world to introduce eight major systems and two research tracks. Native Markdown supplies readable summaries and useful links to ten public engineering briefs. Keep those briefs specific about mechanisms, collaboration and current implementation status. Institutional names do not establish deployment, adoption, correctness or scale.
+The profile uses an original dark anime world to introduce eight major systems and two research tracks. Ten linked animated vector cards supply short project identities; the substantive text lives in public engineering briefs. The main page stays visual and concise. Keep those briefs specific about mechanisms, collaboration and current implementation status. Institutional names do not establish deployment, adoption, correctness or scale.
 
 ## Build and verify
 
@@ -12,7 +12,7 @@ python3 tools/verify_profile.py
 
 Generation uses the Python standard library and is deterministic for the checked-in JPEG exports and sanitized activity snapshot. The [artwork provenance and exact prompts](../assets/artwork/observatory/README.md) document the built-in image-generation process. JPEG exports are embedded as data URIs in the SVG panoramas; signals, light, research marks and camera transforms animate separately. Do not describe still illustration plus vector motion as hand-animated character footage.
 
-The five asset families are `observatory`, `exchange`, `identity`, `research-methods` and `workbench`. Each has desktop, mobile, explicit-static and mobile-static variants. Paragraphs and public brief links remain native text; no project information waits for a carousel. Mobile artwork has its own composition and legible labels. The README's `<picture>` sources select explicit static files for reduced motion, including the combined mobile/reduced case. SVG media rules alone do not reliably establish that the browser selected still imagery.
+The panorama families are `observatory`, `exchange` and `identity`, with `workbench` and `tools-rail` supporting panels. These have desktop/mobile/explicit-static variants. `tools/project_cards.py` supplies ten distinct vector diagrams under `assets/projects/`; each has an explicit static variant. Linked cards have fixed display widths and wrap naturally into rows or a mobile column without custom CSS. Project identities never wait for a carousel; full prose is in the linked briefs. Mobile artwork has its own composition and legible labels. The README's `<picture>` sources select explicit static files for reduced motion, including the combined mobile/reduced case. SVG media rules alone do not reliably establish that the browser selected still imagery.
 
 The verifier checks self-contained JPEGs, SVG identifiers/references, image paths, alternative text, local Markdown/HTML links and the profile's repository-link allowlist. Scripts, foreign objects, event handlers, remote image references and embedded SVG images are rejected. Broken links to unpublished files outside the repository are rejected too. Keep private source evidence, local project paths, customer documents, biometric images and deployment details out of public briefs.
 
@@ -20,7 +20,7 @@ The verifier checks self-contained JPEGs, SVG identifiers/references, image path
 
 `.github/workflows/profile-activity.yml` refreshes at 06:00 UTC, manually, or when its relevant collector/renderer files change. It retains the allowlisted GraphQL collection boundary: aggregate counts/calendar dates and public-repository language bytes only, with no private repository identifiers. The snapshot schema remains compatible, while the profile displays one compact workbench chart.
 
-The chart shows at most 84 calendar days grouped into consecutive buckets of up to seven days. Missing dates contribute zero. A short calendar keeps its actual bounds; the last bucket may be partial. Both layouts use identical counts and proportional bar heights. Bar titles include each date range and count. The chart prints its actual displayed window and UTC snapshot date. Contributions are not hours worked or a project-quality score.
+The chart shows at most 84 calendar days grouped into consecutive buckets of up to seven days. Missing dates contribute zero. A short calendar keeps its actual bounds; the last bucket may be partial. Both layouts use identical counts and proportional bar heights. Bar titles include each date range and count. The chart prints its displayed total, peak bucket count, actual window and UTC snapshot date. Contributions are not hours worked or a project-quality score.
 
 ```sh
 python3 tools/update_activity.py --input /path/to/saved-graphql-response.json

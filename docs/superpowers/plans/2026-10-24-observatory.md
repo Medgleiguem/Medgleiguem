@@ -73,3 +73,10 @@
 ## Execution decisions
 
 The user approved the art-led design and requested the rebuild. Execute inline without another technical-plan permission round; routine implementation choices are delegated to the builder in the approved spec. One fresh reviewer checks the completed branch. The task ledger is in `/tmp/profile-build-observatory/progress.md`, outside published content.
+
+
+## Implementation update: explicit user correction
+
+During implementation the user requested much less text and many more clean animated visuals. The updated spec records this instruction. The main README now uses ten linked animated project cards, three original panoramas, the compact quantified activity chart and an animated tools rail. Full engineering descriptions remain in the briefs. `tools/project_cards.py` owns card identities and distinct method diagrams; the generator serializes animated/static variants. Browser checks cover real image motion, static fallback, all destinations, desktop pairing and mobile stacking. The former combined research illustration is removed because the two research cards now carry those methods individually.
+
+The final review's serialization discrepancy is covered by a refresh→full-generation integration regression; quantitative chart readability is covered by visible-label assertions. Both were observed failing before correction. The Aoun technology overclaim disappeared with the removed summary and is not repeated on its card.

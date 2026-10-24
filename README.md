@@ -2,134 +2,102 @@
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/observatory-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/observatory-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/observatory-mobile.svg" />
-  <img src="./assets/observatory.svg" alt="Med Gleiguem — AI, data, identity, language and computer vision. Original anime coastal observatory with animated signals and scene drift." width="100%" />
+  <img src="./assets/observatory.svg" alt="Med Gleiguem — original anime observatory. AI, data, identity, language and computer vision." width="100%" />
 </picture></h1>
 
-I build systems that connect evidence, data and identity — and research tools for the languages and gestures around me.
+**Systems, experiments, research.** Open a card to explore the engineering.
 
-[Systems](#systems) · [Research](#research) · [Workbench](#workbench) · [Email](mailto:medgleiguem00@gmail.com) · [LinkedIn](https://www.linkedin.com/in/med-gleiguem/)
+[Systems](#systems) · [Research](#research) · [Activity](#workbench) · [Contact](mailto:medgleiguem00@gmail.com)
 
 <a id="systems"></a>
 
-## 01 · Evidence into decisions
+## 01 / Evidence systems
 
-Retrieval boundaries, document identity, and review that remains a human responsibility. The engineering briefs explain the constraints and decisions behind these private systems.
-
-### Health Ministry AI
-
-**Source-grounded assistance with a human decision boundary.** Ministry and domain context follow retrieval into a dossier workflow, keeping evidence, decisions and follow-up connected.
-
-`FastAPI · pgvector · Next.js` · [Engineering brief ↗](./work/health-ministry.md)
-
-
-### Central Bank / RKF
-
-**Evidence keeps its identity and version context.** A canonical registry, review boundaries and hybrid retrieval preserve provenance across legal and financial material.
-
-`Python · PostgreSQL · React` · [Engineering brief ↗](./work/central-bank.md)
-
-
-### ARE Intelligence
-
-**Regulatory sources become working evidence.** Source context connects search, obligations and decision views. The current system uses lexical retrieval; generated answers are disabled.
-
-`FastAPI · React · ECharts` · [Engineering brief ↗](./work/are-intelligence.md)
-
-
-### National Knowledge Base
-
-**A source library with inspectable evidence.** Imports retain provenance; private previews and initial dataset review stay distinct from publication and customer retrieval.
-
-`Django · pgvector · Docling` · [Engineering brief ↗](./work/national-knowledge.md)
-
+<p align="center">
+<a href="./work/health-ministry.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/health-ministry-static.svg" />
+  <img src="./assets/projects/health-ministry.svg" alt="Health Ministry AI — Scoped evidence. Human decisions. Open engineering brief." width="384" />
+</picture></a>
+<a href="./work/central-bank.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/central-bank-static.svg" />
+  <img src="./assets/projects/central-bank.svg" alt="Central Bank / RKF — Sources, versions, citations. Open engineering brief." width="384" />
+</picture></a>
+<a href="./work/are-intelligence.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/are-intelligence-static.svg" />
+  <img src="./assets/projects/are-intelligence.svg" alt="ARE Intelligence — Regulatory evidence → obligations. Open engineering brief." width="384" />
+</picture></a>
+<a href="./work/national-knowledge.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/national-knowledge-static.svg" />
+  <img src="./assets/projects/national-knowledge.svg" alt="National Knowledge Base — Imports, provenance, review. Open engineering brief." width="384" />
+</picture></a>
+</p>
 
 <h2><picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/exchange-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/exchange-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/exchange-mobile.svg" />
-  <img src="./assets/exchange.svg" alt="02 · Data with a destination. An original anime exchange hall with three animated data lanes." width="100%" />
+  <img src="./assets/exchange.svg" alt="02 / The exchange — data with a destination." width="100%" />
 </picture></h2>
 
-### ANRPTS / BI Houwiyeti
-
-**From operational sources to analytical views.** Source contracts and incremental acquisition separate ingestion from transformation. A read-only dashboard boundary keeps analytical access distinct from operational changes.
-
-`Python · Airflow · dbt · PostgreSQL · Next.js` · [Engineering brief ↗](./work/anrpts.md)
-
+<p align="center">
+<a href="./work/anrpts.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/anrpts-static.svg" />
+  <img src="./assets/projects/anrpts.svg" alt="ANRPTS / BI Houwiyeti — Heterogeneous sources → analytics. Open engineering brief." width="768" />
+</picture></a>
+</p>
 
 <h2><picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/identity-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/identity-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/identity-mobile.svg" />
-  <img src="./assets/identity.svg" alt="03 · Identity, then the next step. Synthetic landmarks, credential and signal instruments illustrate distinct verification stages." width="100%" />
+  <img src="./assets/identity.svg" alt="03 / The atelier — identity, then the next step." width="100%" />
 </picture></h2>
 
-### KYC Identity
-
-**Capture, liveness and matching stay distinct.** Partner journeys connect browser capture and vision services to casework and meaningful results. The original platform and v2 remain separate tracks.
-
-`TypeScript · Python · Computer vision` · [Engineering brief ↗](./work/kyc-identity.md)
-
-
-### Taazour Aoun
-
-**A beneficiary journey with explicit transfer states.** Eligibility, OTP/eKYC and wallet selection form a disbursement workflow. Integration status is documented in the brief.
-
-`Next.js · TypeScript · MongoDB` · [Engineering brief ↗](./work/taazour-aoun.md)
-
-
-### Taazour Pay
-
-**Payment orchestration across a household boundary.** Provider adapters separate the journey from external payment implementations; a durable household lock controls duplicate success.
-
-`Next.js · MongoDB · Redis · BullMQ` · [Engineering brief ↗](./work/taazour-pay.md)
-
+<p align="center">
+<a href="./work/kyc-identity.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/kyc-identity-static.svg" />
+  <img src="./assets/projects/kyc-identity.svg" alt="KYC Identity — Capture / liveness / matching. Open engineering brief." width="384" />
+</picture></a>
+<a href="./work/taazour-aoun.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/taazour-aoun-static.svg" />
+  <img src="./assets/projects/taazour-aoun.svg" alt="Taazour Aoun — Eligibility → identity → wallet. Open engineering brief." width="384" />
+</picture></a>
+<a href="./work/taazour-pay.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/taazour-pay-static.svg" />
+  <img src="./assets/projects/taazour-pay.svg" alt="Taazour Pay — Household boundaries. Payment state. Open engineering brief." width="384" />
+</picture></a>
+</p>
 
 <a id="research"></a>
 
-## 04 · Language, gesture, structure
+## 04 / Language, gesture, structure
 
-Local questions, explicit methods. Research in progress.
-
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/research-methods-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/research-methods-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/research-methods-mobile.svg" />
-  <img src="./assets/research-methods.svg" alt="Illustrative Hassaniya scansion marks and synthetic hand landmarks. Animated research methods, not validated metre examples or recognition results." width="100%" />
-</picture>
-
-### Hassaniya Laghn
-
-**Language as structure, not just text.** Corpus preparation and explicit metre and rhyme rules make poetic assumptions inspectable and testable.
-
-`Python · Corpus engineering · Prosody` · [Engineering brief ↗](./work/hassaniya-laghn.md)
-
-
-### Mauritanian Sign Language
-
-**Better evidence before recognition claims.** Traceable image preparation, quality checks, deduplication and subject-aware splits support research evaluation.
-
-`Python · MediaPipe · Dataset pipelines` · [Engineering brief ↗](./work/mauritanian-sign-language.md)
-
+<p align="center">
+<a href="./work/hassaniya-laghn.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/hassaniya-laghn-static.svg" />
+  <img src="./assets/projects/hassaniya-laghn.svg" alt="Hassaniya Laghn — Corpus / metre / rhyme. Open engineering brief." width="384" />
+</picture></a>
+<a href="./work/mauritanian-sign-language.md"><picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/mauritanian-sign-language-static.svg" />
+  <img src="./assets/projects/mauritanian-sign-language.svg" alt="Mauritanian Sign Language — Quality checks. Subject-aware splits. Open engineering brief." width="384" />
+</picture></a>
+</p>
 
 <a id="workbench"></a>
 
-## 05 · At the workbench
-
-<picture>
+<h2><picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/workbench-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/workbench-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/workbench-mobile.svg" />
-  <img src="./assets/workbench.svg" alt="Actual GitHub-visible contribution counts in up to twelve seven-day calendar buckets. The chart prints its date window and snapshot date." width="100%" />
+  <img src="./assets/workbench.svg" alt="05 / At the workbench — actual GitHub contributions, with displayed dates, total and peak bucket count." width="100%" />
+</picture></h2>
+
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/tools-rail-mobile.svg" />
+  <img src="./assets/tools-rail.svg" alt="Tools in the work: Python, TypeScript, SQL, FastAPI, Django, React, Next.js, PostgreSQL, pgvector, Airflow, dbt and Redis." width="100%" />
 </picture>
-
-[Activity data](./data/activity.json) · [Daily refresh](https://github.com/Medgleiguem/Medgleiguem/actions/workflows/profile-activity.yml)
-
-### Tools in the work
-
-Python · TypeScript · SQL  
-FastAPI · Django · Next.js · React  
-PostgreSQL · pgvector · Airflow · dbt · Redis · Computer vision
 
 <details>
 <summary>Other public work</summary>
@@ -140,4 +108,4 @@ PostgreSQL · pgvector · Airflow · dbt · Redis · Computer vision
 
 ---
 
-**Med Gleiguem / Mauritania** · [Email](mailto:medgleiguem00@gmail.com) · [LinkedIn](https://www.linkedin.com/in/med-gleiguem/) · [Public repositories](https://github.com/Medgleiguem?tab=repositories)
+[Email](mailto:medgleiguem00@gmail.com) · [LinkedIn](https://www.linkedin.com/in/med-gleiguem/) · [Repositories](https://github.com/Medgleiguem?tab=repositories) · [Activity data](./data/activity.json)

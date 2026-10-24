@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="370" viewBox="0 0 720 370" role="img" aria-labelledby="title desc">
+<title id="title">Taazour Aoun</title><desc id="desc">Eligibility → identity → wallet. Animated illustrative engineering diagram. Open the card for the public engineering brief; source code is private.</desc>
+<defs><clipPath id="frame"><rect width="720" height="370" /></clipPath>
+<linearGradient id="shade"><stop stop-color="#030b17" stop-opacity=".84" /><stop offset=".6" stop-color="#030b17" stop-opacity=".17" /><stop offset="1" stop-color="#030b17" stop-opacity="0" /></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08121f" stop-opacity="0" /><stop offset="1" stop-color="#08121f" /></linearGradient></defs>
+<style>
+text{font-family:Consolas,'Liberation Mono',monospace}
+.serif{font-family:Georgia,'Liberation Serif',serif}
+.camera{transform-origin:center;}
+.flow{stroke-dasharray:10 210;}
+.fast{}.slow{}
+.glow{}
+.rotor{transform-origin:1380px 223px;}
+.trace{stroke-dasharray:600;}
+.meter{}
+
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.flow{stroke-dasharray:none;opacity:.4}.trace{stroke-dasharray:none;stroke-dashoffset:0}}
+</style><g clip-path="url(#frame)"><rect width="720" height="370" fill="#08121f" /><style>
+.packet{stroke-dasharray:12 90;}
+.float{}
+.scanner{}
+
+
+
+</style><rect x="1" y="1" width="718" height="368" rx="12" fill="#0d1b29" stroke="#304b61" /><text x="28" y="55" font-size="34" fill="#e8edf2" class="serif">Taazour Aoun</text><text x="28" y="96" font-size="21" fill="#dbb277">Eligibility → identity → wallet.</text><path d="M174 210H292" fill="none" stroke="#345269" stroke-width="2" /><path class="packet" style="" d="M174 210H292" fill="none" stroke="#a4d3ee" stroke-width="3" /><path d="M424 210H542" fill="none" stroke="#345269" stroke-width="2" /><path class="packet" style="" d="M424 210H542" fill="none" stroke="#a4d3ee" stroke-width="3" /><g fill="none" stroke="#a2c9e1" stroke-width="2"><rect x="68" y="167" width="106" height="86" rx="8" /><circle cx="122" cy="193" r="12" /><path d="M99 232q0-28 23-28t23 28" /><rect x="292" y="177" width="132" height="66" rx="8" /><rect x="542" y="172" width="112" height="79" rx="8" /><path d="M542 190h112m-28 23h28" /></g><circle class="glow" style="" cx="310" cy="210" r="5" fill="#dbb277" /><circle class="glow" style="" cx="334" cy="210" r="5" fill="#dbb277" /><circle class="glow" style="" cx="358" cy="210" r="5" fill="#dbb277" /><circle class="glow" style="" cx="382" cy="210" r="5" fill="#dbb277" /><circle class="glow" style="" cx="406" cy="210" r="5" fill="#dbb277" /><text x="70" y="299" font-size="18" fill="#a7bacc">ELIGIBILITY</text><text x="309" y="299" font-size="18" fill="#a7bacc">OTP/eKYC</text><text x="564" y="299" font-size="18" fill="#a7bacc">WALLET</text><text x="28" y="350" font-size="15" fill="#a7bacc">SYSTEM / PRIVATE CODE</text><text x="690" y="350" font-size="16" fill="#dbb277" text-anchor="end">EXPLORE BRIEF ↗</text></g><style>*{animation:none!important}.flow,.trace{stroke-dasharray:none!important;stroke-dashoffset:0!important}.meter{opacity:1!important}</style></svg>

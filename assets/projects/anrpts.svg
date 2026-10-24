@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="370" viewBox="0 0 720 370" role="img" aria-labelledby="title desc">
+<title id="title">ANRPTS / BI Houwiyeti</title><desc id="desc">Heterogeneous sources → analytics. Animated illustrative engineering diagram. Open the card for the public engineering brief; source code is private.</desc>
+<defs><clipPath id="frame"><rect width="720" height="370"/></clipPath>
+<linearGradient id="shade"><stop stop-color="#030b17" stop-opacity=".84"/><stop offset=".6" stop-color="#030b17" stop-opacity=".17"/><stop offset="1" stop-color="#030b17" stop-opacity="0"/></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08121f" stop-opacity="0"/><stop offset="1" stop-color="#08121f"/></linearGradient></defs>
+<style>
+text{font-family:Consolas,'Liberation Mono',monospace}
+.serif{font-family:Georgia,'Liberation Serif',serif}
+.camera{transform-origin:center;animation:camera 22s ease-in-out infinite alternate}
+.flow{stroke-dasharray:10 210;animation:flow 10s linear infinite}
+.fast{animation-duration:7s}.slow{animation-duration:13s}
+.glow{animation:glow 8s ease-in-out infinite}
+.rotor{transform-origin:1380px 223px;animation:rotor 48s linear infinite}
+.trace{stroke-dasharray:600;animation:trace 11s ease-in-out infinite}
+.meter{animation:meter 8s ease-in-out infinite}
+@keyframes camera{to{transform:scale(1.025)}}
+@keyframes flow{to{stroke-dashoffset:-660}}
+@keyframes glow{0%,100%{opacity:.35}50%{opacity:.9}}
+@keyframes rotor{to{transform:rotate(360deg)}}
+@keyframes trace{0%,12%{stroke-dashoffset:600;opacity:.35}55%,80%{stroke-dashoffset:0;opacity:.9}100%{stroke-dashoffset:-600;opacity:.35}}
+@keyframes meter{0%,100%{opacity:.35}45%,65%{opacity:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.flow{stroke-dasharray:none;opacity:.4}.trace{stroke-dasharray:none;stroke-dashoffset:0}}
+</style><g clip-path="url(#frame)"><rect width="720" height="370" fill="#08121f"/><style>
+.packet{stroke-dasharray:12 90;animation:packet 7s linear infinite}
+.float{animation:float 9s ease-in-out infinite alternate}
+.scanner{animation:scanner 8s ease-in-out infinite}
+@keyframes packet{to{stroke-dashoffset:-408}}
+@keyframes float{to{transform:translateY(-10px)}}
+@keyframes scanner{0%,100%{transform:translateY(0);opacity:.3}50%{transform:translateY(120px);opacity:.9}}
+</style><rect x="1" y="1" width="718" height="368" rx="12" fill="#0d1b29" stroke="#304b61"/><text x="28" y="55" font-size="34" fill="#e8edf2" class="serif">ANRPTS / BI Houwiyeti</text><text x="28" y="96" font-size="21" fill="#dbb277" >Heterogeneous sources → analytics.</text><ellipse cx="140" cy="157" rx="60" ry="10" fill="#122a3b" stroke="#a0c8df"/><path d="M80 157v23q60 20 120 0v-23" fill="none" stroke="#86b5cf"/><text x="140" y="180" font-size="16" fill="#a7bacc" text-anchor="middle">MongoDB</text><path d="M208 173Q265 173 320 223" fill="none" stroke="#345269" stroke-width="2"/><path class="packet" style="animation-delay:-0s" d="M208 173Q265 173 320 223" fill="none" stroke="#a4d3ee" stroke-width="3"/><ellipse cx="140" cy="215" rx="60" ry="10" fill="#122a3b" stroke="#a0c8df"/><path d="M80 215v23q60 20 120 0v-23" fill="none" stroke="#86b5cf"/><text x="140" y="238" font-size="16" fill="#a7bacc" text-anchor="middle">PostgreSQL</text><path d="M208 231Q265 231 320 223" fill="none" stroke="#345269" stroke-width="2"/><path class="packet" style="animation-delay:-2s" d="M208 231Q265 231 320 223" fill="none" stroke="#a4d3ee" stroke-width="3"/><ellipse cx="140" cy="273" rx="60" ry="10" fill="#122a3b" stroke="#a0c8df"/><path d="M80 273v23q60 20 120 0v-23" fill="none" stroke="#86b5cf"/><text x="140" y="296" font-size="16" fill="#a7bacc" text-anchor="middle">MySQL</text><path d="M208 289Q265 289 320 223" fill="none" stroke="#345269" stroke-width="2"/><path class="packet" style="animation-delay:-4s" d="M208 289Q265 289 320 223" fill="none" stroke="#a4d3ee" stroke-width="3"/><rect x="320" y="187" width="87" height="70" rx="6" fill="#173347" stroke="#dbb277"/><text x="335" y="229" font-size="23" fill="#e5c797" >ELT</text><path d="M408 223H510" fill="none" stroke="#345269" stroke-width="2"/><path class="packet" style="animation-delay:-2s" d="M408 223H510" fill="none" stroke="#a4d3ee" stroke-width="3"/><rect class="glow" style="animation-delay:-0s" x="520" y="180" width="30" height="30" rx="3" fill="#24465d" stroke="#9ec6dc"/><rect class="glow" style="animation-delay:-2s" x="565" y="180" width="30" height="30" rx="3" fill="#24465d" stroke="#9ec6dc"/><rect class="glow" style="animation-delay:-4s" x="610" y="180" width="30" height="30" rx="3" fill="#24465d" stroke="#9ec6dc"/><rect class="glow" style="animation-delay:-1s" x="520" y="228" width="30" height="30" rx="3" fill="#24465d" stroke="#9ec6dc"/><rect class="glow" style="animation-delay:-3s" x="565" y="228" width="30" height="30" rx="3" fill="#24465d" stroke="#9ec6dc"/><rect class="glow" style="animation-delay:-5s" x="610" y="228" width="30" height="30" rx="3" fill="#24465d" stroke="#9ec6dc"/><text x="520" y="304" font-size="16" fill="#a7bacc" >ANALYTICAL VIEWS</text><text x="28" y="350" font-size="15" fill="#a7bacc" >SYSTEM / PRIVATE CODE</text><text x="690" y="350" font-size="16" fill="#dbb277" text-anchor="end">EXPLORE BRIEF ↗</text></g></svg>

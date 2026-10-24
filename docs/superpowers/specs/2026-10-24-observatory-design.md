@@ -127,3 +127,8 @@ The user selected the art-led approach and approved this design and its moving s
 ## Review evidence
 
 A fresh-context designer/engineer reviewed the written design for planning gaps and reported “nothing important left.” The local browser study is checked at 1440 px and 390 px with normal and reduced motion. These checks are evidence about the concept only; they do not establish the final GitHub rendering.
+
+
+## User steering during implementation
+
+The user explicitly requested much less text and many more clean animated visuals. This supersedes the paragraph-led main-page composition: the README is an animated gallery with ten linked project cards and short labels. The substantive text remains in the ten engineering briefs. Each card keeps its name and purpose visible, uses a distinct method-specific vector animation, and has an explicit static counterpart. Fixed-width inline linked cards wrap naturally in GitHub's layout; no custom CSS grid is required. Three original panoramas retain the illustrated world. A compact animated tool rail replaces the textual tool index. The contribution chart also displays its actual total and peak count. No further design permission is required for this explicit correction.

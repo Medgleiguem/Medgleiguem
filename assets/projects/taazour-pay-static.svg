@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="370" viewBox="0 0 720 370" role="img" aria-labelledby="title desc">
+<title id="title">Taazour Pay</title><desc id="desc">Household boundaries. Payment state. Animated illustrative engineering diagram. Open the card for the public engineering brief; source code is private.</desc>
+<defs><clipPath id="frame"><rect width="720" height="370" /></clipPath>
+<linearGradient id="shade"><stop stop-color="#030b17" stop-opacity=".84" /><stop offset=".6" stop-color="#030b17" stop-opacity=".17" /><stop offset="1" stop-color="#030b17" stop-opacity="0" /></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08121f" stop-opacity="0" /><stop offset="1" stop-color="#08121f" /></linearGradient></defs>
+<style>
+text{font-family:Consolas,'Liberation Mono',monospace}
+.serif{font-family:Georgia,'Liberation Serif',serif}
+.camera{transform-origin:center;}
+.flow{stroke-dasharray:10 210;}
+.fast{}.slow{}
+.glow{}
+.rotor{transform-origin:1380px 223px;}
+.trace{stroke-dasharray:600;}
+.meter{}
+
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.flow{stroke-dasharray:none;opacity:.4}.trace{stroke-dasharray:none;stroke-dashoffset:0}}
+</style><g clip-path="url(#frame)"><rect width="720" height="370" fill="#08121f" /><style>
+.packet{stroke-dasharray:12 90;}
+.float{}
+.scanner{}
+
+
+
+</style><rect x="1" y="1" width="718" height="368" rx="12" fill="#0d1b29" stroke="#304b61" /><text x="28" y="55" font-size="34" fill="#e8edf2" class="serif">Taazour Pay</text><text x="28" y="96" font-size="21" fill="#dbb277">Household boundaries. Payment state.</text><g class="flow" fill="none" stroke="#dbb277" opacity=".6"><ellipse cx="360" cy="220" rx="187" ry="68" stroke-dasharray="3 22" /></g><path d="M150 220H297" fill="none" stroke="#345269" stroke-width="2" /><path class="packet" style="" d="M150 220H297" fill="none" stroke="#a4d3ee" stroke-width="3" /><path d="M421 220H565" fill="none" stroke="#345269" stroke-width="2" /><path class="packet" style="" d="M421 220H565" fill="none" stroke="#a4d3ee" stroke-width="3" /><path d="M294 196l66-48 66 48v82H294Z" fill="#132c3f" stroke="#a4cde3" /><path d="M346 221v-12a14 14 0 0 1 28 0v12m-33 0h38v34h-38Z" fill="none" stroke="#e4bd82" stroke-width="2" /><circle cx="132" cy="220" r="25" fill="#122b3d" stroke="#86b8d4" /><circle class="glow" cx="132" cy="220" r="7" fill="#b7dcee" /><circle cx="586" cy="220" r="25" fill="#122b3d" stroke="#86b8d4" /><circle class="glow" cx="586" cy="220" r="7" fill="#b7dcee" /><text x="79" y="306" font-size="18" fill="#a7bacc">PROVIDERS</text><text x="275" y="315" font-size="18" fill="#a7bacc">HOUSEHOLD LOCK</text><text x="548" y="306" font-size="18" fill="#a7bacc">STATE</text><text x="28" y="350" font-size="15" fill="#a7bacc">SYSTEM / PRIVATE CODE</text><text x="690" y="350" font-size="16" fill="#dbb277" text-anchor="end">EXPLORE BRIEF ↗</text></g><style>*{animation:none!important}.flow,.trace{stroke-dasharray:none!important;stroke-dashoffset:0!important}.meter{opacity:1!important}</style></svg>

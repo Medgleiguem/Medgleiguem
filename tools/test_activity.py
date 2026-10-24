@@ -4,6 +4,7 @@ from pathlib import Path
 import subprocess
 import sys
 import tempfile
+import shutil
 import unittest
 import xml.etree.ElementTree as ET
 
@@ -196,6 +197,24 @@ class ActivityTests(unittest.TestCase):
             existing={'assets/workbench.svg': 'previous chart', 'data/activity.json': 'previous snapshot'})
         self.assertEqual(process.returncode, 1)
         self.assertEqual((root/'assets/workbench.svg').read_text(), 'previous chart')
+
+    def test_refresh_and_full_generation_produce_identical_workbench_files(self):
+        _, root = self.snapshot(payload([('2026-10-18', 2), ('2026-10-24', 3)]))
+        before = {p.name: p.read_bytes() for p in (root/'assets').glob('workbench*.svg')}
+        (root/'tools').mkdir()
+        shutil.copy2(SCRIPT.with_name('generate_assets.py'), root/'tools/generate_assets.py')
+        shutil.copy2(SCRIPT.with_name('project_cards.py'), root/'tools/project_cards.py')
+        shutil.copytree(SCRIPT.parent.parent/'assets/artwork/observatory', root/'assets/artwork/observatory')
+        result = subprocess.run([sys.executable, str(root/'tools/generate_assets.py')], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        for name, content in before.items():
+            self.assertEqual((root/'assets'/name).read_bytes(), content, name+' changed after full generation')
+
+    def test_chart_displays_actual_total_and_peak_in_visible_text(self):
+        _, root = self.snapshot(payload([('2026-10-11', 2), ('2026-10-18', 2), ('2026-10-24', 8)]))
+        svg = ET.parse(root/'assets/workbench.svg').getroot()
+        labels = [node.text for node in svg.iter() if node.tag.endswith('}text')]
+        self.assertTrue(any('12 contributions' in (label or '') and 'peak 10' in label for label in labels), labels)
 
 
 if __name__ == "__main__":

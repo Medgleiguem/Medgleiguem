@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="184" viewBox="0 0 1000 184" role="img" aria-labelledby="title desc">
+<title id="title">Tools in the work</title><desc id="desc">Python, TypeScript, SQL, FastAPI, Django, React, Next.js, PostgreSQL, pgvector, Airflow, dbt, Redis</desc>
+<defs><clipPath id="frame"><rect width="1000" height="184" /></clipPath>
+<linearGradient id="shade"><stop stop-color="#030b17" stop-opacity=".84" /><stop offset=".6" stop-color="#030b17" stop-opacity=".17" /><stop offset="1" stop-color="#030b17" stop-opacity="0" /></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08121f" stop-opacity="0" /><stop offset="1" stop-color="#08121f" /></linearGradient></defs>
+<style>
+text{font-family:Consolas,'Liberation Mono',monospace}
+.serif{font-family:Georgia,'Liberation Serif',serif}
+.camera{transform-origin:center;}
+.flow{stroke-dasharray:10 210;}
+.fast{}.slow{}
+.glow{}
+.rotor{transform-origin:1380px 223px;}
+.trace{stroke-dasharray:600;}
+.meter{}
+
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.flow{stroke-dasharray:none;opacity:.4}.trace{stroke-dasharray:none;stroke-dashoffset:0}}
+</style><g clip-path="url(#frame)"><rect width="1000" height="184" fill="#08121f" /><text x="26" y="32" font-size="15" fill="#dbb277" letter-spacing="1">TOOLS IN THE WORK</text><text x="26.0" y="81" font-size="20" fill="#e8edf2">Python</text><path d="M26.0 96h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M26.0 96h134.66666666666666" stroke="#9bc9e3" /><text x="184.66666666666666" y="81" font-size="20" fill="#e8edf2">TypeScript</text><path d="M184.66666666666666 96h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M184.66666666666666 96h134.66666666666666" stroke="#9bc9e3" /><text x="343.3333333333333" y="81" font-size="20" fill="#e8edf2">SQL</text><path d="M343.3333333333333 96h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M343.3333333333333 96h134.66666666666666" stroke="#9bc9e3" /><text x="502.0" y="81" font-size="20" fill="#e8edf2">FastAPI</text><path d="M502.0 96h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M502.0 96h134.66666666666666" stroke="#9bc9e3" /><text x="660.6666666666666" y="81" font-size="20" fill="#e8edf2">Django</text><path d="M660.6666666666666 96h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M660.6666666666666 96h134.66666666666666" stroke="#9bc9e3" /><text x="819.3333333333333" y="81" font-size="20" fill="#e8edf2">React</text><path d="M819.3333333333333 96h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M819.3333333333333 96h134.66666666666666" stroke="#9bc9e3" /><text x="26.0" y="139" font-size="20" fill="#e8edf2">Next.js</text><path d="M26.0 154h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M26.0 154h134.66666666666666" stroke="#9bc9e3" /><text x="184.66666666666666" y="139" font-size="20" fill="#e8edf2">PostgreSQL</text><path d="M184.66666666666666 154h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M184.66666666666666 154h134.66666666666666" stroke="#9bc9e3" /><text x="343.3333333333333" y="139" font-size="20" fill="#e8edf2">pgvector</text><path d="M343.3333333333333 154h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M343.3333333333333 154h134.66666666666666" stroke="#9bc9e3" /><text x="502.0" y="139" font-size="20" fill="#e8edf2">Airflow</text><path d="M502.0 154h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M502.0 154h134.66666666666666" stroke="#9bc9e3" /><text x="660.6666666666666" y="139" font-size="20" fill="#e8edf2">dbt</text><path d="M660.6666666666666 154h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M660.6666666666666 154h134.66666666666666" stroke="#9bc9e3" /><text x="819.3333333333333" y="139" font-size="20" fill="#e8edf2">Redis</text><path d="M819.3333333333333 154h134.66666666666666" stroke="#2c465b" /><path class="flow" style="" d="M819.3333333333333 154h134.66666666666666" stroke="#9bc9e3" /></g><style>*{animation:none!important}.flow,.trace{stroke-dasharray:none!important;stroke-dashoffset:0!important}.meter{opacity:1!important}</style></svg>

@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
+from project_cards import PROJECTS, STYLE as CARD_STYLE, draw_project
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets'
@@ -101,34 +102,6 @@ def scene(name, mobile=False):
     return document(width, height, title, description, body)
 
 
-def research(mobile=False):
-    width, height = (600, 560) if mobile else (1000, 280)
-    body = ''
-    for index, name in enumerate(['HASSANIYA / METRE RULES', 'SIGNS / DATASET PREPARATION']):
-        x, y = (24, 20+index*270) if mobile else (24+index*488, 18)
-        w, h = (552, 242) if mobile else (464, 244)
-        body += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#0c1d2c" stroke="#2b4055"/>'
-        body += text(x+20, y+34, name, 21 if mobile else 16, GOLD)
-        if index == 0:
-            for row in range(2):
-                yy = y+93+row*55
-                body += f'<path d="M{x+24} {yy}H{x+w-24}" stroke="#30495f"/>'
-                for n in range(5):
-                    xx = x+38+n*((w-88)/4)
-                    path = f'M{xx} {yy-13}V{yy+13}M{xx+15} {yy-13}V{yy+13}' if (n+row)%2 == 0 else f'M{xx-3} {yy}h32'
-                    body += f'<path class="meter" d="{path}" stroke="{GOLD}" stroke-width="3" style="animation-delay:-{n+row}s"/>'
-            body += text(x+20, y+h-23, 'ILLUSTRATIVE PATTERN / RULE CHECKING', 17 if mobile else 13)
-        else:
-            scale = .82
-            tx, ty = x+w/2-125*scale, y+41
-            palm = 'M125 180L85 153L65 122L48 91L35 71M125 180L95 118L93 80L91 48L91 23M125 180L125 108L125 64L125 31L125 6M125 180L154 118L160 77L163 48L165 26M125 180L178 136L192 109L202 88L210 69M95 118L125 108L154 118L178 136'
-            body += f'<g transform="translate({tx} {ty}) scale({scale})" fill="none" stroke="{BLUE}" stroke-width="1.7"><path d="{palm}" opacity=".45"/><path class="trace" d="{palm}"/>'
-            for xx, yy in [(125,180),(95,118),(125,108),(154,118),(178,136),(35,71),(91,23),(125,6),(165,26),(210,69)]:
-                body += f'<circle cx="{xx}" cy="{yy}" r="3" fill="{GOLD}" stroke="none"/>'
-            body += '</g>'+text(x+20, y+h-23, 'SYNTHETIC LANDMARKS / SUBJECT SPLITS', 17 if mobile else 13)
-    return document(width, height, 'Language, gesture, structure', 'Animated illustrative scansion marks and synthetic hand landmarks. These show research methods, not validated metre examples or recognition results.', body)
-
-
 def static_svg(source):
     """Freeze both CSS and native SVG motion, preserving the visible base scene."""
     root = ET.fromstring(source)
@@ -169,14 +142,18 @@ def render_workbench(data, mobile=False, animated=True):
     body = text(margin, 34, '05 / AT THE WORKBENCH', 20 if mobile else 14, GOLD)
     body += text(margin, 83, 'Across the repositories.', 34, SILVER, 'class="serif"')
     body += text(margin, 119, 'GitHub-visible contributions / 7-day groups', 21 if mobile else 18)
+    total = sum(item[2] for item in buckets)
+    summary = f'{total:,} contributions / peak {max(item[2] for item in buckets):,}'
+    body += text(margin if mobile else width-margin, 151 if mobile else 82, summary,
+                 20 if mobile else 18, GOLD, '' if mobile else 'text-anchor="end"')
     body += '<style>.bar{transform-box:fill-box;transform-origin:center bottom;animation:rise 1.2s ease-out both}@keyframes rise{from{transform:scaleY(0)}to{transform:scaleY(1)}}</style>'
-    baseline = 235
+    baseline = 248 if mobile else 235
     step = (width-2*margin)/max(len(buckets), 1)
     bar_width = min(step*.6, 48 if not mobile else 30)
     body += f'<path d="M{margin} {baseline}H{width-margin}" stroke="#38536b"/>'
     for index, (first, last, count) in enumerate(buckets):
         x = margin+index*step+(step-bar_width)/2
-        bar_height = 90*count/maximum
+        bar_height = (74 if mobile else 90)*count/maximum
         label = f'{first.isoformat()} to {last.isoformat()}: {count} contributions'
         color = GOLD if index == len(buckets)-1 else '#8bb8d2'
         body += f'<g class="bar" data-start="{first.isoformat()}" data-end="{last.isoformat()}" data-count="{count}" style="animation-delay:{index*.025:.3f}s"><title>{escape(label)}</title><rect x="{x:.3f}" y="{baseline-bar_height:.4f}" width="{bar_width:.3f}" height="{bar_height:.4f}" fill="{color}"/></g>'
@@ -189,6 +166,31 @@ def render_workbench(data, mobile=False, animated=True):
     result = document(width, height, 'Across the repositories — actual GitHub activity',
         f"GitHub-visible contributions from {start.isoformat()} to {end.isoformat()}, grouped into consecutive calendar buckets of up to seven days. Snapshot {data['updated_at']}. Counts are contributions, not hours or project quality.", body)
     return result if animated else static_svg(result)
+
+
+def project_card(slug):
+    name, tagline, kind = PROJECTS[slug]
+    index = list(PROJECTS).index(slug)+1
+    body = '<style>'+CARD_STYLE+'</style><rect x="1" y="1" width="718" height="368" rx="12" fill="#0d1b29" stroke="#304b61"/>'
+    body += text(28, 55, name, 34, SILVER, 'class="serif"')
+    body += text(28, 96, tagline, 21, GOLD)
+    body += draw_project(slug)
+    body += text(28, 350, ('RESEARCH' if kind == 'research' else 'SYSTEM')+' / PRIVATE CODE', 15)
+    body += text(690, 350, 'EXPLORE BRIEF ↗', 16, GOLD, 'text-anchor="end"')
+    return document(720, 370, name, tagline+' Animated illustrative engineering diagram. Open the card for the public engineering brief; source code is private.', body)
+
+
+def tool_rail(mobile=False):
+    names = ['Python','TypeScript','SQL','FastAPI','Django','React','Next.js','PostgreSQL','pgvector','Airflow','dbt','Redis']
+    width, cols, pitch = (600, 3, 62) if mobile else (1000, 6, 58)
+    height = 68+((len(names)+cols-1)//cols)*pitch
+    body = text(26, 32, 'TOOLS IN THE WORK', 20 if mobile else 15, GOLD, 'letter-spacing="1"')
+    step = (width-48)/cols
+    for i,name in enumerate(names):
+        x,y = 26+(i%cols)*step, 81+(i//cols)*pitch
+        body += text(x,y,name,23 if mobile else 20,SILVER)
+        body += f'<path d="M{x} {y+15}h{step-24}" stroke="#2c465b"/><path class="flow" style="animation-delay:-{i}s" d="M{x} {y+15}h{step-24}" stroke="#9bc9e3"/>'
+    return document(width,height,'Tools in the work',', '.join(names),body)
 
 
 def write_variants(name, renderer):
@@ -207,7 +209,12 @@ def main():
     OUT.mkdir(exist_ok=True)
     for name in ('observatory', 'exchange', 'identity'):
         write_variants(name, lambda mobile, name=name: scene(name, mobile))
-    write_variants('research-methods', research)
+    (OUT/'projects').mkdir(exist_ok=True)
+    for slug in PROJECTS:
+        source = project_card(slug)
+        (OUT/'projects'/(slug+'.svg')).write_text(source+'\n')
+        (OUT/'projects'/(slug+'-static.svg')).write_text(static_svg(source)+'\n')
+    write_variants('tools-rail', tool_rail)
     snapshot = json.loads((ROOT/'data/activity.json').read_text())
     write_variants('workbench', lambda mobile: render_workbench(snapshot, mobile))
 
