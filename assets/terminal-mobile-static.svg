@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="240" viewBox="0 0 600 240" role="img" aria-labelledby="title desc">
+<title id="title">Terminal intro: RAG, data platforms, identity, payments, security and Arabic NLP</title><desc id="desc">Terminal intro: RAG, data platforms, identity, payments, security and Arabic NLP. All motion stops for reduced-motion preferences.</desc>
+<defs>
+ <clipPath id="frame"><rect x="1" y="1" width="598" height="238" rx="8" /></clipPath>
+ <linearGradient id="shade"><stop stop-color="#02090d" stop-opacity=".72" /><stop offset=".52" stop-color="#02090d" stop-opacity=".25" /><stop offset="1" stop-color="#02090d" stop-opacity="0" /></linearGradient>
+ <linearGradient id="vertical-shade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#060b0e" stop-opacity="0" /><stop offset=".45" stop-color="#060b0e" stop-opacity=".9" /><stop offset=".7" stop-color="#060b0e" /></linearGradient>
+ <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0H4" stroke="#000" stroke-opacity=".18" /></pattern>
+ <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#43e6f6" stop-opacity="0" /><stop offset="1" stop-color="#43e6f6" stop-opacity=".11" /></linearGradient>
+</defs>
+<style>
+text{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+.rain{}
+.drift{}
+.scan{}
+.flow{stroke-dasharray:6 22;}
+.glitch{}
+.type-mask{transform-box:fill-box;transform-origin:left;}
+.cursor{}
+.role{opacity:0;}
+.role.first{opacity:1}.r1{}.r2{}.r3{}
+.icon{}
+
+
+
+
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.role{opacity:0!important}.role.first{opacity:1!important}}
+</style>
+<g clip-path="url(#frame)"><rect width="600" height="240" fill="#060b0e" /><rect x="1" y="1" width="598" height="38" fill="#0b171b" /><circle cx="22" cy="20" r="4" fill="#b7ff5a" /><circle cx="40" cy="20" r="4" fill="#43e6f6" /><circle cx="58" cy="20" r="4" fill="#46645b" /><text x="576" y="25" font-size="16" fill="#9ab8b0" font-weight="500" text-anchor="end">med@github:~/workspace</text><text x="26" y="82" font-size="23" fill="#b7ff5a" font-weight="600">$ cat interests.txt</text><defs><clipPath id="typing"><rect class="type-mask" x="26" y="96" width="548" height="45" /></clipPath></defs><g class="role first" clip-path="url(#typing)"><text x="26" y="129" font-size="26" fill="#e8f4ee" font-weight="600">RAG / agents / knowledge systems</text></g><g class="role r1" clip-path="url(#typing)"><text x="26" y="129" font-size="26" fill="#e8f4ee" font-weight="600">ELT / data models / analytics</text></g><g class="role r2" clip-path="url(#typing)"><text x="26" y="129" font-size="26" fill="#e8f4ee" font-weight="600">Payments / identity / vision</text></g><g class="role r3" clip-path="url(#typing)"><text x="26" y="129" font-size="26" fill="#e8f4ee" font-weight="600">CTFs / low-resource Arabic NLP</text></g><text x="26" y="184" font-size="23" fill="#b7ff5a" font-weight="500">$ explore ./projects</text><rect class="cursor" x="310" y="166" width="12" height="22" fill="#b7ff5a" /><text x="26" y="220" font-size="18" fill="#9ab8b0" font-weight="400">code / learn / iterate</text></g>
+<path d="M1 28V1H28 M572 1H599V28 M1 212V239H28 M572 239H599V212" fill="none" stroke="#b7ff5a" stroke-opacity=".6" />
+<style>*{animation:none!important}.type-mask{transform:none!important}.module,.role{opacity:0!important}.module.first,.role.first{opacity:1!important}</style></svg>

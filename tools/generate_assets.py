@@ -4,6 +4,7 @@ from pathlib import Path
 from html import escape
 import base64
 import json
+import re
 import textwrap
 import xml.etree.ElementTree as ET
 
@@ -197,6 +198,24 @@ def contact(label,mobile=False):
     return document(w,h,label,s)
 
 
+def static_svg(source):
+    """Provide a genuinely still image when an SVG image ignores motion media queries."""
+    root=ET.fromstring(source)
+    ns='{http://www.w3.org/2000/svg}'
+    def freeze_css(css):
+        css=re.sub(r'@keyframes\s+[\w-]+\s*\{(?:[^{}]|\{[^{}]*\})*\}', '', css)
+        return re.sub(r'animation(?:-[a-z-]+)?\s*:[^;}]+;?', '', css)
+    for node in root.iter():
+        if node.tag==ns+'style':
+            node.text=freeze_css(node.text or '')
+        if 'style' in node.attrib:
+            node.set('style',freeze_css(node.get('style')))
+    override=ET.SubElement(root,ns+'style')
+    override.text='*{animation:none!important}.type-mask{transform:none!important}.module,.role{opacity:0!important}.module.first,.role.first{opacity:1!important}'
+    ET.register_namespace('',ns[1:-1])
+    return ET.tostring(root,encoding='unicode')
+
+
 def signoff(mobile=False):
     w,h=(600,180) if mobile else (1000,150)
     s=f'<path class="flow" d="M{w-180} 20l-45 55 45 55m80-110 45 55-45 55" fill="none" stroke="#43e6f6" stroke-opacity=".12" stroke-width="3"/>'
@@ -216,6 +235,7 @@ def main():
         for name,source in assets.items():
             ET.fromstring(source)
             (OUT/f'{name}{suffix}.svg').write_text(source+'\n')
+            (OUT/f'{name}{suffix}-static.svg').write_text(static_svg(source)+'\n')
             print(name+suffix+'.svg',len(source.encode()))
     for label in ['email','linkedin','side-quests']:
         (OUT/f'contact-{label}.svg').write_text(contact(label)+'\n')

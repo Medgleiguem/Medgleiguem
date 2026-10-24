@@ -2,6 +2,8 @@
 import base64
 import unittest
 import verify_profile
+import generate_assets
+import xml.etree.ElementTree as ET
 
 
 class SVGImageBoundaryTests(unittest.TestCase):
@@ -24,6 +26,15 @@ class SVGImageBoundaryTests(unittest.TestCase):
     def test_event_handler_is_rejected(self):
         with self.assertRaisesRegex(ValueError, 'executable'):
             self.validate('<rect width="20" height="20" onload="alert(1)"/>')
+
+    def test_static_render_preserves_markup_with_inline_animation_delays(self):
+        source='<svg xmlns="http://www.w3.org/2000/svg"><style>@keyframes move{to{opacity:.5}}.icon{animation:move 2s infinite}</style><g style="animation-delay:-2s"><text>Keep this label</text></g></svg>'
+        try:
+            root=ET.fromstring(generate_assets.static_svg(source))
+        except ET.ParseError:
+            self.fail('Static rendering damaged valid SVG markup')
+        self.assertEqual(root.find('.//{http://www.w3.org/2000/svg}text').text,'Keep this label')
+        self.assertNotIn('animation-delay',ET.tostring(root,encoding='unicode'))
 
 
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="70" viewBox="0 0 1000 70" role="img" aria-labelledby="title desc">
+<title id="title">./projects</title><desc id="desc">./projects. All motion stops for reduced-motion preferences.</desc>
+<defs>
+ <clipPath id="frame"><rect x="1" y="1" width="998" height="68" rx="8" /></clipPath>
+ <linearGradient id="shade"><stop stop-color="#02090d" stop-opacity=".72" /><stop offset=".52" stop-color="#02090d" stop-opacity=".25" /><stop offset="1" stop-color="#02090d" stop-opacity="0" /></linearGradient>
+ <linearGradient id="vertical-shade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#060b0e" stop-opacity="0" /><stop offset=".45" stop-color="#060b0e" stop-opacity=".9" /><stop offset=".7" stop-color="#060b0e" /></linearGradient>
+ <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0H4" stroke="#000" stroke-opacity=".18" /></pattern>
+ <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#43e6f6" stop-opacity="0" /><stop offset="1" stop-color="#43e6f6" stop-opacity=".11" /></linearGradient>
+</defs>
+<style>
+text{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+.rain{}
+.drift{}
+.scan{}
+.flow{stroke-dasharray:6 22;}
+.glitch{}
+.type-mask{transform-box:fill-box;transform-origin:left;}
+.cursor{}
+.role{opacity:0;}
+.role.first{opacity:1}.r1{}.r2{}.r3{}
+.icon{}
+
+
+
+
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.role{opacity:0!important}.role.first{opacity:1!important}}
+</style>
+<g clip-path="url(#frame)"><rect width="1000" height="70" fill="#060b0e" /><text x="24" y="31" font-size="12" fill="#9ab8b0" font-weight="500">MGL / WORKSPACE</text><text x="24" y="55" font-size="28" fill="#b7ff5a" font-weight="700">./projects</text><path class="flow" d="M760 47H976" stroke="#43e6f6" stroke-opacity=".6" /></g>
+<path d="M1 28V1H28 M972 1H999V28 M1 42V69H28 M972 69H999V42" fill="none" stroke="#b7ff5a" stroke-opacity=".6" />
+<style>*{animation:none!important}.type-mask{transform:none!important}.module,.role{opacity:0!important}.module.first,.role.first{opacity:1!important}</style></svg>

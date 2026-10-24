@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="480" viewBox="0 0 600 480" role="img" aria-labelledby="title desc">
+<title id="title">Hassaniya Laghn and Mauritanian Sign Language research</title><desc id="desc">Hassaniya Laghn and Mauritanian Sign Language research. All motion stops for reduced-motion preferences.</desc>
+<defs>
+ <clipPath id="frame"><rect x="1" y="1" width="598" height="478" rx="8" /></clipPath>
+ <linearGradient id="shade"><stop stop-color="#02090d" stop-opacity=".72" /><stop offset=".52" stop-color="#02090d" stop-opacity=".25" /><stop offset="1" stop-color="#02090d" stop-opacity="0" /></linearGradient>
+ <linearGradient id="vertical-shade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#060b0e" stop-opacity="0" /><stop offset=".45" stop-color="#060b0e" stop-opacity=".9" /><stop offset=".7" stop-color="#060b0e" /></linearGradient>
+ <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0H4" stroke="#000" stroke-opacity=".18" /></pattern>
+ <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#43e6f6" stop-opacity="0" /><stop offset="1" stop-color="#43e6f6" stop-opacity=".11" /></linearGradient>
+</defs>
+<style>
+text{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
+.rain{}
+.drift{}
+.scan{}
+.flow{stroke-dasharray:6 22;}
+.glitch{}
+.type-mask{transform-box:fill-box;transform-origin:left;}
+.cursor{}
+.role{opacity:0;}
+.role.first{opacity:1}.r1{}.r2{}.r3{}
+.icon{}
+
+
+
+
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.role{opacity:0!important}.role.first{opacity:1!important}}
+</style>
+<g clip-path="url(#frame)"><rect width="600" height="480" fill="#060b0e" /><text x="24" y="33" font-size="16" fill="#43e6f6" font-weight="600">RESEARCH / IN PROGRESS</text><text x="24" y="82" font-size="29" fill="#b7ff5a" font-weight="600">hassaniya-laghn/</text><text x="24" y="122" font-size="24" fill="#9ab8b0" font-weight="400">Corpus, metre rules and computational</text><text x="24" y="153" font-size="24" fill="#9ab8b0" font-weight="400">prosody.</text><text x="24" y="198" font-size="20" fill="#43e6f6" font-weight="400">COLLECT → NORMALIZE → CHECK METRE →</text><text x="24" y="225" font-size="20" fill="#43e6f6" font-weight="400">REVIEW</text><path class="flow" d="M24 261H576" stroke="#345e45" /><text x="24" y="292" font-size="29" fill="#b7ff5a" font-weight="600">mauritanian-signs/</text><text x="24" y="332" font-size="24" fill="#9ab8b0" font-weight="400">Local sign corpus and recognition</text><text x="24" y="363" font-size="24" fill="#9ab8b0" font-weight="400">research.</text><text x="24" y="408" font-size="20" fill="#43e6f6" font-weight="400">COLLECT → DETECT HANDS → NORMALIZE →</text><text x="24" y="435" font-size="20" fill="#43e6f6" font-weight="400">EVALUATE</text><path class="flow" d="M24 471H576" stroke="#345e45" /></g>
+<path d="M1 28V1H28 M572 1H599V28 M1 452V479H28 M572 479H599V452" fill="none" stroke="#b7ff5a" stroke-opacity=".6" />
+<style>*{animation:none!important}.type-mask{transform:none!important}.module,.role{opacity:0!important}.module.first,.role.first{opacity:1!important}</style></svg>
