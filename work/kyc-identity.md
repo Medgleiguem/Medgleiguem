@@ -20,4 +20,4 @@ Developed within IBTIKAR Technologies’ engineering team.
 
 ---
 
-[← Back to the observatory](../README.md#systems)
+[← Back to the observatory](../README.md#user-content-systems)

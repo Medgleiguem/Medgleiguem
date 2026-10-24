@@ -20,4 +20,4 @@ A collaborative Richat Partners effort involving software engineering and eviden
 
 ---
 
-[← Back to the observatory](../README.md#systems)
+[← Back to the observatory](../README.md#user-content-systems)

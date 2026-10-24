@@ -20,4 +20,4 @@ Developed collaboratively within Richat Partners’ AI and software team, with p
 
 ---
 
-[← Back to the observatory](../README.md#systems)
+[← Back to the observatory](../README.md#user-content-systems)

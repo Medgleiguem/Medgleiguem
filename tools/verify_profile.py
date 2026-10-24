@@ -40,6 +40,23 @@ def validate_local_links(source, base=ROOT, repository=ROOT):
         assert target.is_file(), f'Missing local link: {value}'
 
 
+def validate_profile_navigation(source):
+    """GitHub prefixes custom HTML IDs; fragment links must address those IDs."""
+    ids, fragments = set(), re.findall(r'(?<!!)\[[^\]]+\]\(#([^\s\)]+)\)', source)
+
+    class Anchors(HTMLParser):
+        def handle_starttag(self, tag, attrs):
+            values = dict(attrs)
+            if values.get('id'):
+                ids.add('user-content-'+values['id'])
+            if tag == 'a' and values.get('href', '').startswith('#'):
+                fragments.append(values['href'][1:])
+
+    Anchors().feed(source)
+    for fragment in fragments:
+        assert fragment in ids, f'GitHub navigation target does not match a sanitized custom ID: {fragment}'
+
+
 def validate_svg(source):
     root = ET.fromstring(source)
     if root.tag != '{http://www.w3.org/2000/svg}svg':
@@ -70,6 +87,7 @@ def main():
     readme = (ROOT / 'README.md').read_text()
     AssetReferences().feed(readme)
     validate_local_links(readme)
+    validate_profile_navigation(readme)
     for brief in (ROOT/'work').glob('*.md'):
         validate_local_links(brief.read_text(), brief.parent)
     for value in re.findall(r'https://[^\s"<>\)]+', readme):

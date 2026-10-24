@@ -66,5 +66,12 @@ class SVGImageBoundaryTests(unittest.TestCase):
             with self.assertRaisesRegex(AssertionError, 'outside'):
                 verify_profile.validate_local_links('<a href="../unpublished.md">Broken public brief</a>', root/'repo', root/'repo')
 
+    def test_profile_navigation_matches_github_sanitized_anchor_ids(self):
+        self.assertTrue(hasattr(verify_profile, 'validate_profile_navigation'), 'GitHub navigation validation is missing')
+        with self.assertRaisesRegex(AssertionError, 'navigation'):
+            verify_profile.validate_profile_navigation('<a id="research"></a> [Research](#research)')
+        verify_profile.validate_profile_navigation('<a id="research"></a> [Research](#user-content-research)')
+        verify_profile.validate_profile_navigation((Path(__file__).resolve().parents[1]/'README.md').read_text())
+
 
 if __name__=='__main__':unittest.main()
