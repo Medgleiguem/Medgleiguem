@@ -151,6 +151,46 @@ def static_svg(source):
     return ET.tostring(root, encoding='unicode')
 
 
+def render_workbench(data, mobile=False, animated=True):
+    """Plot actual counts in up to twelve consecutive seven-day calendar buckets."""
+    end = date.fromisoformat(data['window']['end'])
+    start = max(date.fromisoformat(data['window']['start']), end-timedelta(days=83))
+    counts = {date.fromisoformat(day['date']): day['count'] for day in data['calendar']}
+    buckets = []
+    cursor = start
+    while cursor <= end:
+        last = min(cursor+timedelta(days=6), end)
+        total = sum(counts.get(cursor+timedelta(days=i), 0) for i in range((last-cursor).days+1))
+        buckets.append((cursor, last, total))
+        cursor = last+timedelta(days=1)
+    maximum = max((item[2] for item in buckets), default=0) or 1
+    width, height = (600, 340) if mobile else (1000, 300)
+    margin = 32 if mobile else 42
+    body = text(margin, 34, '05 / AT THE WORKBENCH', 20 if mobile else 14, GOLD)
+    body += text(margin, 83, 'Across the repositories.', 34, SILVER, 'class="serif"')
+    body += text(margin, 119, 'GitHub-visible contributions / 7-day groups', 21 if mobile else 18)
+    body += '<style>.bar{transform-box:fill-box;transform-origin:center bottom;animation:rise 1.2s ease-out both}@keyframes rise{from{transform:scaleY(0)}to{transform:scaleY(1)}}</style>'
+    baseline = 235
+    step = (width-2*margin)/max(len(buckets), 1)
+    bar_width = min(step*.6, 48 if not mobile else 30)
+    body += f'<path d="M{margin} {baseline}H{width-margin}" stroke="#38536b"/>'
+    for index, (first, last, count) in enumerate(buckets):
+        x = margin+index*step+(step-bar_width)/2
+        bar_height = 90*count/maximum
+        label = f'{first.isoformat()} to {last.isoformat()}: {count} contributions'
+        color = GOLD if index == len(buckets)-1 else '#8bb8d2'
+        body += f'<g class="bar" data-start="{first.isoformat()}" data-end="{last.isoformat()}" data-count="{count}" style="animation-delay:{index*.025:.3f}s"><title>{escape(label)}</title><rect x="{x:.3f}" y="{baseline-bar_height:.4f}" width="{bar_width:.3f}" height="{bar_height:.4f}" fill="{color}"/></g>'
+    if not sum(item[2] for item in buckets):
+        body += text(width/2, 185, 'No contributions in this window', 22, MUTED, 'text-anchor="middle"')
+    body += text(margin, 274, f'{start.isoformat()} → {end.isoformat()}', 20 if mobile else 17)
+    body += text(margin if mobile else width-margin, 316 if mobile else 274,
+                 f"Snapshot {data['updated_at'][:10]} UTC", 20 if mobile else 17,
+                 MUTED, '' if mobile else 'text-anchor="end"')
+    result = document(width, height, 'Across the repositories — actual GitHub activity',
+        f"GitHub-visible contributions from {start.isoformat()} to {end.isoformat()}, grouped into consecutive calendar buckets of up to seven days. Snapshot {data['updated_at']}. Counts are contributions, not hours or project quality.", body)
+    return result if animated else static_svg(result)
+
+
 def write_variants(name, renderer):
     for mobile in (False, True):
         source = renderer(mobile)
@@ -168,6 +208,8 @@ def main():
     for name in ('observatory', 'exchange', 'identity'):
         write_variants(name, lambda mobile, name=name: scene(name, mobile))
     write_variants('research-methods', research)
+    snapshot = json.loads((ROOT/'data/activity.json').read_text())
+    write_variants('workbench', lambda mobile: render_workbench(snapshot, mobile))
 
 
 if __name__ == '__main__':

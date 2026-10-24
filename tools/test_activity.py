@@ -128,7 +128,8 @@ class ActivityTests(unittest.TestCase):
 
     def test_rendered_variants_are_accessible_self_contained_svg(self):
         _, root = self.snapshot(payload([("2026-10-24", 3)]))
-        for name in ["activity.svg", "activity-mobile.svg", "activity-static.svg", "activity-mobile-static.svg"]:
+        for name in ["workbench.svg", "workbench-mobile.svg", "workbench-static.svg", "workbench-mobile-static.svg"]:
+            self.assertTrue((root / 'assets' / name).exists(), 'Collector must publish the new workbench chart')
             text = (root / "assets" / name).read_text()
             svg = ET.fromstring(text)
             self.assertIsNotNone(svg.find("{http://www.w3.org/2000/svg}title"))
@@ -136,24 +137,24 @@ class ActivityTests(unittest.TestCase):
             self.assertNotIn("<script", text)
             self.assertNotIn("https://", text)
             self.assertIn("GitHub-visible contributions", text)
-            self.assertIn("Public-repository languages", text)
             if "static" in name:
                 self.assertNotIn("@keyframes", text)
             else:
                 self.assertIn("prefers-reduced-motion", text)
 
-    def test_skyline_bars_use_real_weekly_totals_and_proportional_heights(self):
+    def test_workbench_buckets_use_real_totals_and_proportional_heights(self):
         _, root = self.snapshot(payload([
             ("2026-10-11", 2), ("2026-10-18", 2),
             ("2026-10-19", 3), ("2026-10-24", 5)]))
         ns = {"svg": "http://www.w3.org/2000/svg"}
-        for name in ["skyline.svg", "skyline-mobile.svg", "skyline-static.svg", "skyline-mobile-static.svg"]:
-            self.assertTrue((root / "assets" / name).exists(), "Generator must emit the skyline variant")
+        for name in ["workbench.svg", "workbench-mobile.svg", "workbench-static.svg", "workbench-mobile-static.svg"]:
+            self.assertTrue((root / "assets" / name).exists(), "Generator must emit the workbench variant")
             svg = ET.parse(root / "assets" / name).getroot()
-            bars = [element for element in svg.iter() if "data-week" in element.attrib]
-            self.assertEqual([(bar.attrib["data-week"], bar.attrib["data-count"]) for bar in bars],
+            bars = [element for element in svg.iter() if "data-start" in element.attrib]
+            self.assertEqual([(bar.attrib["data-start"], bar.attrib["data-count"]) for bar in bars],
                              [("2026-10-11", "2"), ("2026-10-18", "10")])
-            heights = [float(bar.find('svg:rect[@data-face="front"]', ns).attrib["height"]) for bar in bars]
+            self.assertEqual([bar.attrib['data-end'] for bar in bars], ['2026-10-17', '2026-10-24'])
+            heights = [float(bar.find('svg:rect', ns).attrib["height"]) for bar in bars]
             self.assertAlmostEqual(heights[1] / heights[0], 5, places=2)
             content = (root / "assets" / name).read_text()
             self.assertIn("GitHub-visible contributions", content)
@@ -164,19 +165,37 @@ class ActivityTests(unittest.TestCase):
             else:
                 self.assertIn("prefers-reduced-motion", content)
 
-    def test_mobile_skyline_limits_to_latest_27_weeks_and_labels_scope(self):
+    def test_workbench_limits_to_latest_84_calendar_days_and_keeps_mobile_totals(self):
         _, root = self.snapshot(payload([
             ("2026-01-04", 7), ("2026-10-18", 3), ("2026-10-24", 2)]))
-        self.assertTrue((root / "assets/skyline.svg").exists(), "Generator must emit the full skyline")
-        desktop = ET.parse(root / "assets/skyline.svg").getroot()
-        mobile = ET.parse(root / "assets/skyline-mobile.svg").getroot()
-        desktop_bars = [e for e in desktop.iter() if "data-week" in e.attrib]
-        mobile_bars = [e for e in mobile.iter() if "data-week" in e.attrib]
-        self.assertEqual(len(mobile_bars), 27)
-        self.assertGreater(len(desktop_bars), 27)
+        self.assertTrue((root / "assets/workbench.svg").exists(), "Generator must emit the workbench")
+        desktop = ET.parse(root / "assets/workbench.svg").getroot()
+        mobile = ET.parse(root / "assets/workbench-mobile.svg").getroot()
+        desktop_bars = [e for e in desktop.iter() if "data-start" in e.attrib]
+        mobile_bars = [e for e in mobile.iter() if "data-start" in e.attrib]
+        self.assertEqual(len(mobile_bars), 12)
+        self.assertEqual(len(desktop_bars), 12)
         self.assertEqual(sum(int(e.attrib["data-count"]) for e in mobile_bars), 5)
-        self.assertEqual(sum(int(e.attrib["data-count"]) for e in desktop_bars), 12)
-        self.assertIn("Last 27 weeks", (root / "assets/skyline-mobile.svg").read_text())
+        self.assertEqual(sum(int(e.attrib["data-count"]) for e in desktop_bars), 5)
+        self.assertEqual(mobile_bars[0].attrib['data-start'], '2026-08-02')
+        self.assertEqual(mobile_bars[-1].attrib['data-end'], '2026-10-24')
+
+    def test_short_zero_calendar_is_valid_and_does_not_invent_a_full_window(self):
+        _, root = self.snapshot(payload([('2026-10-24', 0)]))
+        self.assertTrue((root/'assets/workbench.svg').exists(), 'Collector must publish the workbench')
+        svg = ET.parse(root/'assets/workbench.svg').getroot()
+        bars = [node for node in svg.iter() if 'data-start' in node.attrib]
+        self.assertEqual(len(bars), 1)
+        self.assertEqual(bars[0].get('data-start'), '2026-10-24')
+        self.assertEqual(bars[0].get('data-end'), '2026-10-24')
+        self.assertEqual(bars[0].get('data-count'), '0')
+        self.assertIn('No contributions in this window', ''.join(svg.itertext()))
+
+    def test_failed_refresh_preserves_the_previous_workbench(self):
+        process, root = self.run_generator({'errors': [{'message': 'bad response'}]},
+            existing={'assets/workbench.svg': 'previous chart', 'data/activity.json': 'previous snapshot'})
+        self.assertEqual(process.returncode, 1)
+        self.assertEqual((root/'assets/workbench.svg').read_text(), 'previous chart')
 
 
 if __name__ == "__main__":
