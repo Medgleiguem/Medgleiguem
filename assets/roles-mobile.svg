@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="96" viewBox="0 0 600 96" role="img" aria-labelledby="title desc">
+<title id="title">RAG systems, data platforms, cybersecurity, Arabic NLP and accessible software</title><desc id="desc">RAG systems, data platforms, cybersecurity, Arabic NLP and accessible software. Decorative animation respects reduced motion.</desc>
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#111a2e"/><stop offset="1" stop-color="#090e1b"/></linearGradient>
+ <linearGradient id="border"><stop stop-color="#a78bfa" stop-opacity=".7"/><stop offset=".5" stop-color="#22d3ee" stop-opacity=".3"/><stop offset="1" stop-color="#34d399" stop-opacity=".5"/></linearGradient>
+ <radialGradient id="violet"><stop stop-color="#8b5cf6" stop-opacity=".23"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+ <radialGradient id="cyan"><stop stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+ <linearGradient id="shine"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#a0b5dd" stroke-opacity=".045"/></pattern>
+ <clipPath id="frame"><rect x="1" y="1" width="598" height="94" rx="20"/></clipPath>
+</defs>
+<style>
+ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
+ .mono{font-family:Consolas,'Liberation Mono',monospace}
+ .flow{stroke-dasharray:4 16;animation:flow 12s linear infinite}
+ .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 36s linear infinite}
+ .float{animation:float 9s ease-in-out infinite alternate}
+ .pulse{animation:pulse 5s ease-in-out infinite}
+ .cursor{animation:cursor 1.4s steps(2,end) infinite}
+ .aurora{animation:aurora 18s ease-in-out infinite alternate}
+ .trace{stroke-dasharray:80 600;animation:trace 12s linear infinite}
+ .icon-line{stroke-dasharray:100;animation:draw 9s ease-in-out infinite}
+ .icon-bob{animation:float 5s ease-in-out infinite alternate}
+ .beam{animation:beam 14s linear infinite}
+ .role{opacity:0;animation:role 20s linear infinite}
+ .role.first{opacity:1}
+ .r1{animation-delay:5s}.r2{animation-delay:10s}.r3{animation-delay:15s}
+ @keyframes flow{to{stroke-dashoffset:-240}}
+ @keyframes trace{to{stroke-dashoffset:-1360}}
+ @keyframes orbit{to{transform:rotate(360deg)}}
+ @keyframes float{to{transform:translateY(-7px)}}
+ @keyframes pulse{50%{opacity:.4}}
+ @keyframes cursor{50%{opacity:0}}
+ @keyframes aurora{to{transform:translate(28px,-16px) scale(1.05)}}
+ @keyframes role{0%,22%{opacity:1}25%,100%{opacity:0}}
+ @keyframes draw{0%,35%,100%{stroke-dashoffset:0}65%{stroke-dashoffset:90}}
+ @keyframes beam{from{transform:translateX(-400px)}to{transform:translateX(1200px)}}
+ @media(prefers-reduced-motion:reduce){*{animation:none!important}.role{opacity:0!important}.role.first{opacity:1!important}}
+</style>
+<g clip-path="url(#frame)"><rect width="600" height="96" fill="url(#bg)"/>
+<rect width="600" height="96" fill="url(#grid)"/><text x="26" y="33" font-size="13" fill="#90a3c4" font-weight="600" class="mono" letter-spacing="2">ENGINEERING ACROSS</text><g class="role first"><text x="26" y="72" font-size="26" fill="#a78bfa" font-weight="700" >RAG systems &amp; LLM agents</text></g><g class="role r1"><text x="26" y="72" font-size="26" fill="#22d3ee" font-weight="700" >Data platforms &amp; fintech</text></g><g class="role r2"><text x="26" y="72" font-size="26" fill="#34d399" font-weight="700" >Cybersecurity &amp; CTFs</text></g><g class="role r3"><text x="26" y="72" font-size="26" fill="#fb7185" font-weight="700" >Arabic NLP &amp; accessible software</text></g><rect class="cursor" x="560" y="48" width="10" height="22" rx="1" fill="#22d3ee"/></g>
+<rect x="1" y="1" width="598" height="94" rx="20" fill="none" stroke="url(#border)" stroke-opacity=".7"/>
+</svg>

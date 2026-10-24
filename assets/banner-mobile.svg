@@ -1,26 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="570" viewBox="0 0 600 570" role="img" aria-labelledby="title desc">
-<title id="title">Mohamed Gleiguem — Intelligence. Engineered.</title>
-<desc id="desc">Custom artwork for Mohamed Gleiguem. Decorative motion stops when reduced motion is requested. All text remains visible without animation.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="710" viewBox="0 0 600 710" role="img" aria-labelledby="title desc">
+<title id="title">Mohamed Gleiguem — technical lead, AI, data, security and software engineering</title><desc id="desc">Mohamed Gleiguem — technical lead, AI, data, security and software engineering. Decorative animation respects reduced motion.</desc>
 <defs>
-  <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101c2c"/><stop offset="1" stop-color="#080e17"/></linearGradient>
-  <linearGradient id="edge"><stop stop-color="#70f0cb" stop-opacity=".55"/><stop offset=".6" stop-color="#9daaff" stop-opacity=".22"/><stop offset="1" stop-color="#70f0cb" stop-opacity=".1"/></linearGradient>
-  <radialGradient id="glow"><stop stop-color="#70f0cb" stop-opacity=".1"/><stop offset="1" stop-color="#70f0cb" stop-opacity="0"/></radialGradient>
-  <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".7" fill="#a5b9d3" opacity=".13"/></pattern>
-  <clipPath id="frame"><rect x="1" y="1" width="598" height="568" rx="20"/></clipPath>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#111a2e"/><stop offset="1" stop-color="#090e1b"/></linearGradient>
+ <linearGradient id="border"><stop stop-color="#a78bfa" stop-opacity=".7"/><stop offset=".5" stop-color="#22d3ee" stop-opacity=".3"/><stop offset="1" stop-color="#34d399" stop-opacity=".5"/></linearGradient>
+ <radialGradient id="violet"><stop stop-color="#8b5cf6" stop-opacity=".23"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+ <radialGradient id="cyan"><stop stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+ <linearGradient id="shine"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#a0b5dd" stroke-opacity=".045"/></pattern>
+ <clipPath id="frame"><rect x="1" y="1" width="598" height="708" rx="20"/></clipPath>
 </defs>
 <style>
-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
-.mono { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace; }
-.flow { stroke-dasharray: 3 18; animation: flow 16s linear infinite; }
-.halo { transform-box: fill-box; transform-origin: center; animation: breathe 8s ease-in-out infinite; }
-@keyframes flow { to { stroke-dashoffset: -252; } }
-@keyframes breathe { 50% { opacity: .45; transform: scale(.94); } }
-@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
+ .mono{font-family:Consolas,'Liberation Mono',monospace}
+ .flow{stroke-dasharray:4 16;animation:flow 12s linear infinite}
+ .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 36s linear infinite}
+ .float{animation:float 9s ease-in-out infinite alternate}
+ .pulse{animation:pulse 5s ease-in-out infinite}
+ .cursor{animation:cursor 1.4s steps(2,end) infinite}
+ .aurora{animation:aurora 18s ease-in-out infinite alternate}
+ .trace{stroke-dasharray:80 600;animation:trace 12s linear infinite}
+ .icon-line{stroke-dasharray:100;animation:draw 9s ease-in-out infinite}
+ .icon-bob{animation:float 5s ease-in-out infinite alternate}
+ .beam{animation:beam 14s linear infinite}
+ .role{opacity:0;animation:role 20s linear infinite}
+ .role.first{opacity:1}
+ .r1{animation-delay:5s}.r2{animation-delay:10s}.r3{animation-delay:15s}
+ @keyframes flow{to{stroke-dashoffset:-240}}
+ @keyframes trace{to{stroke-dashoffset:-1360}}
+ @keyframes orbit{to{transform:rotate(360deg)}}
+ @keyframes float{to{transform:translateY(-7px)}}
+ @keyframes pulse{50%{opacity:.4}}
+ @keyframes cursor{50%{opacity:0}}
+ @keyframes aurora{to{transform:translate(28px,-16px) scale(1.05)}}
+ @keyframes role{0%,22%{opacity:1}25%,100%{opacity:0}}
+ @keyframes draw{0%,35%,100%{stroke-dashoffset:0}65%{stroke-dashoffset:90}}
+ @keyframes beam{from{transform:translateX(-400px)}to{transform:translateX(1200px)}}
+ @media(prefers-reduced-motion:reduce){*{animation:none!important}.role{opacity:0!important}.role.first{opacity:1!important}}
 </style>
-<g clip-path="url(#frame)">
-<rect width="600" height="570" fill="url(#bg)"/>
-<rect width="600" height="570" fill="url(#grid)"/>
-<ellipse cx="560" cy="20" rx="380" ry="300" fill="url(#glow)"/><text x="40" y="57" font-size="17" fill="#70f0cb" font-weight="700" class="mono" letter-spacing="2.5">MOHAMED GLEIGUEM</text><text x="40" y="91" font-size="12" fill="#9baabd" font-weight="500" class="mono" letter-spacing="2">AI &amp; SOFTWARE ENGINEERING</text><text x="40" y="178" font-size="62" fill="#f0f3f5" font-weight="700" letter-spacing="-2">Intelligence.</text><text x="40" y="250" font-size="62" fill="#70f0cb" font-weight="700" letter-spacing="-2">Engineered.</text><text x="40" y="309" font-size="22" fill="#b1bccb" font-weight="400" >From source-cited AI to software</text><text x="40" y="341" font-size="22" fill="#b1bccb" font-weight="400" >that people use.</text><path class="flow" d="M40 396H560" stroke="#70f0cb" stroke-opacity=".6"/><text x="40" y="444" font-size="17" fill="#d6dfe8" font-weight="600" class="mono">AI / DATA / SECURITY</text><text x="40" y="476" font-size="17" fill="#d6dfe8" font-weight="600" class="mono">WEB / MOBILE / RESEARCH</text><text x="40" y="535" font-size="13" fill="#a5b4c7" font-weight="500" class="mono">NOUAKCHOTT, MAURITANIA · UTC+0</text>
-</g>
-<rect x="1" y="1" width="598" height="568" rx="20" fill="none" stroke="url(#edge)"/>
+<g clip-path="url(#frame)"><rect width="600" height="710" fill="url(#bg)"/>
+<rect width="600" height="710" fill="url(#grid)"/><ellipse class="aurora" cx="180" cy="60" rx="470" ry="400" fill="url(#violet)"/><ellipse class="aurora" cx="600" cy="710" rx="500" ry="450" fill="url(#cyan)"/><polygon class="beam" points="0,0 120,0 350,710 230,710" fill="url(#shine)"/><text x="36" y="42" font-size="18" fill="#c4b5fd" font-weight="700" class="mono" letter-spacing="2">MG / ENGINEERING</text><path d="M36 62H564" stroke="#8b9bbe" stroke-opacity=".17"/><text x="36" y="114" font-size="18" fill="#67e8f9" font-weight="700" class="mono" letter-spacing="1.2">TECHNICAL LEAD · AI &amp; SOFTWARE</text><text x="32" y="191" font-size="76" fill="#f1f5ff" font-weight="800" letter-spacing="-2">MOHAMED</text><text x="32" y="269" font-size="76" fill="#c4b5fd" font-weight="800" letter-spacing="-2">GLEIGUEM</text><text x="36" y="317" font-size="27" fill="#d8e1f3" font-weight="500" >AI systems. Data platforms.</text><text x="36" y="351" font-size="27" fill="#d8e1f3" font-weight="500" >Security-minded software.</text><rect x="36" y="394" width="528" height="222" rx="16" fill="#111a2e" stroke="#22d3ee" stroke-opacity=".28" /><text x="60" y="431" font-size="17" fill="#67e8f9" font-weight="500" class="mono">~/profile.yml</text><text x="60" y="477" font-size="20" fill="#c4b5fd" font-weight="500" class="mono">focus:</text><text x="205" y="477" font-size="20" fill="#c5d9e9" font-weight="500" class="mono">AI / DATA / SECURITY</text><text x="60" y="519" font-size="20" fill="#c4b5fd" font-weight="500" class="mono">work:</text><text x="205" y="519" font-size="20" fill="#c5d9e9" font-weight="500" class="mono">Richat Partners</text><text x="60" y="561" font-size="20" fill="#c4b5fd" font-weight="500" class="mono">languages:</text><text x="205" y="561" font-size="20" fill="#c5d9e9" font-weight="500" class="mono">AR / FR / EN</text><text x="36" y="661" font-size="21" fill="#6ee7b7" font-weight="600" class="mono">BUILD → TEST → REVIEW → SHIP</text><text x="36" y="690" font-size="15" fill="#a5b4ce" font-weight="500" class="mono">MAURITANIA · ARABIC / FRENCH / ENGLISH</text></g>
+<rect x="1" y="1" width="598" height="708" rx="20" fill="none" stroke="url(#border)" stroke-opacity=".7"/>
 </svg>

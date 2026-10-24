@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "python",
+    "name": "Python"
+  },
+  {
+    "slug": "typescript",
+    "name": "TypeScript"
+  },
+  {
+    "slug": "javascript",
+    "name": "JavaScript"
+  },
+  {
+    "slug": "c",
+    "name": "C"
+  },
+  {
+    "slug": "react",
+    "name": "React"
+  },
+  {
+    "slug": "nextdotjs",
+    "name": "Next.js"
+  },
+  {
+    "slug": "flutter",
+    "name": "Flutter"
+  },
+  {
+    "slug": "apacheairflow",
+    "name": "Airflow"
+  },
+  {
+    "slug": "postgresql",
+    "name": "PostgreSQL"
+  },
+  {
+    "slug": "mysql",
+    "name": "MySQL"
+  },
+  {
+    "slug": "mongodb",
+    "name": "MongoDB"
+  },
+  {
+    "slug": "scikitlearn",
+    "name": "scikit-learn"
+  },
+  {
+    "slug": "pytorch",
+    "name": "PyTorch"
+  },
+  {
+    "slug": "opencv",
+    "name": "OpenCV"
+  },
+  {
+    "slug": "flask",
+    "name": "Flask"
+  },
+  {
+    "slug": "django",
+    "name": "Django"
+  },
+  {
+    "slug": "springboot",
+    "name": "Spring Boot"
+  },
+  {
+    "slug": "capacitor",
+    "name": "Capacitor"
+  },
+  {
+    "slug": "docker",
+    "name": "Docker"
+  },
+  {
+    "slug": "ansible",
+    "name": "Ansible"
+  },
+  {
+    "slug": "linux",
+    "name": "Linux"
+  },
+  {
+    "slug": "git",
+    "name": "Git"
+  },
+  {
+    "slug": "githubactions",
+    "name": "GitHub Actions"
+  },
+  {
+    "slug": "gnubash",
+    "name": "Bash"
+  }
+]

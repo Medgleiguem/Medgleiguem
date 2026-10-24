@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="180" viewBox="0 0 1000 180" role="img" aria-labelledby="title desc">
+<title id="title">Program impact: 2 million citizens reached; 5.5 billion MRO distributed; 100,000 documents; 19.75 out of 20 final-year score</title><desc id="desc">Program impact: 2 million citizens reached; 5.5 billion MRO distributed; 100,000 documents; 19.75 out of 20 final-year score. Decorative animation respects reduced motion.</desc>
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#111a2e"/><stop offset="1" stop-color="#090e1b"/></linearGradient>
+ <linearGradient id="border"><stop stop-color="#a78bfa" stop-opacity=".7"/><stop offset=".5" stop-color="#22d3ee" stop-opacity=".3"/><stop offset="1" stop-color="#34d399" stop-opacity=".5"/></linearGradient>
+ <radialGradient id="violet"><stop stop-color="#8b5cf6" stop-opacity=".23"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+ <radialGradient id="cyan"><stop stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+ <linearGradient id="shine"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#a0b5dd" stroke-opacity=".045"/></pattern>
+ <clipPath id="frame"><rect x="1" y="1" width="998" height="178" rx="20"/></clipPath>
+</defs>
+<style>
+ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
+ .mono{font-family:Consolas,'Liberation Mono',monospace}
+ .flow{stroke-dasharray:4 16;animation:flow 12s linear infinite}
+ .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 36s linear infinite}
+ .float{animation:float 9s ease-in-out infinite alternate}
+ .pulse{animation:pulse 5s ease-in-out infinite}
+ .cursor{animation:cursor 1.4s steps(2,end) infinite}
+ .aurora{animation:aurora 18s ease-in-out infinite alternate}
+ .trace{stroke-dasharray:80 600;animation:trace 12s linear infinite}
+ .icon-line{stroke-dasharray:100;animation:draw 9s ease-in-out infinite}
+ .icon-bob{animation:float 5s ease-in-out infinite alternate}
+ .beam{animation:beam 14s linear infinite}
+ .role{opacity:0;animation:role 20s linear infinite}
+ .role.first{opacity:1}
+ .r1{animation-delay:5s}.r2{animation-delay:10s}.r3{animation-delay:15s}
+ @keyframes flow{to{stroke-dashoffset:-240}}
+ @keyframes trace{to{stroke-dashoffset:-1360}}
+ @keyframes orbit{to{transform:rotate(360deg)}}
+ @keyframes float{to{transform:translateY(-7px)}}
+ @keyframes pulse{50%{opacity:.4}}
+ @keyframes cursor{50%{opacity:0}}
+ @keyframes aurora{to{transform:translate(28px,-16px) scale(1.05)}}
+ @keyframes role{0%,22%{opacity:1}25%,100%{opacity:0}}
+ @keyframes draw{0%,35%,100%{stroke-dashoffset:0}65%{stroke-dashoffset:90}}
+ @keyframes beam{from{transform:translateX(-400px)}to{transform:translateX(1200px)}}
+ @media(prefers-reduced-motion:reduce){*{animation:none!important}.role{opacity:0!important}.role.first{opacity:1!important}}
+</style>
+<g clip-path="url(#frame)"><rect width="1000" height="180" fill="url(#bg)"/>
+<rect width="1000" height="180" fill="url(#grid)"/><rect x="18" y="18" width="228" height="144" rx="16" fill="#111a2e" stroke="#a78bfa" stroke-opacity=".28" /><text x="38" y="72" font-size="34" fill="#a78bfa" font-weight="800" >2M+</text><text x="38" y="108" font-size="17" fill="#eef2ff" font-weight="600" >citizens reached</text><text x="38" y="134" font-size="14" fill="#aebbd3" font-weight="400" >through donation programs</text><rect x="264" y="18" width="228" height="144" rx="16" fill="#111a2e" stroke="#22d3ee" stroke-opacity=".28" /><text x="284" y="72" font-size="34" fill="#22d3ee" font-weight="800" >5.5B MRO</text><text x="284" y="108" font-size="17" fill="#eef2ff" font-weight="600" >distributed</text><text x="284" y="134" font-size="14" fill="#aebbd3" font-weight="400" >through national programs</text><rect x="510" y="18" width="228" height="144" rx="16" fill="#111a2e" stroke="#34d399" stroke-opacity=".28" /><text x="530" y="72" font-size="34" fill="#34d399" font-weight="800" >100K+</text><text x="530" y="108" font-size="17" fill="#eef2ff" font-weight="600" >documents</text><text x="530" y="134" font-size="14" fill="#aebbd3" font-weight="400" >in the national knowledge</text><text x="530" y="155" font-size="14" fill="#aebbd3" font-weight="400" >base</text><rect x="756" y="18" width="228" height="144" rx="16" fill="#111a2e" stroke="#fb7185" stroke-opacity=".28" /><text x="776" y="72" font-size="34" fill="#fb7185" font-weight="800" >19.75/20</text><text x="776" y="108" font-size="17" fill="#eef2ff" font-weight="600" >final-year score</text><text x="776" y="134" font-size="14" fill="#aebbd3" font-weight="400" >for the ANRPTS platform</text></g>
+<rect x="1" y="1" width="998" height="178" rx="20" fill="none" stroke="url(#border)" stroke-opacity=".7"/>
+</svg>

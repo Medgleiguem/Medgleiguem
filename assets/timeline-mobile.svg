@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="798" viewBox="0 0 600 798" role="img" aria-labelledby="title desc">
+<title id="title">Experience and education timeline</title><desc id="desc">Experience and education timeline. Decorative animation respects reduced motion.</desc>
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#111a2e"/><stop offset="1" stop-color="#090e1b"/></linearGradient>
+ <linearGradient id="border"><stop stop-color="#a78bfa" stop-opacity=".7"/><stop offset=".5" stop-color="#22d3ee" stop-opacity=".3"/><stop offset="1" stop-color="#34d399" stop-opacity=".5"/></linearGradient>
+ <radialGradient id="violet"><stop stop-color="#8b5cf6" stop-opacity=".23"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+ <radialGradient id="cyan"><stop stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+ <linearGradient id="shine"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+ <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#a0b5dd" stroke-opacity=".045"/></pattern>
+ <clipPath id="frame"><rect x="1" y="1" width="598" height="796" rx="20"/></clipPath>
+</defs>
+<style>
+ text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}
+ .mono{font-family:Consolas,'Liberation Mono',monospace}
+ .flow{stroke-dasharray:4 16;animation:flow 12s linear infinite}
+ .orbit{transform-box:fill-box;transform-origin:center;animation:orbit 36s linear infinite}
+ .float{animation:float 9s ease-in-out infinite alternate}
+ .pulse{animation:pulse 5s ease-in-out infinite}
+ .cursor{animation:cursor 1.4s steps(2,end) infinite}
+ .aurora{animation:aurora 18s ease-in-out infinite alternate}
+ .trace{stroke-dasharray:80 600;animation:trace 12s linear infinite}
+ .icon-line{stroke-dasharray:100;animation:draw 9s ease-in-out infinite}
+ .icon-bob{animation:float 5s ease-in-out infinite alternate}
+ .beam{animation:beam 14s linear infinite}
+ .role{opacity:0;animation:role 20s linear infinite}
+ .role.first{opacity:1}
+ .r1{animation-delay:5s}.r2{animation-delay:10s}.r3{animation-delay:15s}
+ @keyframes flow{to{stroke-dashoffset:-240}}
+ @keyframes trace{to{stroke-dashoffset:-1360}}
+ @keyframes orbit{to{transform:rotate(360deg)}}
+ @keyframes float{to{transform:translateY(-7px)}}
+ @keyframes pulse{50%{opacity:.4}}
+ @keyframes cursor{50%{opacity:0}}
+ @keyframes aurora{to{transform:translate(28px,-16px) scale(1.05)}}
+ @keyframes role{0%,22%{opacity:1}25%,100%{opacity:0}}
+ @keyframes draw{0%,35%,100%{stroke-dashoffset:0}65%{stroke-dashoffset:90}}
+ @keyframes beam{from{transform:translateX(-400px)}to{transform:translateX(1200px)}}
+ @media(prefers-reduced-motion:reduce){*{animation:none!important}.role{opacity:0!important}.role.first{opacity:1!important}}
+</style>
+<g clip-path="url(#frame)"><rect width="600" height="798" fill="url(#bg)"/>
+<rect width="600" height="798" fill="url(#grid)"/><path d="M40 54V728" stroke="#4a5471"/><circle cx="40" cy="64" r="7" fill="#a78bfa"/><circle class="pulse" cx="40" cy="64" r="15" fill="none" stroke="#a78bfa" stroke-opacity=".3"/><rect x="72" y="24" width="504" height="172" rx="16" fill="#111a2e" stroke="#a78bfa" stroke-opacity=".28" /><text x="94" y="59" font-size="18" fill="#a78bfa" font-weight="600" class="mono">SEP 2026 → PRESENT</text><text x="94" y="101" font-size="29" fill="#eef2ff" font-weight="700" >Richat Partners</text><text x="94" y="135" font-size="23" fill="#aebbd3" font-weight="400" >Technical Lead · AI &amp; Software</text><text x="94" y="165" font-size="23" fill="#aebbd3" font-weight="400" >Engineering</text><circle cx="40" cy="254" r="7" fill="#22d3ee"/><circle class="pulse" cx="40" cy="254" r="15" fill="none" stroke="#22d3ee" stroke-opacity=".3"/><rect x="72" y="214" width="504" height="172" rx="16" fill="#111a2e" stroke="#22d3ee" stroke-opacity=".28" /><text x="94" y="249" font-size="18" fill="#22d3ee" font-weight="600" class="mono">JAN → SEP 2026</text><text x="94" y="291" font-size="29" fill="#eef2ff" font-weight="700" >IBTIKAR Technologies</text><text x="94" y="325" font-size="23" fill="#aebbd3" font-weight="400" >Full-Stack Engineer · fintech,</text><text x="94" y="355" font-size="23" fill="#aebbd3" font-weight="400" >identity &amp; data</text><circle cx="40" cy="444" r="7" fill="#34d399"/><circle class="pulse" cx="40" cy="444" r="15" fill="none" stroke="#34d399" stroke-opacity=".3"/><rect x="72" y="404" width="504" height="172" rx="16" fill="#111a2e" stroke="#34d399" stroke-opacity=".28" /><text x="94" y="439" font-size="18" fill="#34d399" font-weight="600" class="mono">MAY → NOV 2025</text><text x="94" y="481" font-size="29" fill="#eef2ff" font-weight="700" >Macor</text><text x="94" y="515" font-size="23" fill="#aebbd3" font-weight="400" >Full-Stack Engineer · e-commerce</text><text x="94" y="545" font-size="23" fill="#aebbd3" font-weight="400" >&amp; services</text><circle cx="40" cy="634" r="7" fill="#fb7185"/><circle class="pulse" cx="40" cy="634" r="15" fill="none" stroke="#fb7185" stroke-opacity=".3"/><rect x="72" y="594" width="504" height="172" rx="16" fill="#111a2e" stroke="#fb7185" stroke-opacity=".28" /><text x="94" y="629" font-size="18" fill="#fb7185" font-weight="600" class="mono">2023 → PRESENT</text><text x="94" y="671" font-size="29" fill="#eef2ff" font-weight="700" >University of Nouakchott</text><text x="94" y="705" font-size="23" fill="#aebbd3" font-weight="400" >BSc Computer Science → Master’s</text><text x="94" y="735" font-size="23" fill="#aebbd3" font-weight="400" >in AI</text></g>
+<rect x="1" y="1" width="598" height="796" rx="20" fill="none" stroke="url(#border)" stroke-opacity=".7"/>
+</svg>
