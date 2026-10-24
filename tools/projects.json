@@ -1,0 +1,102 @@
+{
+  "ai": [
+    {
+      "slug": "health-ministry",
+      "name": "Health Ministry AI",
+      "scope": "Dossiers, source-grounded assistance, decisions and follow-up.",
+      "nodes": [
+        "Source documents",
+        "Scoped retrieval",
+        "Human decision",
+        "Follow-up"
+      ],
+      "stack": "FastAPI / pgvector / Next.js"
+    },
+    {
+      "slug": "central-bank",
+      "name": "Central Bank RAG / RKF",
+      "scope": "Governed legal and financial evidence for source-cited retrieval.",
+      "nodes": [
+        "Source registry",
+        "Language + version",
+        "Expert review",
+        "Hybrid retrieval"
+      ],
+      "stack": "Python / FastAPI / pgvector"
+    },
+    {
+      "slug": "are-intelligence",
+      "name": "ARE intelligence",
+      "scope": "Regulatory evidence, obligations and decision-support views.",
+      "nodes": [
+        "Regulatory sources",
+        "Reviewed evidence",
+        "Obligations",
+        "Decision workspace"
+      ],
+      "stack": "FastAPI / React / ECharts"
+    },
+    {
+      "slug": "national-knowledge",
+      "name": "National Knowledge Base",
+      "scope": "Provenance, private document previews and dataset-review workflows.",
+      "nodes": [
+        "Import sources",
+        "Staff library",
+        "Inspect evidence",
+        "Dataset review"
+      ],
+      "stack": "Django / pgvector / React"
+    }
+  ],
+  "platforms": [
+    {
+      "slug": "anrpts",
+      "name": "ANRPTS / BI Houwiyeti",
+      "scope": "Multi-source data pipelines, dimensional models and analytics.",
+      "nodes": [
+        "Source systems",
+        "Airflow + landing",
+        "dbt + marts",
+        "Analytics workspace"
+      ],
+      "stack": "Airflow / dbt / PostgreSQL / Next.js"
+    },
+    {
+      "slug": "taazour-aoun",
+      "name": "Taazour Aoun",
+      "scope": "Beneficiary eligibility, identity checks and wallet-transfer journeys.",
+      "nodes": [
+        "Eligibility",
+        "OTP + eKYC",
+        "Wallet selection",
+        "Transfer state"
+      ],
+      "stack": "Next.js / TypeScript / MongoDB"
+    },
+    {
+      "slug": "taazour-pay",
+      "name": "Taazour Pay",
+      "scope": "Household payment orchestration with provider and duplicate controls.",
+      "nodes": [
+        "Household checks",
+        "Identity capture",
+        "Provider adapter",
+        "Payment lock"
+      ],
+      "stack": "Next.js / MongoDB / Redis / BullMQ"
+    },
+    {
+      "slug": "kyc-identity",
+      "name": "KYC Identity",
+      "scope": "Identity capture, liveness and face verification for partner apps.",
+      "nodes": [
+        "Identity checks",
+        "Browser capture",
+        "Liveness + match",
+        "Partner result"
+      ],
+      "stack": "TypeScript / Python / Computer vision"
+    }
+  ]
+}

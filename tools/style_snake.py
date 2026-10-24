@@ -15,7 +15,7 @@ def main():
     # Background includes the SVG's padding and works in either GitHub theme.
     old=root.find(f'{NS}rect[@id="profile-background"]')
     if old is not None:root.remove(old)
-    root.insert(0,ET.Element(NS+'rect',{'id':'profile-background','x':x,'y':y,'width':w,'height':h,'rx':'14','fill':'#0b1020'}))
+    root.insert(0,ET.Element(NS+'rect',{'id':'profile-background','x':x,'y':y,'width':w,'height':h,'rx':'14','fill':'#060b0e'}))
     style=root.find(NS+'style')
     style.text=re.sub(r'/\* profile-motion \*/.*?$', '', style.text,flags=re.S)
     style.text+='\n/* profile-motion */\n@media(prefers-reduced-motion:reduce){*{animation:none!important}}\n'

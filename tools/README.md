@@ -1,8 +1,8 @@
-# Maintaining the profile
+# Profile maintenance
 
-The README is a GitHub-native animated portfolio. Self-hosted SVGs contain custom artwork and CSS motion; substantive project notes and links also exist as native Markdown. Desktop and mobile compositions are separate, and all animation respects reduced motion. It uses no JavaScript embeds, remote statistics widgets or external font services.
+The profile is a personal hacker/anime workspace centered on the owner’s major private systems, language research, tools and real GitHub activity. Career timelines, business-impact metrics and awards are deliberately absent. Keep the copy short, specific and project-led.
 
-## Commands
+## Build and checks
 
 ```sh
 python3 tools/generate_assets.py
@@ -10,22 +10,18 @@ python3 -m unittest discover -s tools -p 'test_*.py' -v
 python3 tools/verify_profile.py
 ```
 
-The asset generator uses only the Python standard library. Technology paths are vendored from [Simple Icons](https://github.com/simple-icons/simple-icons) under the included [CC0 license](../assets/icons/LICENSE.md); brand names and logos remain their owners’ trademarks. `tools/icons.json` lists the chosen icons. Keep generated files and their source in the same change.
+The generator uses only the Python standard library. The entrance combines [original anime artwork](../assets/artwork/README.md) with SVG rain, a CRT sweep and restrained glitch layers. The two project consoles cover eight selected private systems through animated engineering scope maps. Their index and active diagram share one animation clock. The research panel covers Hassaniya Laghn and Mauritanian Sign Language. Smaller public side projects stay in a disclosure at the bottom. The terminal cycles and types interest lines; the loadout uses vendored [Simple Icons](https://github.com/simple-icons/simple-icons) with the included [CC0 license](../assets/icons/LICENSE.md). The illustration, typography, motion and accent palette belong to one visual system.
 
-## Daily activity
+SVGs may embed local JPEG bytes as data URIs; remote image references, embedded SVG images, scripts, foreign objects and event handlers are rejected by the verifier. All images and source artwork live in the repository. There are no remote stats widgets, downloaded fonts or JavaScript embeds. Desktop and phone compositions are separate; reduced-motion preferences stop all animation and select static contribution visuals.
 
-`.github/workflows/profile-activity.yml` refreshes activity at 06:00 UTC and can be run manually. It requests aggregate calendar/count data and public-repository language bytes through GitHub GraphQL. It never requests or stores private repository identifiers. GitHub-visible totals may include private contribution aggregates when the token and profile settings make them available; public language shares do not describe private repositories. No private access token is required for the default workflow.
+## Activity automation
 
-An optional `PROFILE_ACTIVITY_TOKEN` repository secret can be used if the owner wants different account visibility. Never put tokens in files, README URLs or logs. The output prints its actual calendar window and last successful update date. A failed API request leaves the previous successful data and images intact and fails the workflow visibly.
+`.github/workflows/profile-activity.yml` refreshes at 06:00 UTC or manually. It requests aggregate calendar/count data and public-repository language bytes through GitHub GraphQL. It never requests private repository identifiers. Language shares cover public repositories only. The dashboard prints its actual date window and freshness. Weekly skyline heights use real counts; the phone view explicitly shows the latest 27 weeks. A failed API request leaves the last successful snapshot intact and fails the workflow visibly.
 
-Offline development can use `python3 tools/update_activity.py --input /path/to/graphql-response.json`. Raw API responses are not committed. Only the allowlisted `data/activity.json` and eight dashboard/skyline variants are published. The skyline uses real weekly totals and labels the shorter phone window. Tests cover streaks, missing days, empty today, the last-30-days boundary, failed API responses, privacy filtering and proportional skyline heights.
+The default workflow uses GitHub's built-in token. The optional `PROFILE_ACTIVITY_TOKEN` secret can change account visibility; never store credentials in files, image URLs or logs. Raw API responses are not committed. Only allowlisted `data/activity.json` and eight rendered variants are published. `python3 tools/update_activity.py --input /path/to/response.json` supports offline rendering.
 
-## Contribution animation
+The contribution snake refreshes every 12 hours. `tools/style_snake.py` applies the background and creates a matching static fallback. Both writing workflows share a concurrency group, stage only their own outputs, rebase before normal pushes and use path filters to avoid loops. The separate `Profile checks` workflow uses read-only permissions and checks tests, assets and deterministic artwork generation.
 
-`.github/workflows/snake.yml` refreshes the Platane/snk animation every 12 hours. `tools/style_snake.py` applies the profile background and generates its matching static fallback. The two writing workflows share a concurrency group, stage only their own outputs and pull with rebase before normal pushes. Push path filters avoid regeneration loops. `Profile checks` uses read-only permissions and validates tests, assets, image references and deterministic artwork generation.
+## Publishing
 
-## Content and verification
-
-Institutional figures and career details are based on the owner’s supplied CV; project descriptions also use project documentation. Ongoing research and in-design work are labeled accordingly. Do not imply authorship of third-party tools or link to private repository backups. Do not publish credentials or internal documents.
-
-Before publishing, run the commands above, check the GitHub-rendered README at phone and desktop widths, inspect light/dark themes, verify animation and reduced motion, and open public project links signed out. Preserve history with normal fast-forward pushes. Workflows display failures rather than silently publishing fabricated or zeroed statistics.
+Check the actual GitHub-rendered README on desktop, 320px/390px phones, light/dark themes and reduced motion. Confirm that bitmap art inside SVGs really paints, not merely that the SVG wrapper loads. Check typing transitions, character framing, text clipping and project links. Do not manufacture activity, online status or tool authorship. Preserve history with normal pushes. Major private projects stay visible with concise descriptions, source-grounded technologies and simplified workflow diagrams. Never copy internal customer data, credentials or deployment details into public cards. Repository documentation may describe design targets or incomplete integrations: avoid unverified rollout, adoption or correctness guarantees. Public availability is not a proxy for project importance.
