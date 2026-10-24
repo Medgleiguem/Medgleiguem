@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="560" viewBox="0 0 600 560" role="img" aria-labelledby="title desc">
+<title id="title">Language, gesture, structure</title><desc id="desc">Animated illustrative scansion marks and synthetic hand landmarks. These show research methods, not validated metre examples or recognition results.</desc>
+<defs><clipPath id="frame"><rect width="600" height="560" /></clipPath>
+<linearGradient id="shade"><stop stop-color="#030b17" stop-opacity=".84" /><stop offset=".6" stop-color="#030b17" stop-opacity=".17" /><stop offset="1" stop-color="#030b17" stop-opacity="0" /></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#08121f" stop-opacity="0" /><stop offset="1" stop-color="#08121f" /></linearGradient></defs>
+<style>
+text{font-family:Consolas,'Liberation Mono',monospace}
+.serif{font-family:Georgia,'Liberation Serif',serif}
+.camera{transform-origin:center;}
+.flow{stroke-dasharray:10 210;}
+.fast{}.slow{}
+.glow{}
+.rotor{transform-origin:1380px 223px;}
+.trace{stroke-dasharray:600;}
+.meter{}
+
+
+
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.flow{stroke-dasharray:none;opacity:.4}.trace{stroke-dasharray:none;stroke-dashoffset:0}}
+</style><g clip-path="url(#frame)"><rect width="600" height="560" fill="#08121f" /><rect x="24" y="20" width="552" height="242" fill="#0c1d2c" stroke="#2b4055" /><text x="44" y="54" font-size="21" fill="#dbb277">HASSANIYA / METRE RULES</text><path d="M48 113H552" stroke="#30495f" /><path class="meter" d="M62.0 100V126M77.0 100V126" stroke="#dbb277" stroke-width="3" style="" /><path class="meter" d="M175.0 113h32" stroke="#dbb277" stroke-width="3" style="" /><path class="meter" d="M294.0 100V126M309.0 100V126" stroke="#dbb277" stroke-width="3" style="" /><path class="meter" d="M407.0 113h32" stroke="#dbb277" stroke-width="3" style="" /><path class="meter" d="M526.0 100V126M541.0 100V126" stroke="#dbb277" stroke-width="3" style="" /><path d="M48 168H552" stroke="#30495f" /><path class="meter" d="M59.0 168h32" stroke="#dbb277" stroke-width="3" style="" /><path class="meter" d="M178.0 155V181M193.0 155V181" stroke="#dbb277" stroke-width="3" style="" /><path class="meter" d="M291.0 168h32" stroke="#dbb277" stroke-width="3" style="" /><path class="meter" d="M410.0 155V181M425.0 155V181" stroke="#dbb277" stroke-width="3" style="" /><path class="meter" d="M523.0 168h32" stroke="#dbb277" stroke-width="3" style="" /><text x="44" y="239" font-size="17" fill="#a7bacc">ILLUSTRATIVE PATTERN / RULE CHECKING</text><rect x="24" y="290" width="552" height="242" fill="#0c1d2c" stroke="#2b4055" /><text x="44" y="324" font-size="21" fill="#dbb277">SIGNS / DATASET PREPARATION</text><g transform="translate(197.5 331) scale(0.82)" fill="none" stroke="#a4d3ee" stroke-width="1.7"><path d="M125 180L85 153L65 122L48 91L35 71M125 180L95 118L93 80L91 48L91 23M125 180L125 108L125 64L125 31L125 6M125 180L154 118L160 77L163 48L165 26M125 180L178 136L192 109L202 88L210 69M95 118L125 108L154 118L178 136" opacity=".45" /><path class="trace" d="M125 180L85 153L65 122L48 91L35 71M125 180L95 118L93 80L91 48L91 23M125 180L125 108L125 64L125 31L125 6M125 180L154 118L160 77L163 48L165 26M125 180L178 136L192 109L202 88L210 69M95 118L125 108L154 118L178 136" /><circle cx="125" cy="180" r="3" fill="#dbb277" stroke="none" /><circle cx="95" cy="118" r="3" fill="#dbb277" stroke="none" /><circle cx="125" cy="108" r="3" fill="#dbb277" stroke="none" /><circle cx="154" cy="118" r="3" fill="#dbb277" stroke="none" /><circle cx="178" cy="136" r="3" fill="#dbb277" stroke="none" /><circle cx="35" cy="71" r="3" fill="#dbb277" stroke="none" /><circle cx="91" cy="23" r="3" fill="#dbb277" stroke="none" /><circle cx="125" cy="6" r="3" fill="#dbb277" stroke="none" /><circle cx="165" cy="26" r="3" fill="#dbb277" stroke="none" /><circle cx="210" cy="69" r="3" fill="#dbb277" stroke="none" /></g><text x="44" y="509" font-size="17" fill="#a7bacc">SYNTHETIC LANDMARKS / SUBJECT SPLITS</text></g><style>*{animation:none!important}.flow,.trace{stroke-dasharray:none!important;stroke-dashoffset:0!important}.meter{opacity:1!important}</style></svg>

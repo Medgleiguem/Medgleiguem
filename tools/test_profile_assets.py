@@ -36,5 +36,15 @@ class SVGImageBoundaryTests(unittest.TestCase):
         self.assertEqual(root.find('.//{http://www.w3.org/2000/svg}text').text,'Keep this label')
         self.assertNotIn('animation-delay',ET.tostring(root,encoding='unicode'))
 
+    def test_static_render_removes_native_svg_motion_without_losing_art(self):
+        source = '<svg xmlns="http://www.w3.org/2000/svg"><title>Signal</title><g><circle cx="10" cy="10" r="3" opacity=".7"><animate attributeName="opacity" values=".2;1;.2" dur="8s" repeatCount="indefinite"/></circle><path d="M0 0H20"><animateMotion dur="5s" path="M0 0H10"/></path></g></svg>'
+        root = ET.fromstring(generate_assets.static_svg(source))
+        tags = [node.tag.rsplit('}', 1)[-1] for node in root.iter()]
+        self.assertNotIn('animate', tags)
+        self.assertNotIn('animateMotion', tags)
+        self.assertIn('circle', tags)
+        self.assertIn('path', tags)
+        self.assertEqual(root.find('.//{http://www.w3.org/2000/svg}circle').get('opacity'), '.7')
+
 
 if __name__=='__main__':unittest.main()

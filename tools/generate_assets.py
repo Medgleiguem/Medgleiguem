@@ -1,244 +1,174 @@
 #!/usr/bin/env python3
-"""Build the GitHub-native hacker/anime profile using local art and SVG animation."""
-from pathlib import Path
-from html import escape
+"""Render the original anime observatory as self-contained GitHub image assets."""
 import base64
+from datetime import date, timedelta
+from html import escape
 import json
+from pathlib import Path
 import re
-import textwrap
 import xml.etree.ElementTree as ET
 
-ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'assets'
-LIME='#b7ff5a'
-CYAN='#43e6f6'
-WHITE='#e8f4ee'
-MUTED='#9ab8b0'
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / 'assets'
+INK = '#08121f'
+SILVER = '#e8edf2'
+GOLD = '#dbb277'
+BLUE = '#a4d3ee'
+MUTED = '#a7bacc'
+
+STYLE = '''
+text{font-family:Consolas,'Liberation Mono',monospace}
+.serif{font-family:Georgia,'Liberation Serif',serif}
+.camera{transform-origin:center;animation:camera 22s ease-in-out infinite alternate}
+.flow{stroke-dasharray:10 210;animation:flow 10s linear infinite}
+.fast{animation-duration:7s}.slow{animation-duration:13s}
+.glow{animation:glow 8s ease-in-out infinite}
+.rotor{transform-origin:1380px 223px;animation:rotor 48s linear infinite}
+.trace{stroke-dasharray:600;animation:trace 11s ease-in-out infinite}
+.meter{animation:meter 8s ease-in-out infinite}
+@keyframes camera{to{transform:scale(1.025)}}
+@keyframes flow{to{stroke-dashoffset:-660}}
+@keyframes glow{0%,100%{opacity:.35}50%{opacity:.9}}
+@keyframes rotor{to{transform:rotate(360deg)}}
+@keyframes trace{0%,12%{stroke-dashoffset:600;opacity:.35}55%,80%{stroke-dashoffset:0;opacity:.9}100%{stroke-dashoffset:-600;opacity:.35}}
+@keyframes meter{0%,100%{opacity:.35}45%,65%{opacity:1}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.flow{stroke-dasharray:none;opacity:.4}.trace{stroke-dasharray:none;stroke-dashoffset:0}}
+'''
 
 
-def text(x,y,value,size=22,color=MUTED,weight=400,extra=''):
-    return f'<text x="{x}" y="{y}" font-size="{size}" fill="{color}" font-weight="{weight}" {extra}>{escape(str(value))}</text>'
+def text(x, y, value, size=20, color=MUTED, extra=''):
+    return f'<text x="{x}" y="{y}" font-size="{size}" fill="{color}" {extra}>{escape(str(value))}</text>'
 
 
-def bitmap(path,x,y,w,h,extra='',position='xMaxYMid slice'):
-    data=base64.b64encode((OUT/path).read_bytes()).decode()
-    return f'<image href="data:image/jpeg;base64,{data}" x="{x}" y="{y}" width="{w}" height="{h}" preserveAspectRatio="{position}" {extra}/>'
+def document(width, height, title, description, body):
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
+<title id="title">{escape(title)}</title><desc id="desc">{escape(description)}</desc>
+<defs><clipPath id="frame"><rect width="{width}" height="{height}"/></clipPath>
+<linearGradient id="shade"><stop stop-color="#030b17" stop-opacity=".84"/><stop offset=".6" stop-color="#030b17" stop-opacity=".17"/><stop offset="1" stop-color="#030b17" stop-opacity="0"/></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="{INK}" stop-opacity="0"/><stop offset="1" stop-color="{INK}"/></linearGradient></defs>
+<style>{STYLE}</style><g clip-path="url(#frame)"><rect width="{width}" height="{height}" fill="{INK}"/>{body}</g></svg>'''
 
 
-def document(w,h,title,body,description=None):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}" viewBox="0 0 {w} {h}" role="img" aria-labelledby="title desc">
-<title id="title">{escape(title)}</title><desc id="desc">{escape(description or title)}. All motion stops for reduced-motion preferences.</desc>
-<defs>
- <clipPath id="frame"><rect x="1" y="1" width="{w-2}" height="{h-2}" rx="8"/></clipPath>
- <linearGradient id="shade"><stop stop-color="#02090d" stop-opacity=".72"/><stop offset=".52" stop-color="#02090d" stop-opacity=".25"/><stop offset="1" stop-color="#02090d" stop-opacity="0"/></linearGradient>
- <linearGradient id="vertical-shade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#060b0e" stop-opacity="0"/><stop offset=".45" stop-color="#060b0e" stop-opacity=".9"/><stop offset=".7" stop-color="#060b0e"/></linearGradient>
- <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M0 0H4" stroke="#000" stroke-opacity=".18"/></pattern>
- <linearGradient id="scan" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#43e6f6" stop-opacity="0"/><stop offset="1" stop-color="#43e6f6" stop-opacity=".11"/></linearGradient>
-</defs>
-<style>
-text{{font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}}
-.rain{{animation:rain 1.8s linear infinite}}
-.drift{{animation:drift 18s ease-in-out infinite alternate}}
-.scan{{animation:scan 9s linear infinite}}
-.flow{{stroke-dasharray:6 22;animation:flow 12s linear infinite}}
-.glitch{{animation:glitch 9s linear infinite}}
-.type-mask{{transform-box:fill-box;transform-origin:left;animation:type 6s steps(28,end) infinite}}
-.cursor{{animation:cursor 1.4s steps(2,end) infinite}}
-.role{{opacity:0;animation:role 24s linear infinite}}
-.role.first{{opacity:1}}.r1{{animation-delay:6s}}.r2{{animation-delay:12s}}.r3{{animation-delay:18s}}
-.icon{{animation:icon 8s ease-in-out infinite alternate}}
-@keyframes rain{{to{{transform:translate(-26px,110px)}}}}
-@keyframes drift{{to{{transform:translate(-8px,-3px) scale(1.015)}}}}
-@keyframes scan{{from{{transform:translateY(-500px)}}to{{transform:translateY(700px)}}}}
-@keyframes flow{{to{{stroke-dashoffset:-280}}}}
-@keyframes glitch{{0%,15%,100%{{transform:translateX(0)}}25%{{transform:translateX(5px)}}35%{{transform:translateX(-4px)}}45%{{transform:translateX(0)}}}}
-@keyframes type{{from{{transform:scaleX(0)}}28%,100%{{transform:scaleX(1)}}}}
-@keyframes cursor{{50%{{opacity:0}}}}
-@keyframes role{{0%,22%{{opacity:1}}25%,100%{{opacity:0}}}}
-@keyframes icon{{to{{transform:translateY(-2px)}}}}
-@media(prefers-reduced-motion:reduce){{*{{animation:none!important}}.role{{opacity:0!important}}.role.first{{opacity:1!important}}}}
-</style>
-<g clip-path="url(#frame)"><rect width="{w}" height="{h}" fill="#060b0e"/>{body}</g>
-<path d="M1 28V1H28 M{w-28} 1H{w-1}V28 M1 {h-28}V{h-1}H28 M{w-28} {h-1}H{w-1}V{h-28}" fill="none" stroke="#b7ff5a" stroke-opacity=".6"/>
-</svg>'''
+def bitmap(name):
+    data = base64.b64encode((OUT / 'artwork' / 'observatory' / (name+'.jpg')).read_bytes()).decode()
+    return f'<image href="data:image/jpeg;base64,{data}" width="2000" height="800" preserveAspectRatio="xMidYMid slice"/>'
 
 
-def entrance(mobile=False):
-    w,h=(600,680) if mobile else (1000,470)
-    art_h=430 if mobile else h
-    s='<g class="drift">'+bitmap(Path('artwork/after-hours-anime.jpg'),0,0,w,art_h)+'</g>'
-    if mobile:s+=f'<rect y="260" width="{w}" height="420" fill="url(#vertical-shade)"/>'
-    else:s+=f'<rect width="{w}" height="{h}" fill="url(#shade)"/>'
-    s+=f'<rect width="{w}" height="{h}" fill="url(#scanlines)"/>'
-    # Rain and a quiet CRT sweep are illustration overlays, never activity claims.
-    rain=''
-    for i in range(42):
-        x=10+(i*109)%w;y=-90+(i*71)%(art_h+90)
-        rain+=f'<path d="M{x} {y}l-8 34" stroke="#7bd9df" stroke-opacity="{.17+(i%4)*.04:.3f}" stroke-width=".8"/>'
-    s+=f'<defs><clipPath id="rain-area"><rect width="{w}" height="{art_h}"/></clipPath></defs><g clip-path="url(#rain-area)"><g class="rain">'+rain+'</g></g>'
-    s+=f'<rect class="scan" x="0" y="0" width="{w}" height="100" fill="url(#scan)"/>'
-    s+=text(28,35,'MEDGLEIGUEM / PERSONAL WORKSPACE',15 if mobile else 13,LIME,600,'letter-spacing="1"')
-    title_y=444 if mobile else 222
-    title_size=112 if mobile else 134
-    s+=text(28,title_y,'MGL_',title_size,WHITE,800,'letter-spacing="-8"')
-    s+=f'<defs><clipPath id="glitch-band"><rect x="26" y="{title_y-65}" width="430" height="16"/></clipPath></defs>'
-    s+='<g class="glitch" clip-path="url(#glitch-band)">'+text(31,title_y,'MGL_',title_size,CYAN,800,'letter-spacing="-8"')+'</g>'
-    s+=text(34,title_y+49,'BUILD. BREAK. REPEAT.',24 if mobile else 27,LIME,700)
-    s+=text(34,title_y+95,'AI / DATA / SECURITY / SYSTEMS',22 if mobile else 20,'#c7dcd3',500)
-    s+=text(34,h-28,'~/ideas → ~/experiments → ~/projects',19 if mobile else 15,MUTED)
-    if not mobile:s+=text(w-28,h-28,'NOUAKCHOTT / UTC+0',13,'#b9d7ce',500,'text-anchor="end"')
-    return document(w,h,'MGL — Medgleiguem. Build. Break. Repeat.',s,'Original anime-inspired hacker workspace over a neon coastal city, with rain, CRT scan and restrained glitch animation')
+def signals(name):
+    if name == 'observatory':
+        return '''<g fill="none" stroke="#c6e9ff" stroke-width="2"><path class="flow slow" d="M740 65Q940 130 1130 180T1390 220"/><path class="flow" style="animation-delay:-4s" d="M850 350Q1080 365 1210 280T1390 220"/><path class="flow slow" style="animation-delay:-7s" d="M1000 15Q1070 210 1390 220"/></g><g class="rotor" fill="none" stroke="#f4d4a0" stroke-width="1.2" opacity=".6"><circle cx="1380" cy="223" r="101" stroke-dasharray="2 18"/><path d="M1380 114v17M1489 223h-17M1380 332v-17M1271 223h17"/></g><g fill="#e9cb94"><circle cx="1390" cy="220" r="4" opacity=".7"><animate attributeName="opacity" values=".35;.9;.35" dur="9s" repeatCount="indefinite"/></circle><circle class="glow" cx="1125" cy="180" r="3"/><circle class="glow" style="animation-delay:-5s" cx="840" cy="87" r="2"/></g>'''
+    if name == 'exchange':
+        return '''<g fill="none" stroke="#b2e3ff" stroke-width="4"><path class="flow fast" d="M770 95L1310 240L2000 64"/><path class="flow" style="animation-delay:-3s" d="M770 276L1320 325L2000 245"/><path class="flow slow" style="animation-delay:-6s" d="M770 412L1335 400L2000 400"/></g>'''
+    return '''<g fill="none" stroke="#b8e4ff" stroke-width="2"><path class="trace" d="M880 344L933 284L991 331L1035 300L1061 377L1001 430L936 409Z M933 284L936 409L1035 300M880 344L1061 377"/><circle class="glow" cx="974" cy="350" r="102" stroke-dasharray="3 19"/><path class="trace" style="animation-delay:-4s" d="M1215 347L1260 296L1310 347L1260 400Z"/><circle class="glow" style="animation-delay:-3s" cx="1440" cy="346" r="18" stroke="#e5bd7c"/></g>'''
 
 
-def terminal(mobile=False):
-    w,h=(600,240) if mobile else (1000,208)
-    s=f'<rect x="1" y="1" width="{w-2}" height="38" fill="#0b171b"/>'
-    for i,c in enumerate([LIME,CYAN,'#46645b']):s+=f'<circle cx="{22+i*18}" cy="20" r="4" fill="{c}"/>'
-    s+=text(w-24,25,'med@github:~/workspace',13 if not mobile else 16,MUTED,500,'text-anchor="end"')
-    s+=text(26,82,'$ cat interests.txt',23 if mobile else 21,LIME,600)
-    s+=f'<defs><clipPath id="typing"><rect class="type-mask" x="26" y="96" width="{w-52}" height="45"/></clipPath></defs>'
-    for i,value in enumerate(['RAG / agents / knowledge systems','ELT / data models / analytics','Payments / identity / vision','CTFs / low-resource Arabic NLP']):
-        s+=f'<g class="role {"first" if i==0 else "r"+str(i)}" clip-path="url(#typing)">'+text(26,129,value,26 if mobile else 29,WHITE,600)+'</g>'
-    s+=text(26,184 if mobile else 177,'$ explore ./projects',23 if mobile else 21,LIME,500)
-    s+=f'<rect class="cursor" x="{310 if mobile else 286}" y="{166 if mobile else 160}" width="12" height="22" fill="{LIME}"/>'
-    if mobile:s+=text(26,220,'code / learn / iterate',18,MUTED)
-    return document(w,h,'Terminal intro: RAG, data platforms, identity, payments, security and Arabic NLP',s)
-
-
-
-def wrapped(x,y,value,width,size=20,color=MUTED,pitch=None):
-    return ''.join(text(x,y+i*(pitch or size*1.4),line,size,color) for i,line in enumerate(textwrap.wrap(value,width)))
-
-
-def section(name,mobile=False):
-    w,h=(600,84) if mobile else (1000,70)
-    body=text(24,31,'MGL / WORKSPACE',14 if mobile else 12,MUTED,500)
-    body+=text(24,65 if mobile else 55,'./'+name,30 if mobile else 28,LIME,700)
-    body+=f'<path class="flow" d="M{w-240} 47H{w-24}" stroke="{CYAN}" stroke-opacity=".6"/>'
-    return document(w,h,'./'+name,body)
-
-
-def systems(group,mobile=False):
-    items=json.loads((ROOT/'tools/projects.json').read_text())[group]
-    w,h=(600,900) if mobile else (1000,520)
-    label='AI + KNOWLEDGE SYSTEMS' if group=='ai' else 'DATA + IDENTITY + PAYMENTS'
-    s=text(24,34,label,22 if mobile else 20,LIME,700)
-    s+=text(24,63,'PRIVATE CODE / ENGINEERING SCOPE MAPS',15 if mobile else 12,MUTED)
-    s+='<defs><marker id="flow-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6Z" fill="#43e6f6"/></marker></defs>'
-    s+='<style>.module{opacity:0;animation:module 24s linear infinite}.module.first{opacity:1}.m1{animation-delay:6s}.m2{animation-delay:12s}.m3{animation-delay:18s}@keyframes module{0%,22%{opacity:1}25%,100%{opacity:0}}@media(prefers-reduced-motion:reduce){.module{opacity:0!important}.module.first{opacity:1!important}}</style>'
-    for i,item in enumerate(items):
-        yy=112+i*(83 if mobile else 91)
-        xx=40
-        s+=text(xx,yy,item['name'],25 if mobile else 20,WHITE,600)
-        s+=wrapped(xx,yy+28,item['scope'],43 if mobile else 39,20 if mobile else 14,pitch=25 if mobile else 20)
-        # The active row and diagram share one clock; the file list remains readable.
-        s+=f'<g class="module {"first" if i==0 else "m"+str(i)}"><rect x="22" y="{yy-23}" width="3" height="58" fill="{LIME}"/></g>'
-        if not mobile:s+=f'<path d="M24 {yy+56}H454" stroke="#1c302a"/>'
-    gx,gy,gw=(24,460,552) if mobile else (486,88,490)
-    gh=376 if mobile else 360
-    s+=f'<rect x="{gx}" y="{gy}" width="{gw}" height="{gh}" rx="5" fill="#0b1418" stroke="#274638"/>'
-    for i,item in enumerate(items):
-        content=text(gx+20,gy+35,item['name'],26 if mobile else 24,LIME,700)
-        content+=text(gx+20,gy+67,'PROJECT MAP / PRIVATE SOURCE',15 if mobile else 12,MUTED)
-        node_w=(gw-64)/2;node_h=54 if mobile else 48
-        left=gx+20;right=gx+gw-20-node_w
-        top=gy+106;bottom=gy+222
-        positions=[(left,top),(right,top),(right,bottom),(left,bottom)]
-        for j,(node,(nx,ny)) in enumerate(zip(item['nodes'],positions)):
-            content+=f'<rect x="{nx}" y="{ny}" width="{node_w}" height="{node_h}" rx="3" fill="#08100d" stroke="#345e45"/>'
-            content+=text(nx+7,ny+14,str(j+1).zfill(2),12 if mobile else 10,MUTED)
-            # Two-line node labels prevent tiny text on phone layouts.
-            pieces=textwrap.wrap(node,17 if mobile else 18)
-            size=19 if mobile else 15
-            for k,line in enumerate(pieces):
-                baseline=ny+(node_h/2)+(size*.35)+(k-(len(pieces)-1)/2)*(size+3)
-                content+=text(nx+node_w/2,baseline,line,size,WHITE,500,'text-anchor="middle"')
-        paths=[f'M{left+node_w} {top+node_h/2}H{right}',f'M{right+node_w/2} {top+node_h}V{bottom}',f'M{right} {bottom+node_h/2}H{left+node_w}']
-        for path in paths:content+=f'<path class="flow" d="{path}" stroke="{CYAN}" stroke-width="2" fill="none" marker-end="url(#flow-arrow)"/>'
-        content+=wrapped(gx+20,gy+gh-36,item['stack'],40 if mobile else 43,19 if mobile else 14,CYAN,pitch=24)
-        s+=f'<g class="module {"first" if i==0 else "m"+str(i)}">{content}</g>'
-    if not mobile:s+='<path d="M470 88V448" stroke="#1a3027"/>'
-    s+=text(24,h-27,'AUTO TOUR / 4 PROJECTS / SOURCE REMAINS PRIVATE',15 if mobile else 13,MUTED)
-    return document(w,h,label,s,'; '.join(item['name']+': '+item['scope']+' Flow: '+', '.join(item['nodes']) for item in items))
+def scene(name, mobile=False):
+    specs = {
+        'observatory': ('observatory', 'Med Gleiguem — the observatory', 'Original fictional coastal anime observatory at night. Still illustration with animated signals, instrument highlights and restrained scene drift.'),
+        'exchange': ('exchange-hall', 'Data with a destination', 'Original anime data exchange hall. Three separately phased signal lanes are a visual metaphor for data acquisition and analytical structure, not throughput measurements.'),
+        'identity': ('identity-atelier', 'Identity, then the next step', 'Original anime identity atelier. Synthetic landmarks, credential and signal stages illustrate distinct checks, not a real verification or payment result.'),
+    }
+    art, title, description = specs[name]
+    hero = name == 'observatory'
+    width = 600 if mobile else 1000
+    height = (600 if mobile else 430) if hero else (420 if mobile else 330)
+    art_height = 380 if hero and mobile else height
+    position = 'xMaxYMid slice' if mobile else 'xMidYMid slice'
+    body = f'<svg width="{width}" height="{art_height}" viewBox="0 0 2000 800" preserveAspectRatio="{position}"><g class="camera">{bitmap(art)}{signals(name)}</g></svg>'
+    body += f'<rect width="{width}" height="{art_height}" fill="url(#shade)"/>'
+    if hero and mobile:
+        body += '<rect y="230" width="600" height="160" fill="url(#fade)"/>'
+    else:
+        body += f'<rect y="{height-110}" width="{width}" height="110" fill="url(#fade)"/>'
+    x = 32 if mobile else 42
+    if hero:
+        kicker_y, name_y = (348, 422) if mobile else (56, 147)
+        body += text(x, kicker_y, 'ENGINEERING / FROM MAURITANIA', 18 if mobile else 14, GOLD, 'letter-spacing="2"')
+        body += text(x, name_y, 'Med', 79 if mobile else 85, SILVER, 'class="serif" letter-spacing="-3"')
+        body += text(x, name_y+82, 'Gleiguem.', 79 if mobile else 85, '#edcf9e', 'class="serif" letter-spacing="-3"')
+        body += text(x, name_y+128, 'AI / DATA / IDENTITY', 21 if mobile else 17, MUTED)
+        body += text(x, name_y+159, 'LANGUAGE / COMPUTER VISION', 20 if mobile else 17, MUTED)
+        if not mobile:
+            body += text(x, height-25, 'THE OBSERVATORY / AFTER HOURS', 12, MUTED, 'letter-spacing="1"')
+    else:
+        chapter, lines, caption = ('02 / THE EXCHANGE', ['Data with', 'a destination.'], 'SOURCE CONTRACTS / TRANSFORMATIONS / ANALYTICS') if name == 'exchange' else ('03 / THE ATELIER', ['Identity.', 'Then the next step.'], 'CAPTURE / LIVENESS / MATCHING / HAND-OFF')
+        body += text(x, 48 if mobile else 44, chapter, 20 if mobile else 14, GOLD, 'letter-spacing="2"')
+        for i, line in enumerate(lines):
+            body += text(x, 118+i*55 if mobile else 107+i*49, line, 48 if mobile else 43, SILVER, 'class="serif"')
+        if mobile:
+            caption = 'SOURCE → TRANSFORM → ANALYTICS' if name == 'exchange' else 'CAPTURE / CHECKS / HAND-OFF'
+        body += text(x, height-26, caption, 17 if mobile else 12, MUTED)
+    return document(width, height, title, description, body)
 
 
 def research(mobile=False):
-    w=600 if mobile else 1000;pitch=210 if mobile else 160;h=pitch*2+60
-    items=[('hassaniya-laghn/','Corpus, metre rules and computational prosody.','COLLECT → NORMALIZE → CHECK METRE → REVIEW'),('mauritanian-signs/','Local sign corpus and recognition research.','COLLECT → DETECT HANDS → NORMALIZE → EVALUATE')]
-    s=text(24,33,'RESEARCH / IN PROGRESS',16 if mobile else 13,CYAN,600)
-    for i,(name,scope,flow) in enumerate(items):
-        y=82+i*pitch
-        s+=text(24,y,name,29 if mobile else 28,LIME,600)
-        s+=wrapped(24,y+40,scope,38 if mobile else 75,24 if mobile else 21,pitch=31)
-        s+=wrapped(24,y+(116 if mobile else 88),flow,37 if mobile else 75,20 if mobile else 18,CYAN,pitch=27)
-        s+=f'<path class="flow" d="M24 {y+pitch-31}H{w-24}" stroke="#345e45"/>'
-    return document(w,h,'Hassaniya Laghn and Mauritanian Sign Language research',s)
-
-
-def arsenal(mobile=False):
-    specs=json.loads((ROOT/'tools/icons.json').read_text())
-    cols=3 if mobile else 6;cw=172 if mobile else 146;ch=108 if mobile else 85;gap=18
-    w=600 if mobile else 1000;h=56+((len(specs)+cols-1)//cols)*(ch+gap)
-    s=text(24,31,'LOADOUT // PICK THE RIGHT TOOL',15 if mobile else 13,LIME,600)
-    for i,spec in enumerate(specs):
-        x=24+(i%cols)*(cw+gap);y=56+(i//cols)*(ch+gap);color=LIME if i%3 else CYAN
-        root=ET.parse(OUT/'icons'/f'{spec["slug"]}.svg').getroot()
-        paths=''.join(f'<path d="{escape(p.get("d"),quote=True)}"/>' for p in root.iter() if p.tag.endswith('path'))
-        size=36 if mobile else 30
-        s+=f'<g transform="translate({x+(cw-size)/2} {y+8}) scale({size/24})" fill="{color}"><g class="icon" style="animation-delay:-{i%8}s">{paths}</g></g>'
-        s+=text(x+cw/2,y+ch-23,spec['name'],20 if mobile else 15,WHITE,500,'text-anchor="middle"')
-        s+=f'<path d="M{x+15} {y+ch-4}H{x+cw-15}" stroke="#203a2e"/>'
-    return document(w,h,'Technical loadout: '+', '.join(s['name'] for s in specs),s)
-
-
-def contact(label,mobile=False):
-    w,h=180,48
-    s=f'<rect x="1" y="1" width="178" height="46" rx="4" fill="#0b1418" stroke="#234432"/>'
-    s+=text(18,31,'↗',23,LIME,600)+text(48,30,label,18,WHITE,500)
-    return document(w,h,label,s)
+    width, height = (600, 560) if mobile else (1000, 280)
+    body = ''
+    for index, name in enumerate(['HASSANIYA / METRE RULES', 'SIGNS / DATASET PREPARATION']):
+        x, y = (24, 20+index*270) if mobile else (24+index*488, 18)
+        w, h = (552, 242) if mobile else (464, 244)
+        body += f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#0c1d2c" stroke="#2b4055"/>'
+        body += text(x+20, y+34, name, 21 if mobile else 16, GOLD)
+        if index == 0:
+            for row in range(2):
+                yy = y+93+row*55
+                body += f'<path d="M{x+24} {yy}H{x+w-24}" stroke="#30495f"/>'
+                for n in range(5):
+                    xx = x+38+n*((w-88)/4)
+                    path = f'M{xx} {yy-13}V{yy+13}M{xx+15} {yy-13}V{yy+13}' if (n+row)%2 == 0 else f'M{xx-3} {yy}h32'
+                    body += f'<path class="meter" d="{path}" stroke="{GOLD}" stroke-width="3" style="animation-delay:-{n+row}s"/>'
+            body += text(x+20, y+h-23, 'ILLUSTRATIVE PATTERN / RULE CHECKING', 17 if mobile else 13)
+        else:
+            scale = .82
+            tx, ty = x+w/2-125*scale, y+41
+            palm = 'M125 180L85 153L65 122L48 91L35 71M125 180L95 118L93 80L91 48L91 23M125 180L125 108L125 64L125 31L125 6M125 180L154 118L160 77L163 48L165 26M125 180L178 136L192 109L202 88L210 69M95 118L125 108L154 118L178 136'
+            body += f'<g transform="translate({tx} {ty}) scale({scale})" fill="none" stroke="{BLUE}" stroke-width="1.7"><path d="{palm}" opacity=".45"/><path class="trace" d="{palm}"/>'
+            for xx, yy in [(125,180),(95,118),(125,108),(154,118),(178,136),(35,71),(91,23),(125,6),(165,26),(210,69)]:
+                body += f'<circle cx="{xx}" cy="{yy}" r="3" fill="{GOLD}" stroke="none"/>'
+            body += '</g>'+text(x+20, y+h-23, 'SYNTHETIC LANDMARKS / SUBJECT SPLITS', 17 if mobile else 13)
+    return document(width, height, 'Language, gesture, structure', 'Animated illustrative scansion marks and synthetic hand landmarks. These show research methods, not validated metre examples or recognition results.', body)
 
 
 def static_svg(source):
-    """Provide a genuinely still image when an SVG image ignores motion media queries."""
-    root=ET.fromstring(source)
-    ns='{http://www.w3.org/2000/svg}'
+    """Freeze both CSS and native SVG motion, preserving the visible base scene."""
+    root = ET.fromstring(source)
+    ns = '{http://www.w3.org/2000/svg}'
+
     def freeze_css(css):
-        css=re.sub(r'@keyframes\s+[\w-]+\s*\{(?:[^{}]|\{[^{}]*\})*\}', '', css)
+        css = re.sub(r'@keyframes\s+[\w-]+\s*\{(?:[^{}]|\{[^{}]*\})*\}', '', css)
         return re.sub(r'animation(?:-[a-z-]+)?\s*:[^;}]+;?', '', css)
-    for node in root.iter():
-        if node.tag==ns+'style':
-            node.text=freeze_css(node.text or '')
-        if 'style' in node.attrib:
-            node.set('style',freeze_css(node.get('style')))
-    override=ET.SubElement(root,ns+'style')
-    override.text='*{animation:none!important}.type-mask{transform:none!important}.module,.role{opacity:0!important}.module.first,.role.first{opacity:1!important}'
-    ET.register_namespace('',ns[1:-1])
-    return ET.tostring(root,encoding='unicode')
+
+    for parent in root.iter():
+        for child in list(parent):
+            if child.tag.rsplit('}', 1)[-1] in ('animate', 'animateMotion', 'animateTransform', 'set'):
+                parent.remove(child)
+        if parent.tag == ns+'style':
+            parent.text = freeze_css(parent.text or '')
+        if 'style' in parent.attrib:
+            parent.set('style', freeze_css(parent.get('style')))
+    ET.SubElement(root, ns+'style').text = '*{animation:none!important}.flow,.trace{stroke-dasharray:none!important;stroke-dashoffset:0!important}.meter{opacity:1!important}'
+    ET.register_namespace('', ns[1:-1])
+    return ET.tostring(root, encoding='unicode')
 
 
-def signoff(mobile=False):
-    w,h=(600,180) if mobile else (1000,150)
-    s=f'<path class="flow" d="M{w-180} 20l-45 55 45 55m80-110 45 55-45 55" fill="none" stroke="#43e6f6" stroke-opacity=".12" stroke-width="3"/>'
-    s+=text(26,65,'See you in the next commit.',30 if mobile else 34,LIME,700)
-    s+=text(26,112,'CTFs / chess / Arabic poetry',21 if mobile else 19,WHITE)
-    s+=f'<path class="flow" d="M26 {h-15}H{w-26}" stroke="{CYAN}"/>'
-    return document(w,h,'See you in the next commit — CTFs, chess and Arabic poetry',s)
+def write_variants(name, renderer):
+    for mobile in (False, True):
+        source = renderer(mobile)
+        suffix = '-mobile' if mobile else ''
+        for static in (False, True):
+            content = static_svg(source) if static else source
+            ET.fromstring(content)
+            path = OUT / (name+suffix+('-static' if static else '')+'.svg')
+            path.write_text(content+'\n')
+            print(path.name, len(content.encode()), 'bytes')
 
 
 def main():
     OUT.mkdir(exist_ok=True)
-    for mobile in [False,True]:
-        suffix='-mobile' if mobile else ''
-        assets={'entrance':entrance(mobile),'terminal':terminal(mobile),'systems-ai':systems('ai',mobile),'systems-platforms':systems('platforms',mobile),'research':research(mobile),'arsenal':arsenal(mobile),'signoff':signoff(mobile)}
-        for label in ['projects','research','arsenal','activity']:
-            assets['section-'+label]=section(label,mobile)
-        for name,source in assets.items():
-            ET.fromstring(source)
-            (OUT/f'{name}{suffix}.svg').write_text(source+'\n')
-            (OUT/f'{name}{suffix}-static.svg').write_text(static_svg(source)+'\n')
-            print(name+suffix+'.svg',len(source.encode()))
-    for label in ['email','linkedin','side-quests']:
-        (OUT/f'contact-{label}.svg').write_text(contact(label)+'\n')
+    for name in ('observatory', 'exchange', 'identity'):
+        write_variants(name, lambda mobile, name=name: scene(name, mobile))
+    write_variants('research-methods', research)
 
 
-if __name__=='__main__':main()
+if __name__ == '__main__':
+    main()
