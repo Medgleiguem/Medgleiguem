@@ -3,7 +3,8 @@
 import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
-from desert_console import hero, tools_panel, footer, render_workbench, static_svg
+from desert_console import render_workbench, static_svg
+from expertise import DOMAINS, hero, domain_row
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets'
@@ -23,12 +24,18 @@ def write_variants(name, renderer):
 
 def main():
     OUT.mkdir(exist_ok=True)
+    (OUT/'domains').mkdir(exist_ok=True)
     write_variants('desert', hero)
-    write_variants('tools-rail', tools_panel)
-    write_variants('desert-footer', footer)
+    for slug in DOMAINS:
+        write_variants('domains/'+slug, lambda mobile, slug=slug: domain_row(slug, mobile))
+        for static in (False, True):
+            source = domain_row(slug, compact=True)
+            content = static_svg(source) if static else source
+            ET.fromstring(content)
+            (OUT/'domains'/(slug+'-compact'+('-static' if static else '')+'.svg')).write_text(content+'\n')
     snapshot = json.loads((ROOT/'data/activity.json').read_text())
     write_variants('workbench', lambda mobile: render_workbench(snapshot, mobile))
-    for name, source in [('workbench', render_workbench(snapshot, compact=True)), ('tools-rail', tools_panel(compact=True))]:
+    for name, source in [('workbench', render_workbench(snapshot, compact=True))]:
         for static in (False, True):
             content = static_svg(source) if static else source
             ET.fromstring(content)

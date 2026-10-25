@@ -1,12 +1,12 @@
 # Night dunes — original art and icon provenance
 
-Generated 25 October 2026 with the built-in imagegen tool, after approval of the dark console direction and the user's amendment to remove the portrait and emphasize the desert/Mauritanian visual language. The concept was a layout study, not a source for real statistics. Only a separately generated clean environment master is used in the shipped artwork.
+Generated 25 October 2026 with the built-in imagegen tool, after approval of the dark console direction and the user's amendment to remove the portrait and emphasize the desert/Mauritanian visual language. The concept was a layout study, not a source for real statistics. The generated master is retained as an archived illustration. The current expertise-led profile uses original vector artwork and does not embed this landscape.
 
 `night-ksar.jpg` is the optimized 2000 px wide JPEG export (quality 86, 4:2:0, metadata removed). The original PNG and design studies remain in local review artifacts. Illustration is static; native vector paths, light, contours and signals animate independently in the SVG wrappers. No character portrait is present. Geographic/architectural forms are artistic allusions rather than a map or literal site depiction.
 
 Visual grounding: [UNESCO ancient ksour](https://whc.unesco.org/en/list/750/) and [NASA Richat Structure](https://science.nasa.gov/earth/earth-observatory/richat-structure-mauritania-4602/). These sources informed the direction; their photographs are not embedded or copied into the assets.
 
-`tool-icons.json` contains locally vendored Python, TypeScript and PostgreSQL path geometry from [Simple Icons](https://github.com/simple-icons/simple-icons), retrieved from `develop/icons/{name}.svg` on 25 October 2026 under its [CC0 license](https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md). The repository vendors the exact paths used so rendering has no network dependency. SQL, manuscript, code, branch, book, dunes, geometric frames and contours are original local SVG geometry. Brand marks identify tools; they do not imply endorsement.
+`tool-icons.json` contains locally vendored technical-tool path geometry from [Simple Icons](https://github.com/simple-icons/simple-icons), retrieved from `develop/icons/{name}.svg` on 25 October 2026 under its [CC0 license](https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md). The repository vendors the exact paths used so rendering has no network dependency. The current header facade, dune line, eight animated domain method sketches and generic document/database/queue/transformation marks are original local SVG geometry in `tools/expertise.py`. SQL, manuscript, code and book marks in the activity panel are also original geometry. Brand marks identify tools; they do not imply endorsement.
 
 ## Exact environment-master prompt
 

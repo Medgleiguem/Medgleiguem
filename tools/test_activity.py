@@ -199,6 +199,7 @@ class ActivityTests(unittest.TestCase):
         (root/'tools').mkdir()
         shutil.copy2(SCRIPT.with_name('generate_assets.py'), root/'tools/generate_assets.py')
         shutil.copy2(SCRIPT.with_name('desert_console.py'), root/'tools/desert_console.py')
+        shutil.copy2(SCRIPT.with_name('expertise.py'), root/'tools/expertise.py')
         shutil.copytree(SCRIPT.parent.parent/'assets/artwork/desert', root/'assets/artwork/desert')
         result = subprocess.run([sys.executable, str(root/'tools/generate_assets.py')], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)

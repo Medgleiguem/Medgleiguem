@@ -1,8 +1,8 @@
-# Maintaining the desert console
+# Maintaining the expertise profile
 
-The profile centers on personal identity, original night-desert artwork, actual GitHub activity and a compact tool dock. The [selected work index](../work/README.md) links the ten existing engineering briefs. Keep detailed project descriptions there. Do not add origin slogans, a CV chronology, a portrait or an oversized main-page project catalogue.
+The main profile shows eight domains with methods, contextual tools and representative work. The domain index in `work/README.md` provides native text and individual project links. The CV supports broad toolkit/practice claims; the ten source-reviewed briefs describe actual implementations and current boundaries. Do not turn tool lists into claims that every tool is used in every example. Keep institutional source code, private identifiers and unsupported adoption/scale claims out of public content.
 
-## Build and verify
+## Build
 
 ```sh
 python3 tools/generate_assets.py
@@ -10,26 +10,22 @@ python3 -m unittest discover -s tools -p 'test_*.py' -v
 python3 tools/verify_profile.py
 ```
 
-`tools/desert_console.py` owns the original SVG composition and motion. `tools/generate_assets.py` writes the `desert`, `workbench`, `tools-rail` and `desert-footer` families: desktop, mobile, desktop static and mobile static. The activity/tool panels additionally have compact and compact-static layouts selected from 601 through 1279 px. Generation uses the Python standard library and checked-in local inputs. The [artwork provenance and exact prompt](../assets/artwork/desert/README.md) record the separate clean illustration and locally vendored CC0 icon paths. No image or font is fetched at render time.
+`tools/expertise.py` owns the eight domain definitions, short vector header, bespoke animated method sketches and contextual tool marks. `tools/desert_console.py` supplies shared SVG primitives, the tested static serializer and the real contribution-calendar renderer. `tools/generate_assets.py` emits four variants of `desert`, six variants of each `domains/<slug>` row, and six `workbench` variants. Domain rows have phone, compact tablet and desktop compositions, each with a static counterpart. All generation uses the Python standard library and locally vendored inputs. The old generated landscape is archived; it is no longer served in the main profile. Artwork/icon provenance is in `assets/artwork/desert/README.md`.
 
-The original illustration is still art. Vector paths, sand highlights, contours and signal traces provide genuine browser animation. Do not describe the result as animated character footage. All names, metrics and essential content have visible base states. The README uses native clickable links for contact, work and research; no fake terminal controls or JavaScript.
+Domain rows are ordinary linked GitHub pictures, not webpage-only interactive components. Each leads to an explicit native anchor in the work index. The main images have useful alternative text; the index supplies searchable/readable content. Main `systems`, `research` and `workbench` anchors remain for brief return links. GitHub prefixes custom IDs with `user-content-`; use those sanitized names in fragment targets.
 
-Every picture selects explicit static files for reduced motion, including the combined mobile/reduced case. Mobile assets have their own layouts rather than shrinking a full desktop canvas. Inspect desktop, 390 px and 320 px in actual GitHub rendering; a local HTML mockup is insufficient evidence. Check normal/static motion using captured frames, embedded art painting, clipping, link behavior and the served file budget. Targets: under 2 MB per SVG and under 3 MB loaded per viewport.
+Each domain has distinct illustrative motion, without implying a successful real payment, verified biometric or measured research result. Main content stays visible throughout a loop. Explicit static assets serve reduced-motion users. The 400-unit mobile layouts are composed independently from the 1000-unit desktop rows. The calendar preserves its compact 601–1279 px layout, in addition to mobile and desktop. Check actual GitHub column sizes, text clipping/overlap, meaningful links, normal motion, static behavior and overflow at desktop, tablet, 390 and 320 px before publishing.
 
-## Activity and privacy
+## Activity refresh
 
-The existing allowlisted GraphQL collector saves aggregate counts, calendar dates and public-repository language bytes. It never asks for private repository identifiers, messages or events. Keep its validation, streak calculations, error handling and prepare-before-replacement behavior intact. The UI's contribution/active-day metrics are computed from the displayed calendar, rather than relabeling the collector's broader aggregate totals.
+The collector's allowlisted GraphQL boundary is unchanged: aggregate counts, calendar dates and public-repository language bytes only. It does not request private repository identifiers or event messages. Preserve validation, streak calculations, failure behavior and prepare-before-replacement semantics.
 
-The custom calendar displays at most the most recent 140 days, inclusive of the actual snapshot window. Missing calendar dates are zero. A short window keeps its own bounds. Dates align into Sunday-first weeks. Zero cells remain zero; data cells never animate or change color. The moving branch signals are a separate decorative layer. Each cell includes its date and count in SVG metadata/title, while the panel prints actual range and UTC snapshot date. Colors use fixed buckets: 0, 1–4, 5–19, 20–49, 50+. Contributions are neither work hours nor a quality score. Raw data remains linked from the main profile.
+The calendar displays the most recent at most 140 actual window days, filling missing dates with zero. It aligns Sunday-first weeks and prints displayed-window totals/active days, actual range, UTC snapshot date and fixed color buckets: 0, 1–4, 5–19, 20–49, 50+. Data cells never animate or change values; the branch signals are a separate decorative layer. Contributions are not work hours or a project-quality score. Raw data stays linked.
 
-`.github/workflows/profile-activity.yml` refreshes at 06:00 UTC, on manual dispatch and on relevant renderer/collector changes. The collector's stable interface remains `generate_assets.render_workbench(data, mobile=False, animated=True)`. It writes only `data/activity.json` and six `workbench*.svg` outputs. The workflow preserves scoped staging, shared concurrency and normal rebase/push. `PROFILE_ACTIVITY_TOKEN` is optional; never publish credentials or log payloads from failed API responses.
+The workflow refreshes at 06:00 UTC, manually or on relevant renderer/collector changes. Its stable collector interface remains `generate_assets.render_workbench(data, mobile=False, animated=True, compact=False)`. It stages only `data/activity.json` and six `workbench*.svg` files, using the existing shared concurrency and normal rebase/push. `PROFILE_ACTIVITY_TOKEN` is optional; never store credentials or log failed API payloads. Refresh/full-generation equivalence is covered by the integration test; copy every renderer dependency into its fixture.
 
 ```sh
 python3 tools/update_activity.py --input /path/to/saved-graphql-response.json
 ```
 
-The checks workflow uses read-only permissions and verifies tests, safe assets/links and deterministic generation. The refresh/full-generation integration test ensures both paths produce identical workbench files.
-
-## Links and factual boundaries
-
-Keep the `systems`, `research` and `workbench` custom anchors for existing brief return links. GitHub prefixes them with `user-content-`; fragment links use that sanitized name. All ten briefs remain public and reachable from the work index. Do not publish internal paths, customer documents, private source links, biometric examples or unverified deployment/scale claims. Institutional names alone do not establish adoption or correctness.
+The read-only checks workflow runs tests, verifies safe self-contained SVG/local links and checks deterministic generation. Keep all project briefs reachable from the domain index. There are no fake proficiency meters, invented releases or fabricated public security projects.

@@ -1,9 +1,6 @@
-"""Original desert artwork and animated, self-contained GitHub profile panels."""
-import base64
+"""Shared SVG primitives and truthful GitHub contribution-calendar rendering."""
 from datetime import date, timedelta
 from html import escape
-import json
-import math
 from pathlib import Path
 import re
 import xml.etree.ElementTree as ET
@@ -43,13 +40,13 @@ def frame(width, height):
     return result
 
 
-def document(width, height, title, description, body):
+def document(width, height, title, description, body, framed=True):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc">
 <title id="title">{escape(title)}</title><desc id="desc">{escape(description)}</desc>
 <defs><clipPath id="clip"><rect width="{width}" height="{height}" rx="4"/></clipPath>
 <linearGradient id="shade"><stop stop-color="{INK}" stop-opacity=".85"/><stop offset=".48" stop-color="{INK}" stop-opacity=".35"/><stop offset="1" stop-color="{INK}" stop-opacity="0"/></linearGradient>
 <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="{INK}" stop-opacity="0"/><stop offset="1" stop-color="{INK}"/></linearGradient>
-</defs><style>{STYLE}</style><g clip-path="url(#clip)"><rect width="{width}" height="{height}" fill="{INK}"/>{body}{frame(width,height)}</g></svg>'''
+</defs><style>{STYLE}</style><g clip-path="url(#clip)"><rect width="{width}" height="{height}" fill="{INK}"/>{body}{frame(width,height) if framed else ''}</g></svg>'''
 
 
 def static_svg(source):
@@ -76,51 +73,6 @@ def static_svg(source):
 
 def route(path, color=CYAN, delay=0, speed=''):
     return f'<path d="{path}" fill="none" stroke="{color}" stroke-width="1" opacity=".18"/><path class="flow {speed}" pathLength="100" d="{path}" fill="none" stroke="{color}" stroke-width="2.4" stroke-linecap="round" style="animation-delay:-{delay}s"/>'
-
-
-def contours(cx, cy, radius):
-    parts = []
-    for ring in range(7):
-        r = radius*(.30+ring*.115)
-        points = []
-        for step in range(101):
-            angle = step*math.tau/100
-            rr = r*(1+.035*math.sin(7*angle+ring)+.022*math.cos(11*angle))
-            points.append(f'{cx+math.cos(angle)*rr:.2f},{cy+math.sin(angle)*rr*.68:.2f}')
-        path = 'M'+'L'.join(points)+'Z'
-        parts.append(f'<path d="{path}" fill="none" stroke="{GOLD}" opacity="{.16+ring*.045:.3f}" stroke-width=".8"/>')
-        if ring in (2, 5):
-            parts.append(f'<path class="flow slow" pathLength="100" d="{path}" fill="none" stroke="{GOLD}" stroke-width="1.5" style="animation-delay:-{ring}s"/>')
-    return ''.join(parts)
-
-
-def hero(mobile=False):
-    width, height = (400, 490) if mobile else (1000, 530)
-    bitmap = base64.b64encode((ROOT/'assets/artwork/desert/night-ksar.jpg').read_bytes()).decode()
-    y, h = (130, 360) if mobile else (0, height)
-    body = f'<image href="data:image/jpeg;base64,{bitmap}" x="0" y="{y}" width="{width}" height="{h}" preserveAspectRatio="xMaxYMid slice"/>'
-    body += f'<rect width="{width}" height="{height}" fill="url(#shade)"/>'
-    if mobile:
-        body += '<rect width="400" height="180" fill="#080d12" opacity=".65"/>'
-        body += '<g transform="translate(302 274) scale(.50)">'+contours(0, 0, 115)+'</g>'
-        body += route('M30 304Q180 345 335 214', CYAN, 3)
-        body += route('M35 425Q150 350 370 383', GOLD, 0, 'slow')
-        body += text(27, 83, 'MED', 70, WHITE, 'class="name" letter-spacing="-2"')
-        body += text(25, 151, 'GLEIGUEM', 69, WHITE, 'class="name" textLength="348" lengthAdjust="spacingAndGlyphs"')
-        body += text(28, 193, '@Medgleiguem', 28, WHITE, 'class="mono"')
-        body += text(28, 230, 'AI / DATA / LANGUAGE', 26, CYAN, 'class="mono"')
-        body += '<path class="sand" pathLength="100" d="M18 456Q167 411 380 450" fill="none" stroke="#e8c17f" stroke-width="1.6"/>'
-    else:
-        body += '<g>'+contours(797, 116, 110)+'</g>'
-        for i, path in enumerate(['M440 71Q586 20 808 125T963 94', 'M362 284Q560 290 667 170T957 64', 'M130 475Q420 380 724 450T973 409']):
-            body += route(path, GOLD if i==2 else CYAN, i*3, 'slow' if i==2 else '')
-        body += text(42, 127, 'MED', 116, WHITE, 'class="name" letter-spacing="-3"')
-        body += text(39, 237, 'GLEIGUEM', 113, WHITE, 'class="name" textLength="520" lengthAdjust="spacingAndGlyphs"')
-        body += text(45, 285, '@Medgleiguem', 30, WHITE, 'class="mono"')
-        body += text(45, 327, 'AI / DATA / LANGUAGE', 28, CYAN, 'class="mono" letter-spacing="1"')
-        body += '<path class="sand" pathLength="100" d="M27 452Q290 354 660 441T979 431" fill="none" stroke="#f0cb88" stroke-width="2"/>'
-    body += f'<rect y="{height-85}" width="{width}" height="85" fill="url(#fade)"/>'
-    return document(width, height, 'Med Gleiguem — AI, data and language', 'Original illustrated night dunes and historic-ksar-inspired architecture, with animated sand light, organic contours and cyan signals. No portrait.', body)
 
 
 def calendar_days(data):
@@ -203,33 +155,3 @@ def render_workbench(data, mobile=False, animated=True, compact=False):
         body += text(30 if compact else 40, 451, 'GitHub-visible contributions', 24, MUTED)
     result = document(width, height, 'Med Gleiguem — actual GitHub activity', f'GitHub-visible contributions from {first.isoformat()} to {last.isoformat()}: {total} contributions across {active} active days. Snapshot {data["updated_at"]}. Calendar colors: 0, 1–4, 5–19, 20–49, 50 or more. Signals are decorative; counts are contributions, not hours or project quality.', body)
     return result if animated else static_svg(result)
-
-
-def tools_panel(mobile=False, compact=False):
-    width, height = (400, 380) if mobile else ((700, 230) if compact else (1000, 230))
-    body = text(29 if mobile else 40, 53, 'IN THE TOOLBOX', 28 if mobile else 26, WHITE, 'class="mono" letter-spacing="2"')
-    icons = json.loads((ROOT/'assets/artwork/desert/tool-icons.json').read_text())
-    for i, (label, key) in enumerate([('Python', 'python'), ('TypeScript', 'typescript'), ('SQL', None), ('PostgreSQL', 'postgresql')]):
-        x = (104 if i%2==0 else 295) if mobile else ((103+i*164) if compact else (143+i*238))
-        y = 118+(i//2)*155 if mobile else 125
-        if key:
-            mark = ''.join(f'<path d="{path}"/>' for path in icons[key])
-            body += f'<g transform="translate({x-24} {y-32}) scale(2)" fill="{CYAN}">{mark}</g>'
-        else:
-            body += f'<g transform="translate({x-22} {y-31})" stroke="{CYAN}" fill="none" stroke-width="2.3"><ellipse cx="22" cy="7" rx="21" ry="7"/><path d="M1 7v35c0 10 42 10 42 0V7M1 19c0 10 42 10 42 0M1 31c0 10 42 10 42 0"/></g>'
-        body += text(x, y+52, label, 28, WHITE, 'text-anchor="middle"')
-        path = f'M{x-72} {y+69}h144'
-        body += route(path, GOLD, i*3, 'slow')
-        body += diamond(x, y-49, 3)
-    return document(width, height, 'Tools — Python, TypeScript, SQL and PostgreSQL', 'Four tools used in the work, with recognizable technical icons and independently phased sand-gold signal traces. This is a tool selection, not a ranking of public language bytes.', body)
-
-
-def footer(mobile=False):
-    width, height = (400, 120) if mobile else (1000, 165)
-    body = ''
-    for i in range(5):
-        y = 57+i*16
-        body += f'<path d="M0 {y}Q{width*.17:.1f} {y-40} {width*.43:.1f} {y+3}T{width} {y-15}V{height}H0Z" fill="'+['#18232b','#172028','#23272a','#121d25','#0b151d'][i]+'"/>'
-        body += f'<path class="sand" style="animation-delay:-{i*3}s" pathLength="100" d="M0 {y}Q{width*.17:.1f} {y-40} {width*.43:.1f} {y+3}T{width} {y-15}" stroke="{GOLD}" stroke-width="1" fill="none"/>'
-    body += route(f'M20 45Q{width*.35:.1f} 4 {width-20} 46', CYAN, 5, 'slow')
-    return document(width, height, 'Night dunes — contact links below', 'Original vector dunes with traveling sand-gold highlights and a cyan signal. GitHub, LinkedIn and email are individual native links below this illustration.', body)

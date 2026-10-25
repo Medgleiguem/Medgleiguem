@@ -2,17 +2,103 @@
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/desert-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/desert-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/desert-mobile.svg" />
-  <img src="./assets/desert.svg" alt="Med Gleiguem — AI, data and language. Night dunes, ksar silhouettes, sand-gold contours and moving cyan signals." width="100%" />
+  <img src="./assets/desert.svg" alt="Med Gleiguem — software, data, AI, cybersecurity and research. An original etched desert motif." width="100%" />
 </picture></h1>
 
-<p align="center">
-  <a href="#user-content-workbench">Activity</a> &nbsp;·&nbsp;
-  <a href="./work/README.md">Selected work</a> &nbsp;·&nbsp;
-  <a href="#user-content-research">Research</a> &nbsp;·&nbsp;
-  <a href="mailto:medgleiguem00@gmail.com">Contact</a>
-</p>
+<p align="center"><a href="#user-content-systems">Domains &amp; tools</a> &nbsp;·&nbsp; <a href="./work/README.md">Work</a> &nbsp;·&nbsp; <a href="#user-content-workbench">Activity</a> &nbsp;·&nbsp; <a href="mailto:medgleiguem00@gmail.com">Contact</a></p>
+
+<a id="systems"></a>
+
+## Domains, tools & work
+
+<a href="./work/README.md#user-content-domain-ai"><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/ai-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/ai-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/domains/ai-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/domains/ai-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/domains/ai-compact.svg" />
+  <img src="./assets/domains/ai.svg" alt="AI systems &amp; retrieval. RAG &amp; hybrid search. LLM integration · ML. Toolkit: Python, FastAPI, pgvector, Docling, SQLAlchemy. Health Ministry · BCM / RKF; ARE · National KB. Open this domain for project links." width="100%" />
+</picture></a>
+
+<a href="./work/README.md#user-content-domain-data"><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/data-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/data-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/domains/data-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/domains/data-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/domains/data-compact.svg" />
+  <img src="./assets/domains/data.svg" alt="Data engineering. ELT &amp; orchestration. Models &amp; analytics. Toolkit: Airflow, dbt, PostgreSQL, MySQL, MongoDB, SQL. ANRPTS / BI Houwiyeti. Open this domain for project links." width="100%" />
+</picture></a>
+
+<a href="./work/README.md#user-content-domain-software"><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/software-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/software-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/domains/software-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/domains/software-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/domains/software-compact.svg" />
+  <img src="./assets/domains/software.svg" alt="Full-stack systems. APIs &amp; application UI. Roles &amp; async work. Toolkit: TypeScript, React, Next.js, Django, Spring Boot, Flask. Health · National KB · ANRPTS. Open this domain for project links." width="100%" />
+</picture></a>
+
+<a href="./work/README.md#user-content-domain-vision"><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/vision-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/vision-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/domains/vision-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/domains/vision-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/domains/vision-compact.svg" />
+  <img src="./assets/domains/vision.svg" alt="Identity &amp; vision. Capture &amp; liveness. Matching &amp; landmarks. Toolkit: Python, MediaPipe, SQLite, OCR, Object storage. KYC Identity; Mauritanian Sign Language. Open this domain for project links." width="100%" />
+</picture></a>
+
+<a href="./work/README.md#user-content-domain-payments"><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/payments-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/payments-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/domains/payments-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/domains/payments-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/domains/payments-compact.svg" />
+  <img src="./assets/domains/payments.svg" alt="Payments &amp; workflows. Eligibility &amp; wallets. Locks &amp; integrations. Toolkit: TypeScript, Next.js, MongoDB, Redis, BullMQ. Taazour Aoun · Taazour Pay. Open this domain for project links." width="100%" />
+</picture></a>
+
+<a id="research"></a>
+
+<a href="./work/README.md#user-content-domain-nlp"><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/nlp-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/nlp-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/domains/nlp-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/domains/nlp-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/domains/nlp-compact.svg" />
+  <img src="./assets/domains/nlp.svg" alt="Arabic &amp; Hassaniya NLP. Corpus normalization. Metre &amp; rhyme. Toolkit: Python, Pydantic, YAML, spaCy, scikit-learn. Hassaniya Laghn. Open this domain for project links." width="100%" />
+</picture></a>
+
+<a href="./work/README.md#user-content-domain-security"><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/security-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/security-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/domains/security-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/domains/security-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/domains/security-compact.svg" />
+  <img src="./assets/domains/security.svg" alt="Cybersecurity. CTFs &amp; web testing. Vulnerability checks. Toolkit: Burp Suite, Linux / Arch, Python. CTF practice · web security. Open this domain for project links." width="100%" />
+</picture></a>
+
+<a href="./work/README.md#user-content-domain-workflow"><picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/workflow-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/domains/workflow-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/domains/workflow-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/domains/workflow-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/domains/workflow-compact.svg" />
+  <img src="./assets/domains/workflow.svg" alt="Engineering workflow. Review · test · ship. CI &amp; developer tools. Toolkit: Docker, Git, Actions, Linux, Claude Code, Cursor. GitHub automation · code review. Open this domain for project links." width="100%" />
+</picture></a>
+
+**Languages:** Python · TypeScript / JavaScript · SQL · C · Java
+
+<details>
+<summary>Supporting tools &amp; APIs</summary>
+
+SQLAlchemy · Django REST Framework · NestJS · Procrastinate · MinIO · GitHub Copilot · Arch Linux
+
+LLM APIs: Claude · Groq · Gemini
+
+</details>
 
 <a id="workbench"></a>
+
+## On GitHub
 
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/workbench-mobile-static.svg" />
@@ -20,48 +106,9 @@
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/workbench-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/workbench-mobile.svg" />
   <source media="(max-width: 1279px)" srcset="./assets/workbench-compact.svg" />
-  <img src="./assets/workbench.svg" alt="Actual GitHub contribution calendar, contributions and active days for the displayed date range. Snapshot date and color scale appear in the panel; moving signals are decorative." width="100%" />
+  <img src="./assets/workbench.svg" alt="Actual contribution calendar and active days for the displayed date range, with a dated snapshot. Moving signals are decorative." width="100%" />
 </picture>
 
 <p align="right"><sub><a href="./data/activity.json">Activity data ↗</a></sub></p>
 
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-mobile-static.svg" />
-  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-compact-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/tools-rail-mobile.svg" />
-  <source media="(max-width: 1279px)" srcset="./assets/tools-rail-compact.svg" />
-  <img src="./assets/tools-rail.svg" alt="In the toolbox: Python, TypeScript, SQL and PostgreSQL, with sand-gold signal traces and geometric details." width="100%" />
-</picture>
-
-<details>
-<summary>More from the toolbox</summary>
-
-FastAPI · Django · React · Next.js · pgvector · Airflow · dbt · Redis
-
-</details>
-
-<a id="research"></a>
-
-<p align="center"><strong>Current threads</strong></p>
-<p align="center">
-  <a href="./work/hassaniya-laghn.md">Hassaniya language</a> &nbsp;·&nbsp;
-  <a href="./work/mauritanian-sign-language.md">Mauritanian sign language</a>
-</p>
-
-<a id="systems"></a>
-
-<p align="center"><a href="./work/README.md"><strong>Selected work ↗</strong></a></p>
-
-<picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/desert-footer-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/desert-footer-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/desert-footer-mobile.svg" />
-  <img src="./assets/desert-footer.svg" alt="Night dunes with moving sand light. Contact links follow below." width="100%" />
-</picture>
-
-<p align="center">
-  <a href="https://github.com/Medgleiguem?tab=repositories">GitHub</a> &nbsp;·&nbsp;
-  <a href="https://www.linkedin.com/in/med-gleiguem/">LinkedIn</a> &nbsp;·&nbsp;
-  <a href="mailto:medgleiguem00@gmail.com">Email</a>
-</p>
+<p align="center"><a href="https://github.com/Medgleiguem?tab=repositories">Repositories</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/med-gleiguem/">LinkedIn</a> &nbsp;·&nbsp; <a href="mailto:medgleiguem00@gmail.com">Email</a></p>
