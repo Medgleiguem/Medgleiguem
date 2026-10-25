@@ -143,54 +143,49 @@ class ActivityTests(unittest.TestCase):
             else:
                 self.assertIn("prefers-reduced-motion", text)
 
-    def test_workbench_buckets_use_real_totals_and_proportional_heights(self):
+    def test_calendar_preserves_actual_dates_and_fills_gaps_with_zero(self):
         _, root = self.snapshot(payload([
-            ("2026-10-11", 2), ("2026-10-18", 2),
-            ("2026-10-19", 3), ("2026-10-24", 5)]))
-        ns = {"svg": "http://www.w3.org/2000/svg"}
-        for name in ["workbench.svg", "workbench-mobile.svg", "workbench-static.svg", "workbench-mobile-static.svg"]:
-            self.assertTrue((root / "assets" / name).exists(), "Generator must emit the workbench variant")
-            svg = ET.parse(root / "assets" / name).getroot()
-            bars = [element for element in svg.iter() if "data-start" in element.attrib]
-            self.assertEqual([(bar.attrib["data-start"], bar.attrib["data-count"]) for bar in bars],
-                             [("2026-10-11", "2"), ("2026-10-18", "10")])
-            self.assertEqual([bar.attrib['data-end'] for bar in bars], ['2026-10-17', '2026-10-24'])
-            heights = [float(bar.find('svg:rect', ns).attrib["height"]) for bar in bars]
-            self.assertAlmostEqual(heights[1] / heights[0], 5, places=2)
-            content = (root / "assets" / name).read_text()
-            self.assertIn("GitHub-visible contributions", content)
-            self.assertIn("2026-10-11", content)
-            self.assertIn("2026-10-24", content)
-            if "static" in name:
-                self.assertNotIn("@keyframes", content)
-            else:
-                self.assertIn("prefers-reduced-motion", content)
+            ('2026-10-11', 2), ('2026-10-18', 2),
+            ('2026-10-19', 3), ('2026-10-24', 5)]))
+        expected = {f'2026-10-{day:02d}': 0 for day in range(11, 25)}
+        expected.update({'2026-10-11': 2, '2026-10-18': 2,
+                         '2026-10-19': 3, '2026-10-24': 5})
+        variants = []
+        for path in sorted((root/'assets').glob('workbench*.svg')):
+            svg = ET.parse(path).getroot()
+            cells = [node for node in svg.iter() if 'data-date' in node.attrib]
+            self.assertEqual({c.get('data-date'): int(c.get('data-count')) for c in cells}, expected)
+            variants.append([(c.get('data-date'), c.get('data-count'), c.get('fill')) for c in cells])
+            self.assertTrue(all(c.find('{http://www.w3.org/2000/svg}title') is not None for c in cells))
+        self.assertTrue(all(value == variants[0] for value in variants))
 
-    def test_workbench_limits_to_latest_84_calendar_days_and_keeps_mobile_totals(self):
+    def test_calendar_limits_to_latest_140_days_without_inventing_counts(self):
         _, root = self.snapshot(payload([
-            ("2026-01-04", 7), ("2026-10-18", 3), ("2026-10-24", 2)]))
-        self.assertTrue((root / "assets/workbench.svg").exists(), "Generator must emit the workbench")
-        desktop = ET.parse(root / "assets/workbench.svg").getroot()
-        mobile = ET.parse(root / "assets/workbench-mobile.svg").getroot()
-        desktop_bars = [e for e in desktop.iter() if "data-start" in e.attrib]
-        mobile_bars = [e for e in mobile.iter() if "data-start" in e.attrib]
-        self.assertEqual(len(mobile_bars), 12)
-        self.assertEqual(len(desktop_bars), 12)
-        self.assertEqual(sum(int(e.attrib["data-count"]) for e in mobile_bars), 5)
-        self.assertEqual(sum(int(e.attrib["data-count"]) for e in desktop_bars), 5)
-        self.assertEqual(mobile_bars[0].attrib['data-start'], '2026-08-02')
-        self.assertEqual(mobile_bars[-1].attrib['data-end'], '2026-10-24')
+            ('2026-01-04', 7), ('2026-10-18', 3), ('2026-10-24', 2)]))
+        for path in (root/'assets').glob('workbench*.svg'):
+            cells = [node for node in ET.parse(path).getroot().iter() if 'data-date' in node.attrib]
+            self.assertEqual(len(cells), 140)
+            self.assertEqual(cells[0].get('data-date'), '2026-06-07')
+            self.assertEqual(cells[-1].get('data-date'), '2026-10-24')
+            self.assertEqual(sum(int(c.get('data-count')) for c in cells), 5)
 
-    def test_short_zero_calendar_is_valid_and_does_not_invent_a_full_window(self):
+    def test_short_zero_calendar_keeps_its_bounds_and_has_an_empty_state(self):
         _, root = self.snapshot(payload([('2026-10-24', 0)]))
-        self.assertTrue((root/'assets/workbench.svg').exists(), 'Collector must publish the workbench')
+        for path in (root/'assets').glob('workbench*.svg'):
+            svg = ET.parse(path).getroot()
+            cells = [node for node in svg.iter() if 'data-date' in node.attrib]
+            self.assertEqual([(c.get('data-date'), c.get('data-count')) for c in cells], [('2026-10-24', '0')])
+            self.assertIn('No contributions in this window', ''.join(svg.itertext()))
+
+    def test_activity_values_do_not_animate_or_change_color_over_time(self):
+        _, root = self.snapshot(payload([('2026-10-23', 4), ('2026-10-24', 50)]))
         svg = ET.parse(root/'assets/workbench.svg').getroot()
-        bars = [node for node in svg.iter() if 'data-start' in node.attrib]
-        self.assertEqual(len(bars), 1)
-        self.assertEqual(bars[0].get('data-start'), '2026-10-24')
-        self.assertEqual(bars[0].get('data-end'), '2026-10-24')
-        self.assertEqual(bars[0].get('data-count'), '0')
-        self.assertIn('No contributions in this window', ''.join(svg.itertext()))
+        cells = [node for node in svg.iter() if 'data-date' in node.attrib]
+        self.assertEqual(len(cells), 2)
+        for cell in cells:
+            self.assertNotIn('class', cell.attrib)
+            self.assertFalse(any(node.tag.rsplit('}', 1)[-1].startswith('animate') for node in cell.iter()))
+        self.assertNotEqual(cells[0].get('fill'), cells[1].get('fill'))
 
     def test_failed_refresh_preserves_the_previous_workbench(self):
         process, root = self.run_generator({'errors': [{'message': 'bad response'}]},
@@ -203,18 +198,25 @@ class ActivityTests(unittest.TestCase):
         before = {p.name: p.read_bytes() for p in (root/'assets').glob('workbench*.svg')}
         (root/'tools').mkdir()
         shutil.copy2(SCRIPT.with_name('generate_assets.py'), root/'tools/generate_assets.py')
-        shutil.copy2(SCRIPT.with_name('project_cards.py'), root/'tools/project_cards.py')
-        shutil.copytree(SCRIPT.parent.parent/'assets/artwork/observatory', root/'assets/artwork/observatory')
+        shutil.copy2(SCRIPT.with_name('desert_console.py'), root/'tools/desert_console.py')
+        shutil.copytree(SCRIPT.parent.parent/'assets/artwork/desert', root/'assets/artwork/desert')
         result = subprocess.run([sys.executable, str(root/'tools/generate_assets.py')], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
         for name, content in before.items():
             self.assertEqual((root/'assets'/name).read_bytes(), content, name+' changed after full generation')
 
-    def test_chart_displays_actual_total_and_peak_in_visible_text(self):
+    def test_calendar_metrics_describe_the_displayed_window_in_visible_text(self):
         _, root = self.snapshot(payload([('2026-10-11', 2), ('2026-10-18', 2), ('2026-10-24', 8)]))
-        svg = ET.parse(root/'assets/workbench.svg').getroot()
-        labels = [node.text for node in svg.iter() if node.tag.endswith('}text')]
-        self.assertTrue(any('12 contributions' in (label or '') and 'peak 10' in label for label in labels), labels)
+        for path in (root/'assets').glob('workbench*.svg'):
+            svg = ET.parse(path).getroot()
+            metrics = {n.get('data-metric'): ''.join(n.itertext()) for n in svg.iter() if n.get('data-metric')}
+            self.assertEqual(metrics.get('contributions'), '12')
+            self.assertEqual(metrics.get('active-days'), '3')
+            labels = ' '.join(n.text or '' for n in svg.iter() if n.tag.endswith('}text'))
+            self.assertIn('2026-10-11', labels)
+            self.assertIn('2026-10-24', labels)
+            self.assertIn('UTC', labels)
+            self.assertNotIn('999', metrics.values())
 
 
 if __name__ == "__main__":

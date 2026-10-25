@@ -1,111 +1,63 @@
 <h1><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/observatory-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/observatory-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/observatory-mobile.svg" />
-  <img src="./assets/observatory.svg" alt="Med Gleiguem — original anime observatory. AI, data, identity, language and computer vision." width="100%" />
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/desert-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/desert-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/desert-mobile.svg" />
+  <img src="./assets/desert.svg" alt="Med Gleiguem — AI, data and language. Night dunes, ksar silhouettes, sand-gold contours and moving cyan signals." width="100%" />
 </picture></h1>
 
-**Systems, experiments, research.** Open a card to explore the engineering.
-
-[Systems](#user-content-systems) · [Research](#user-content-research) · [Activity](#user-content-workbench) · [Contact](mailto:medgleiguem00@gmail.com)
-
-<a id="systems"></a>
-
-## 01 / Evidence systems
-
 <p align="center">
-<a href="./work/health-ministry.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/health-ministry-static.svg" />
-  <img src="./assets/projects/health-ministry.svg" alt="Health Ministry AI — Scoped evidence. Human decisions. Open engineering brief." width="384" />
-</picture></a>
-<a href="./work/central-bank.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/central-bank-static.svg" />
-  <img src="./assets/projects/central-bank.svg" alt="Central Bank / RKF — Sources, versions, citations. Open engineering brief." width="384" />
-</picture></a>
-<a href="./work/are-intelligence.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/are-intelligence-static.svg" />
-  <img src="./assets/projects/are-intelligence.svg" alt="ARE Intelligence — Regulatory evidence → obligations. Open engineering brief." width="384" />
-</picture></a>
-<a href="./work/national-knowledge.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/national-knowledge-static.svg" />
-  <img src="./assets/projects/national-knowledge.svg" alt="National Knowledge Base — Imports, provenance, review. Open engineering brief." width="384" />
-</picture></a>
-</p>
-
-<h2><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/exchange-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/exchange-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/exchange-mobile.svg" />
-  <img src="./assets/exchange.svg" alt="02 / The exchange — data with a destination." width="100%" />
-</picture></h2>
-
-<p align="center">
-<a href="./work/anrpts.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/anrpts-static.svg" />
-  <img src="./assets/projects/anrpts.svg" alt="ANRPTS / BI Houwiyeti — Heterogeneous sources → analytics. Open engineering brief." width="768" />
-</picture></a>
-</p>
-
-<h2><picture>
-  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/identity-mobile-static.svg" />
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/identity-static.svg" />
-  <source media="(max-width: 600px)" srcset="./assets/identity-mobile.svg" />
-  <img src="./assets/identity.svg" alt="03 / The atelier — identity, then the next step." width="100%" />
-</picture></h2>
-
-<p align="center">
-<a href="./work/kyc-identity.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/kyc-identity-static.svg" />
-  <img src="./assets/projects/kyc-identity.svg" alt="KYC Identity — Capture / liveness / matching. Open engineering brief." width="384" />
-</picture></a>
-<a href="./work/taazour-aoun.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/taazour-aoun-static.svg" />
-  <img src="./assets/projects/taazour-aoun.svg" alt="Taazour Aoun — Eligibility → identity → wallet. Open engineering brief." width="384" />
-</picture></a>
-<a href="./work/taazour-pay.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/taazour-pay-static.svg" />
-  <img src="./assets/projects/taazour-pay.svg" alt="Taazour Pay — Household boundaries. Payment state. Open engineering brief." width="384" />
-</picture></a>
-</p>
-
-<a id="research"></a>
-
-## 04 / Language, gesture, structure
-
-<p align="center">
-<a href="./work/hassaniya-laghn.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/hassaniya-laghn-static.svg" />
-  <img src="./assets/projects/hassaniya-laghn.svg" alt="Hassaniya Laghn — Corpus / metre / rhyme. Open engineering brief." width="384" />
-</picture></a>
-<a href="./work/mauritanian-sign-language.md"><picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/projects/mauritanian-sign-language-static.svg" />
-  <img src="./assets/projects/mauritanian-sign-language.svg" alt="Mauritanian Sign Language — Quality checks. Subject-aware splits. Open engineering brief." width="384" />
-</picture></a>
+  <a href="#user-content-workbench">Activity</a> &nbsp;·&nbsp;
+  <a href="./work/README.md">Selected work</a> &nbsp;·&nbsp;
+  <a href="#user-content-research">Research</a> &nbsp;·&nbsp;
+  <a href="mailto:medgleiguem00@gmail.com">Contact</a>
 </p>
 
 <a id="workbench"></a>
 
-<h2><picture>
+<picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/workbench-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/workbench-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/workbench-mobile.svg" />
-  <img src="./assets/workbench.svg" alt="05 / At the workbench — actual GitHub contributions, with displayed dates, total and peak bucket count." width="100%" />
-</picture></h2>
+  <img src="./assets/workbench.svg" alt="Actual GitHub contribution calendar, contributions and active days for the displayed date range. Snapshot date and color scale appear in the panel; moving signals are decorative." width="100%" />
+</picture>
+
+<p align="right"><sub><a href="./data/activity.json">Activity data ↗</a></sub></p>
 
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/tools-rail-mobile.svg" />
-  <img src="./assets/tools-rail.svg" alt="Tools in the work: Python, TypeScript, SQL, FastAPI, Django, React, Next.js, PostgreSQL, pgvector, Airflow, dbt and Redis." width="100%" />
+  <img src="./assets/tools-rail.svg" alt="In the toolbox: Python, TypeScript, SQL and PostgreSQL, with sand-gold signal traces and geometric details." width="100%" />
 </picture>
 
 <details>
-<summary>Other public work</summary>
+<summary>More from the toolbox</summary>
 
-[Sonora](https://github.com/Medgleiguem/sonora-music-hub) · [AI Diwan](https://el-mejlise.vercel.app)
+FastAPI · Django · React · Next.js · pgvector · Airflow · dbt · Redis
 
 </details>
 
----
+<a id="research"></a>
 
-[Email](mailto:medgleiguem00@gmail.com) · [LinkedIn](https://www.linkedin.com/in/med-gleiguem/) · [Repositories](https://github.com/Medgleiguem?tab=repositories) · [Activity data](./data/activity.json)
+<p align="center"><strong>Current threads</strong></p>
+<p align="center">
+  <a href="./work/hassaniya-laghn.md">Hassaniya language</a> &nbsp;·&nbsp;
+  <a href="./work/mauritanian-sign-language.md">Mauritanian sign language</a>
+</p>
+
+<a id="systems"></a>
+
+<p align="center"><a href="./work/README.md"><strong>Selected work ↗</strong></a></p>
+
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/desert-footer-mobile-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/desert-footer-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/desert-footer-mobile.svg" />
+  <img src="./assets/desert-footer.svg" alt="Night dunes with moving sand light. Contact links follow below." width="100%" />
+</picture>
+
+<p align="center">
+  <a href="https://github.com/Medgleiguem?tab=repositories">GitHub</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/med-gleiguem/">LinkedIn</a> &nbsp;·&nbsp;
+  <a href="mailto:medgleiguem00@gmail.com">Email</a>
+</p>

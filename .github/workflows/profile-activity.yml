@@ -9,6 +9,7 @@ on:
     paths:
       - 'tools/update_activity.py'
       - 'tools/generate_assets.py'
+      - 'tools/desert_console.py'
       - 'tools/test_activity.py'
       - '.github/workflows/profile-activity.yml'
 

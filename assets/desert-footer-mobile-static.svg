@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="120" viewBox="0 0 400 120" role="img" aria-labelledby="title desc">
+<title id="title">Night dunes — contact links below</title><desc id="desc">Original vector dunes with traveling sand-gold highlights and a cyan signal. GitHub, LinkedIn and email are individual native links below this illustration.</desc>
+<defs><clipPath id="clip"><rect width="400" height="120" rx="4" /></clipPath>
+<linearGradient id="shade"><stop stop-color="#080d12" stop-opacity=".85" /><stop offset=".48" stop-color="#080d12" stop-opacity=".35" /><stop offset="1" stop-color="#080d12" stop-opacity="0" /></linearGradient>
+<linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#080d12" stop-opacity="0" /><stop offset="1" stop-color="#080d12" /></linearGradient>
+</defs><style>
+text{font-family:'Liberation Sans',Arial,sans-serif}
+.mono{font-family:Consolas,'Liberation Mono',monospace}
+.name{font-family:'Liberation Sans Narrow','Arial Narrow',Arial,sans-serif;font-weight:900}
+.flow{stroke-dasharray:2 98;}
+.sand{stroke-dasharray:14 86;}
+.slow{}.fast{}
+.breathe{}
+.orbit{transform-box:fill-box;transform-origin:center;}
+
+
+
+@media(prefers-reduced-motion:reduce){*{}.flow,.sand{stroke-dasharray:none;opacity:.45}}
+</style><g clip-path="url(#clip)"><rect width="400" height="120" fill="#080d12" /><path d="M0 57Q68.0 17 172.0 60T400 42V120H0Z" fill="#18232b" /><path class="sand" style="" pathLength="100" d="M0 57Q68.0 17 172.0 60T400 42" stroke="#e2b76f" stroke-width="1" fill="none" /><path d="M0 73Q68.0 33 172.0 76T400 58V120H0Z" fill="#172028" /><path class="sand" style="" pathLength="100" d="M0 73Q68.0 33 172.0 76T400 58" stroke="#e2b76f" stroke-width="1" fill="none" /><path d="M0 89Q68.0 49 172.0 92T400 74V120H0Z" fill="#23272a" /><path class="sand" style="" pathLength="100" d="M0 89Q68.0 49 172.0 92T400 74" stroke="#e2b76f" stroke-width="1" fill="none" /><path d="M0 105Q68.0 65 172.0 108T400 90V120H0Z" fill="#121d25" /><path class="sand" style="" pathLength="100" d="M0 105Q68.0 65 172.0 108T400 90" stroke="#e2b76f" stroke-width="1" fill="none" /><path d="M0 121Q68.0 81 172.0 124T400 106V120H0Z" fill="#0b151d" /><path class="sand" style="" pathLength="100" d="M0 121Q68.0 81 172.0 124T400 106" stroke="#e2b76f" stroke-width="1" fill="none" /><path d="M20 45Q140.0 4 380 46" fill="none" stroke="#55dce3" stroke-width="1" opacity=".18" /><path class="flow slow" pathLength="100" d="M20 45Q140.0 4 380 46" fill="none" stroke="#55dce3" stroke-width="2.4" stroke-linecap="round" style="" /><path d="M24 10H376l14 14V96l-14 14H24L10 96V24Z" fill="none" stroke="#e2b76f" stroke-opacity=".55" /><path d="M24 4l6 6-6 6-6-6Z" fill="#080d12" stroke="#e2b76f" stroke-width="1.2" /><path d="M376 104l6 6-6 6-6-6Z" fill="#080d12" stroke="#e2b76f" stroke-width="1.2" /></g><style>*{animation:none!important}.flow,.sand,.trace{stroke-dasharray:none!important;stroke-dashoffset:0!important;opacity:.45}.meter{opacity:1!important}</style></svg>
