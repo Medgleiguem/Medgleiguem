@@ -23,4 +23,4 @@ jobs:
       - name: Check reproducible artwork
         run: |
           python3 tools/generate_assets.py
-          git diff --exit-code -- assets/
+          git diff --exit-code -- assets/ work/activity.md

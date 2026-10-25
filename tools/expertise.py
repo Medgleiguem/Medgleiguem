@@ -99,20 +99,66 @@ def hero(mobile=False):
     return document(width, height, 'Med Gleiguem — software, data, AI, security and research', 'Med Gleiguem. Software, data, AI, security and research. A painted night ksar and dunes, with live typography, a small crescent and animated sand and signal paths.', body, framed=False)
 
 
-def tool_mark(label, key, icons, x, y, size=22):
+def tool_mark(label, key, icons, x, y, size=22, color=MUTED):
     if key in icons:
         paths = ''.join(f'<path d="{path}"/>' for path in icons[key])
-        return f'<g transform="translate({x} {y}) scale({size/24})" fill="{MUTED}">{paths}</g>'
+        return f'<g transform="translate({x} {y}) scale({size/24})" fill="{color}">{paths}</g>'
     generic = '<path d="M3 2h14l5 5v15H3Z M16 2v6h6M7 12h11M7 17h8"/>'
-    if label in ('pgvector','SQL','Object storage'):
+    if label in ('pgvector','SQL','Object storage','MinIO'):
         generic = '<ellipse cx="12" cy="5" rx="10" ry="4"/><path d="M2 5v14c0 6 20 6 20 0V5M2 12c0 6 20 6 20 0"/>'
     if label=='MediaPipe':
         generic = '<path d="M3 18L7 5l7 5 6-7M7 5l3 15 4-10 7 10"/><circle cx="7" cy="5" r="2"/><circle cx="14" cy="10" r="2"/>'
-    if label=='BullMQ':
+    if label in ('BullMQ','Procrastinate'):
         generic = '<path d="M1 3h7v7H1ZM16 3h7v7h-7ZM8 16h8v7H8ZM5 10v4h14v-4M12 14v3"/>'
+    if label=='Groq':
+        generic = '<path d="M5 5h14v14H5ZM9 1v4m6-4v4M9 19v4m6-4v4M1 9h4m-4 6h4m14-6h4m-4 6h4M9 9h6v6H9Z"/>'
     if label=='dbt':
         generic = '<path d="M3 4l9 8-9 8M12 12h10M12 3v18"/><circle cx="3" cy="4" r="2"/><circle cx="3" cy="20" r="2"/><circle cx="22" cy="12" r="2"/>'
-    return f'<g transform="translate({x} {y}) scale({size/24})" fill="none" stroke="{MUTED}" stroke-width="1.5" stroke-linejoin="round">{generic}</g>'
+    return f'<g transform="translate({x} {y}) scale({size/24})" fill="none" stroke="{color}" stroke-width="1.5" stroke-linejoin="round">{generic}</g>'
+
+
+TOOLBOX = [
+    ('Languages',[('Python','python'),('TypeScript','typescript'),('JavaScript','javascript'),('SQL',None),('C','c'),('Java','openjdk')]),
+    ('Model APIs',[('Claude','claude'),('Groq','groq'),('Gemini','googlegemini')]),
+    ('Services',[('NestJS','nestjs'),('Django REST','django'),('Procrastinate',None),('MinIO','minio')]),
+    ('Editors & OS',[('Claude Code','claude'),('Cursor','cursor'),('GitHub Copilot','githubcopilot'),('Arch Linux','archlinux')]),
+]
+
+
+def toolbox(mobile=False,compact=False):
+    width=400 if mobile else (700 if compact else 1000)
+    left=24 if mobile else (30 if compact else 40)
+    icons=json.loads((ROOT/'assets/artwork/desert/tool-icons.json').read_text())
+    body='<style>.toolbox-flow{stroke-dasharray:6 94;animation-duration:12s}</style>'
+    body+=text(left,53,'Languages & toolkit',30,WHITE,'font-weight="600" letter-spacing="-.6"')
+    top=112
+    for group_index,(label,items) in enumerate(TOOLBOX):
+        color=CYAN if group_index%2==0 else GOLD
+        columns=(3 if group_index==1 else 2) if mobile else ((3 if group_index==0 else 4) if compact else len(items))
+        rows=(len(items)+columns-1)//columns
+        if mobile:
+            body+=text(left,top,label,26,GOLD,'font-weight="600"')
+            origin_x,origin_y,step,row_height=left,top+38,(width-left*2)/columns,91
+        elif compact:
+            body+=text(left,top,label,24,GOLD,'font-weight="600"')
+            origin_x,origin_y,step,row_height=left,top+35,(width-left*2)/columns,83
+        else:
+            body+=text(left,top+29,label,25,GOLD,'font-weight="600"')
+            origin_x,origin_y,step,row_height=270,top,(width-310)/columns,88
+        for i,(name,key) in enumerate(items):
+            x=origin_x+(i%columns)*step
+            y=origin_y+(i//columns)*row_height
+            body+=tool_mark(name,key,icons,x+3,y,30,color)
+            size=24 if mobile else (23 if compact else 21)
+            body+=text(x,y+59,name,size,WHITE)
+        bottom=origin_y+rows*row_height
+        # The moving line is a decorative connector, not a tool-usage score.
+        body+=route(f'M{left} {bottom}H{width-left}',color,group_index*3,'toolbox-flow')
+        top=bottom+(44 if mobile or compact else 27)
+    height=top-15
+    body='<rect width="'+str(width)+'" height="'+str(height)+'" fill="#0c1a21"/>'+body
+    description='Languages and toolkit. '+'. '.join(label+': '+', '.join(name for name,_ in items) for label,items in TOOLBOX)+'. Knowledge and tooling across projects; not a proficiency rating.'
+    return document(width,height,'Med Gleiguem — languages and toolkit',description,body,framed=False)
 
 
 def method_scene(slug):

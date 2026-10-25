@@ -18,6 +18,7 @@ import urllib.error
 import urllib.request
 
 from generate_assets import render_workbench
+from activity_data import activity_summary
 
 
 REPOSITORIES = """repositories(first: 100, after: $cursor, privacy: PUBLIC, ownerAffiliations: OWNER) {
@@ -28,6 +29,9 @@ QUERY = """query($login: String!, $cursor: String) {
   user(login: $login) {
     login followers { totalCount }
     contributionsCollection {
+      startedAt endedAt
+      totalCommitContributions totalPullRequestContributions
+      totalIssueContributions totalPullRequestReviewContributions
       contributionCalendar { totalContributions weeks { contributionDays { date contributionCount } } }
     }
     """ + REPOSITORIES + """
@@ -88,6 +92,19 @@ def summarize(payload, login, today):
     if user["login"].lower() != login.lower():
         raise ActivityError("GitHub returned a different profile; previous snapshot retained")
     collection = user["contributionsCollection"]
+    type_fields = {'commits':'totalCommitContributions','pull_requests':'totalPullRequestContributions',
+                   'issues':'totalIssueContributions','reviews':'totalPullRequestReviewContributions'}
+    types = {key:checked_count(collection[field]) if field in collection else None for key,field in type_fields.items()}
+    collection_window = None
+    if 'startedAt' in collection or 'endedAt' in collection:
+        if not all(isinstance(collection.get(key),str) for key in ('startedAt','endedAt')):
+            raise ActivityError('GitHub returned an invalid contribution period')
+        start = datetime.fromisoformat(collection['startedAt'].replace('Z','+00:00'))
+        end = datetime.fromisoformat(collection['endedAt'].replace('Z','+00:00'))
+        if start.tzinfo is None or end.tzinfo is None or start>end:
+            raise ActivityError('GitHub returned an invalid contribution period')
+        collection_window = {'start':start.astimezone(timezone.utc).isoformat().replace('+00:00','Z'),
+                             'end':end.astimezone(timezone.utc).isoformat().replace('+00:00','Z')}
     calendar = collection["contributionCalendar"]
     days = {}
     for week in calendar["weeks"]:
@@ -134,6 +151,7 @@ def summarize(payload, login, today):
         "schema_version": 1, "login": user["login"], "as_of": today.isoformat(),
         "updated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "window": {"start": ordered[0].isoformat(), "end": ordered[-1].isoformat()},
+        "collection_window": collection_window, "contribution_types": types,
         "stats": {
             "total_contributions": checked_count(calendar["totalContributions"]),
             "active_days": sum(count > 0 for count in days.values()),
@@ -159,7 +177,8 @@ def main():
     try:
         raw = json.loads(args.input.read_text()) if args.input else fetch_activity(args.user)
         snapshot = summarize(raw, args.user, args.today)
-        outputs = {"data/activity.json": json.dumps(snapshot, indent=2, ensure_ascii=False)+"\n"}
+        outputs = {"data/activity.json": json.dumps(snapshot, indent=2, ensure_ascii=False)+"\n",
+                   "work/activity.md": activity_summary(snapshot)}
         for mobile in (False, True):
             for animated in (True, False):
                 name = "assets/workbench"+("-mobile" if mobile else "")+("" if animated else "-static")+".svg"
@@ -190,7 +209,7 @@ def main():
         message = str(error) if isinstance(error, ActivityError) else "Activity refresh failed validation; previous snapshot retained"
         print(message, file=sys.stderr)
         return 1
-    print("Refreshed aggregate activity snapshot and four workbench variants.")
+    print("Refreshed aggregate activity snapshot, six workbench variants and native summary.")
     return 0
 
 

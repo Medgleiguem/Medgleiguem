@@ -101,20 +101,9 @@
 </picture></a>
 </p>
 
-**Languages:** Python · TypeScript / JavaScript · SQL · C · Java
-
-<details>
-<summary>Supporting tools &amp; APIs</summary>
-
-SQLAlchemy · Django REST Framework · NestJS · Procrastinate · MinIO · GitHub Copilot · Arch Linux
-
-LLM APIs: Claude · Groq · Gemini
-
-</details>
-
 <a id="workbench"></a>
 
-## On GitHub
+## GitHub / activity & tools
 
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/workbench-mobile-static.svg" />
@@ -122,9 +111,28 @@ LLM APIs: Claude · Groq · Gemini
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/workbench-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/workbench-mobile.svg" />
   <source media="(max-width: 1279px)" srcset="./assets/workbench-compact.svg" />
-  <img src="./assets/workbench.svg" alt="Actual contribution calendar and active days for the displayed date range, with a dated snapshot. Moving signals are decorative." width="100%" />
+  <img src="./assets/workbench.svg" alt="Full contribution calendar, active days, current and longest streaks, recent weekly activity, separately scoped contribution types, and public source-byte language shares. A dated snapshot; decorative header motion only. Text tables are linked below." width="100%" />
 </picture>
 
-<p align="right"><sub><a href="./data/activity.json">Activity data ↗</a></sub></p>
+<p align="right"><sub><a href="./work/activity.md">Read activity tables ↗</a> &nbsp;·&nbsp; <a href="./data/activity.json">Raw snapshot ↗</a></sub></p>
+
+<picture>
+  <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/toolbox-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/toolbox-compact-static.svg" />
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/toolbox-static.svg" />
+  <source media="(max-width: 600px)" srcset="./assets/toolbox-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/toolbox-compact.svg" />
+  <img src="./assets/toolbox.svg" alt="Languages: Python, TypeScript, JavaScript, SQL, C, Java. Model APIs: Claude, Groq, Gemini. Additional services: NestJS, Django REST, Procrastinate, MinIO. Editors and OS: Claude Code, Cursor, GitHub Copilot, Arch Linux. Tool knowledge across projects, separate from public language-byte statistics." width="100%" />
+</picture>
+
+<details>
+<summary>Toolbox as text</summary>
+
+- **Languages:** Python · TypeScript / JavaScript · SQL · C · Java
+- **Model APIs:** Claude · Groq · Gemini
+- **Additional services:** NestJS · Django REST Framework · SQLAlchemy · Procrastinate · MinIO
+- **Editors and OS:** Claude Code · Cursor · GitHub Copilot · Arch Linux
+
+</details>
 
 <p align="center"><a href="https://github.com/Medgleiguem?tab=repositories">Repositories</a> &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/med-gleiguem/">LinkedIn</a> &nbsp;·&nbsp; <a href="mailto:medgleiguem00@gmail.com">Email</a></p>

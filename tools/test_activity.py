@@ -159,15 +159,50 @@ class ActivityTests(unittest.TestCase):
             self.assertTrue(all(c.find('{http://www.w3.org/2000/svg}title') is not None for c in cells))
         self.assertTrue(all(value == variants[0] for value in variants))
 
-    def test_calendar_limits_to_latest_140_days_without_inventing_counts(self):
+    def test_calendar_keeps_full_available_year_without_inventing_counts(self):
         _, root = self.snapshot(payload([
             ('2026-01-04', 7), ('2026-10-18', 3), ('2026-10-24', 2)]))
         for path in (root/'assets').glob('workbench*.svg'):
             cells = [node for node in ET.parse(path).getroot().iter() if 'data-date' in node.attrib]
-            self.assertEqual(len(cells), 140)
-            self.assertEqual(cells[0].get('data-date'), '2026-06-07')
+            self.assertEqual(len(cells), 294)
+            self.assertEqual(cells[0].get('data-date'), '2026-01-04')
             self.assertEqual(cells[-1].get('data-date'), '2026-10-24')
-            self.assertEqual(sum(int(c.get('data-count')) for c in cells), 5)
+            self.assertEqual(sum(int(c.get('data-count')) for c in cells), 12)
+
+    def test_type_counters_are_allowlisted_separately_from_calendar_total(self):
+        data, _ = self.snapshot(payload([('2026-10-24', 3)]))
+        self.assertEqual(data.get('contribution_types'), {'commits': 7, 'pull_requests': 2, 'issues': 1, 'reviews': 3})
+        self.assertEqual(data['stats']['total_contributions'], 999)
+
+    def test_missing_type_is_unavailable_and_real_zero_stays_zero(self):
+        source = payload([('2026-10-24', 3)])
+        collection = source['data']['user']['contributionsCollection']
+        del collection['totalPullRequestReviewContributions']
+        collection['totalIssueContributions'] = 0
+        data, _ = self.snapshot(source)
+        self.assertIsNone(data.get('contribution_types', {}).get('reviews'))
+        self.assertEqual(data.get('contribution_types', {}).get('issues'), 0)
+
+    def test_invalid_type_count_retains_previous_outputs_without_echoing_payload(self):
+        source = payload([('2026-10-24', 3)])
+        source['data']['user']['contributionsCollection']['totalCommitContributions'] = -1
+        process, root = self.run_generator(source, existing={'data/activity.json':'good','assets/workbench.svg':'good chart'})
+        self.assertEqual(process.returncode, 1)
+        self.assertEqual((root/'data/activity.json').read_text(), 'good')
+        self.assertEqual((root/'assets/workbench.svg').read_text(), 'good chart')
+
+    def test_collection_window_is_retained_and_invalid_timestamp_is_rejected(self):
+        source = payload([('2026-10-24', 3)])
+        collection = source['data']['user']['contributionsCollection']
+        collection.update(startedAt='2025-10-25T12:00:00Z', endedAt='2026-10-24T12:00:00Z')
+        data, _ = self.snapshot(source)
+        self.assertEqual(data.get('collection_window'), {'start':'2025-10-25T12:00:00Z','end':'2026-10-24T12:00:00Z'})
+        for bad in ('DO-NOT-LOG-TIMESTAMP',None,False,17):
+            collection['startedAt']=bad
+            process, _ = self.run_generator(source)
+            self.assertEqual(process.returncode, 1)
+            self.assertNotIn('DO-NOT-LOG-TIMESTAMP', process.stderr)
+            self.assertNotIn('Traceback',process.stderr)
 
     def test_short_zero_calendar_keeps_its_bounds_and_has_an_empty_state(self):
         _, root = self.snapshot(payload([('2026-10-24', 0)]))
@@ -196,13 +231,17 @@ class ActivityTests(unittest.TestCase):
     def test_refresh_and_full_generation_produce_identical_workbench_files(self):
         _, root = self.snapshot(payload([('2026-10-18', 2), ('2026-10-24', 3)]))
         before = {p.name: p.read_bytes() for p in (root/'assets').glob('workbench*.svg')}
+        summary_before = (root/'work/activity.md').read_bytes()
         (root/'tools').mkdir()
         shutil.copy2(SCRIPT.with_name('generate_assets.py'), root/'tools/generate_assets.py')
         shutil.copy2(SCRIPT.with_name('desert_console.py'), root/'tools/desert_console.py')
         shutil.copy2(SCRIPT.with_name('expertise.py'), root/'tools/expertise.py')
+        for name in ('activity_data.py','activity_dashboard.py'):
+            shutil.copy2(SCRIPT.with_name(name), root/'tools'/name)
         shutil.copytree(SCRIPT.parent.parent/'assets/artwork/desert', root/'assets/artwork/desert')
         result = subprocess.run([sys.executable, str(root/'tools/generate_assets.py')], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual((root/'work/activity.md').read_bytes(),summary_before)
         for name, content in before.items():
             self.assertEqual((root/'assets'/name).read_bytes(), content, name+' changed after full generation')
 

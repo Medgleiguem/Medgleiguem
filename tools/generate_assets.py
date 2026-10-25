@@ -3,8 +3,10 @@
 import json
 from pathlib import Path
 import xml.etree.ElementTree as ET
-from desert_console import render_workbench, static_svg
-from expertise import DOMAINS, hero, domain_row
+from desert_console import static_svg
+from activity_dashboard import render_workbench
+from activity_data import activity_summary
+from expertise import DOMAINS, hero, domain_row, toolbox
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'assets'
@@ -35,7 +37,10 @@ def main():
             (OUT/'domains'/(slug+'-compact'+('-static' if static else '')+'.svg')).write_text(content+'\n')
     snapshot = json.loads((ROOT/'data/activity.json').read_text())
     write_variants('workbench', lambda mobile: render_workbench(snapshot, mobile))
-    for name, source in [('workbench', render_workbench(snapshot, compact=True))]:
+    write_variants('toolbox', toolbox)
+    (ROOT/'work').mkdir(exist_ok=True)
+    (ROOT/'work/activity.md').write_text(activity_summary(snapshot))
+    for name, source in [('workbench', render_workbench(snapshot, compact=True)),('toolbox',toolbox(compact=True))]:
         for static in (False, True):
             content = static_svg(source) if static else source
             ET.fromstring(content)
