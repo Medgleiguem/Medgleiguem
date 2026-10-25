@@ -10,7 +10,7 @@ python3 -m unittest discover -s tools -p 'test_*.py' -v
 python3 tools/verify_profile.py
 ```
 
-`tools/desert_console.py` owns the original SVG composition and motion. `tools/generate_assets.py` writes the `desert`, `workbench`, `tools-rail` and `desert-footer` families: desktop, mobile, desktop static and mobile static. Generation uses the Python standard library and checked-in local inputs. The [artwork provenance and exact prompt](../assets/artwork/desert/README.md) record the separate clean illustration and locally vendored CC0 icon paths. No image or font is fetched at render time.
+`tools/desert_console.py` owns the original SVG composition and motion. `tools/generate_assets.py` writes the `desert`, `workbench`, `tools-rail` and `desert-footer` families: desktop, mobile, desktop static and mobile static. The activity/tool panels additionally have compact and compact-static layouts selected from 601 through 1279 px. Generation uses the Python standard library and checked-in local inputs. The [artwork provenance and exact prompt](../assets/artwork/desert/README.md) record the separate clean illustration and locally vendored CC0 icon paths. No image or font is fetched at render time.
 
 The original illustration is still art. Vector paths, sand highlights, contours and signal traces provide genuine browser animation. Do not describe the result as animated character footage. All names, metrics and essential content have visible base states. The README uses native clickable links for contact, work and research; no fake terminal controls or JavaScript.
 
@@ -22,7 +22,7 @@ The existing allowlisted GraphQL collector saves aggregate counts, calendar date
 
 The custom calendar displays at most the most recent 140 days, inclusive of the actual snapshot window. Missing calendar dates are zero. A short window keeps its own bounds. Dates align into Sunday-first weeks. Zero cells remain zero; data cells never animate or change color. The moving branch signals are a separate decorative layer. Each cell includes its date and count in SVG metadata/title, while the panel prints actual range and UTC snapshot date. Colors use fixed buckets: 0, 1–4, 5–19, 20–49, 50+. Contributions are neither work hours nor a quality score. Raw data remains linked from the main profile.
 
-`.github/workflows/profile-activity.yml` refreshes at 06:00 UTC, on manual dispatch and on relevant renderer/collector changes. The collector's stable interface remains `generate_assets.render_workbench(data, mobile=False, animated=True)`. It writes only `data/activity.json` and four `workbench*.svg` outputs. The workflow preserves scoped staging, shared concurrency and normal rebase/push. `PROFILE_ACTIVITY_TOKEN` is optional; never publish credentials or log payloads from failed API responses.
+`.github/workflows/profile-activity.yml` refreshes at 06:00 UTC, on manual dispatch and on relevant renderer/collector changes. The collector's stable interface remains `generate_assets.render_workbench(data, mobile=False, animated=True)`. It writes only `data/activity.json` and six `workbench*.svg` outputs. The workflow preserves scoped staging, shared concurrency and normal rebase/push. `PROFILE_ACTIVITY_TOKEN` is optional; never publish credentials or log payloads from failed API responses.
 
 ```sh
 python3 tools/update_activity.py --input /path/to/saved-graphql-response.json

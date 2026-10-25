@@ -164,6 +164,9 @@ def main():
             for animated in (True, False):
                 name = "assets/workbench"+("-mobile" if mobile else "")+("" if animated else "-static")+".svg"
                 outputs[name] = render_workbench(snapshot, mobile, animated)+'\n'
+        for animated in (True, False):
+            name = 'assets/workbench-compact'+('' if animated else '-static')+'.svg'
+            outputs[name] = render_workbench(snapshot, animated=animated, compact=True)+'\n'
         # Prepare and validate every output before replacing any previous snapshot.
         import xml.etree.ElementTree as ET
         for name, content in outputs.items():

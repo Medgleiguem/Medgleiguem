@@ -107,8 +107,8 @@ def hero(mobile=False):
         body += route('M35 425Q150 350 370 383', GOLD, 0, 'slow')
         body += text(27, 83, 'MED', 70, WHITE, 'class="name" letter-spacing="-2"')
         body += text(25, 151, 'GLEIGUEM', 69, WHITE, 'class="name" textLength="348" lengthAdjust="spacingAndGlyphs"')
-        body += text(28, 193, '@Medgleiguem', 25, WHITE, 'class="mono"')
-        body += text(28, 230, 'AI / DATA / LANGUAGE', 23, CYAN, 'class="mono"')
+        body += text(28, 193, '@Medgleiguem', 28, WHITE, 'class="mono"')
+        body += text(28, 230, 'AI / DATA / LANGUAGE', 26, CYAN, 'class="mono"')
         body += '<path class="sand" pathLength="100" d="M18 456Q167 411 380 450" fill="none" stroke="#e8c17f" stroke-width="1.6"/>'
     else:
         body += '<g>'+contours(797, 116, 110)+'</g>'
@@ -116,8 +116,8 @@ def hero(mobile=False):
             body += route(path, GOLD if i==2 else CYAN, i*3, 'slow' if i==2 else '')
         body += text(42, 127, 'MED', 116, WHITE, 'class="name" letter-spacing="-3"')
         body += text(39, 237, 'GLEIGUEM', 113, WHITE, 'class="name" textLength="520" lengthAdjust="spacingAndGlyphs"')
-        body += text(45, 285, '@Medgleiguem', 27, WHITE, 'class="mono"')
-        body += text(45, 327, 'AI / DATA / LANGUAGE', 24, CYAN, 'class="mono" letter-spacing="1"')
+        body += text(45, 285, '@Medgleiguem', 30, WHITE, 'class="mono"')
+        body += text(45, 327, 'AI / DATA / LANGUAGE', 28, CYAN, 'class="mono" letter-spacing="1"')
         body += '<path class="sand" pathLength="100" d="M27 452Q290 354 660 441T979 431" fill="none" stroke="#f0cb88" stroke-width="2"/>'
     body += f'<rect y="{height-85}" width="{width}" height="85" fill="url(#fade)"/>'
     return document(width, height, 'Med Gleiguem — AI, data and language', 'Original illustrated night dunes and historic-ksar-inspired architecture, with animated sand light, organic contours and cyan signals. No portrait.', body)
@@ -153,22 +153,29 @@ def signals(mobile=False):
     return f'<g transform="translate({38 if not mobile else 38} {96 if not mobile else 90})'+(' scale(.95 .60)' if mobile else '')+'">'+body+'</g>'
 
 
-def render_workbench(data, mobile=False, animated=True):
+def render_workbench(data, mobile=False, animated=True, compact=False):
     days = calendar_days(data)
     first, last = days[0][0], days[-1][0]
     total, active = sum(count for _, count in days), sum(count>0 for _, count in days)
-    width, height = (400, 710) if mobile else (1000, 440)
+    width, height = (400, 710) if mobile else ((700, 480) if compact else (1000, 480))
     body = text(29 if mobile else 40, 55, 'GITHUB ACTIVITY', 28 if mobile else 26, WHITE, 'class="mono" letter-spacing="2"')
-    body += signals(mobile)
+    body += ('<g transform="translate(5 25) scale(.66)">'+signals()+'</g>') if compact and not mobile else signals(mobile)
     if mobile:
         metric_y, label_y, left, right = 290, 324, 28, 232
         grid_x, grid_y, step, cell = 29, 363, 16.5, 12
+    elif compact:
+        metric_y, label_y, left, right = 345, 383, 30, 192
+        grid_x, grid_y, step, cell = 295, 108, 17.4, 13
     else:
-        metric_y, label_y, left, right = 345, 375, 40, 273
+        metric_y, label_y, left, right = 345, 383, 40, 273
         grid_x, grid_y, step, cell = 457, 108, 23.3, 17.4
     for x, value, key, label in [(left, total, 'contributions', 'contributions'), (right, active, 'active-days', 'active days')]:
-        body += text(x, metric_y, f'{value:,}', 47 if mobile else 48, WHITE, f'data-metric="{key}"')
-        body += text(x, label_y, label, 23 if mobile else 22, GOLD)
+        value_y, caption_y = metric_y, label_y
+        if compact and not mobile:
+            x = 30
+            value_y, caption_y = (277, 313) if key == 'contributions' else (383, 420)
+        body += text(x, value_y, f'{value:,}', 47 if mobile else 48, WHITE, f'data-metric="{key}"')
+        body += text(x, caption_y, label, 26, GOLD)
     offset = (first.weekday()+1)%7
     for index, (day, count) in enumerate(days):
         column, row = divmod(index+offset, 7)
@@ -176,40 +183,41 @@ def render_workbench(data, mobile=False, animated=True):
         label = f'{day.isoformat()}: {count} contributions'
         body += f'<rect x="{grid_x+column*step:.2f}" y="{grid_y+row*step:.2f}" width="{cell}" height="{cell}" rx="1.6" fill="{color}" data-date="{day.isoformat()}" data-count="{count}"><title>{escape(label)}</title></rect>'
     # The legend explicitly defines the color buckets; calendar cells never animate.
-    legend_x, legend_y = (29, 550) if mobile else (457, 295)
+    legend_x, legend_y = (29, 550) if mobile else ((295, 256) if compact else (457, 295))
     for i, (_, color) in enumerate(LEVELS):
-        x = legend_x+i*(70 if mobile else 30)
+        x = legend_x+i*(70 if mobile or compact else 95)
         body += f'<rect x="{x}" y="{legend_y}" width="20" height="14" rx="2" fill="{color}"/>'
-        if mobile:
-            body += text(x+10, legend_y+42, ['0','1–4','5–19','20–49','50+'][i], 22, MUTED, 'text-anchor="middle"')
-    if not mobile:
-        body += text(legend_x+160, legend_y+13, '0 / 1–4 / 5–19 / 20–49 / 50+', 15)
+        if mobile or compact:
+            body += text(x+10, legend_y+42, ['0','1–4','5–19','20–49','50+'][i], 26 if mobile else 24, MUTED, 'text-anchor="middle"')
+        else:
+            body += text(x+25, legend_y+15, ['0','1–4','5–19','20–49','50+'][i], 22)
     window = f'{first.isoformat()} → {last.isoformat()}'
-    body += text(28 if mobile else 457, 512 if mobile else 350, window, 23 if mobile else 21, WHITE)
-    body += text(28 if mobile else 457, 640 if mobile else 383, 'Snapshot '+data['updated_at'][:10]+' UTC', 23 if mobile else 19)
+    info_x = 28 if mobile else (295 if compact else 457)
+    body += text(info_x, 512 if mobile else 365, window, 26, WHITE)
+    body += text(info_x, 640 if mobile else 409, 'Snapshot '+data['updated_at'][:10]+' UTC', 26, MUTED)
     if not total:
-        body += text(28 if mobile else 40, 681 if mobile else 412, 'No contributions in this window', 22 if mobile else 18, MUTED)
+        body += text(28 if mobile else 40, 681 if mobile else 451, 'No contributions in this window', 24, MUTED)
     elif mobile:
-        body += text(28, 681, 'GitHub-visible contributions', 23, MUTED)
+        body += text(28, 681, 'GitHub-visible contributions', 26, MUTED)
     else:
-        body += text(40, 412, 'GitHub-visible contributions', 17, MUTED)
+        body += text(30 if compact else 40, 451, 'GitHub-visible contributions', 24, MUTED)
     result = document(width, height, 'Med Gleiguem — actual GitHub activity', f'GitHub-visible contributions from {first.isoformat()} to {last.isoformat()}: {total} contributions across {active} active days. Snapshot {data["updated_at"]}. Calendar colors: 0, 1–4, 5–19, 20–49, 50 or more. Signals are decorative; counts are contributions, not hours or project quality.', body)
     return result if animated else static_svg(result)
 
 
-def tools_panel(mobile=False):
-    width, height = (400, 380) if mobile else (1000, 230)
+def tools_panel(mobile=False, compact=False):
+    width, height = (400, 380) if mobile else ((700, 230) if compact else (1000, 230))
     body = text(29 if mobile else 40, 53, 'IN THE TOOLBOX', 28 if mobile else 26, WHITE, 'class="mono" letter-spacing="2"')
     icons = json.loads((ROOT/'assets/artwork/desert/tool-icons.json').read_text())
     for i, (label, key) in enumerate([('Python', 'python'), ('TypeScript', 'typescript'), ('SQL', None), ('PostgreSQL', 'postgresql')]):
-        x = (104 if i%2==0 else 295) if mobile else 143+i*238
+        x = (104 if i%2==0 else 295) if mobile else ((103+i*164) if compact else (143+i*238))
         y = 118+(i//2)*155 if mobile else 125
         if key:
             mark = ''.join(f'<path d="{path}"/>' for path in icons[key])
             body += f'<g transform="translate({x-24} {y-32}) scale(2)" fill="{CYAN}">{mark}</g>'
         else:
             body += f'<g transform="translate({x-22} {y-31})" stroke="{CYAN}" fill="none" stroke-width="2.3"><ellipse cx="22" cy="7" rx="21" ry="7"/><path d="M1 7v35c0 10 42 10 42 0V7M1 19c0 10 42 10 42 0M1 31c0 10 42 10 42 0"/></g>'
-        body += text(x, y+52, label, 24 if mobile else 23, WHITE, 'text-anchor="middle"')
+        body += text(x, y+52, label, 28, WHITE, 'text-anchor="middle"')
         path = f'M{x-72} {y+69}h144'
         body += route(path, GOLD, i*3, 'slow')
         body += diamond(x, y-49, 3)

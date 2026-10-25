@@ -20,4 +20,4 @@ A collaborative Richat Partners project spanning engineering, product and instit
 
 ---
 
-[← Back to the observatory](../README.md#user-content-systems)
+[← Back to profile](../README.md#user-content-systems)

@@ -28,6 +28,11 @@ def main():
     write_variants('desert-footer', footer)
     snapshot = json.loads((ROOT/'data/activity.json').read_text())
     write_variants('workbench', lambda mobile: render_workbench(snapshot, mobile))
+    for name, source in [('workbench', render_workbench(snapshot, compact=True)), ('tools-rail', tools_panel(compact=True))]:
+        for static in (False, True):
+            content = static_svg(source) if static else source
+            ET.fromstring(content)
+            (OUT/(name+'-compact'+('-static' if static else '')+'.svg')).write_text(content+'\n')
 
 
 if __name__ == '__main__':

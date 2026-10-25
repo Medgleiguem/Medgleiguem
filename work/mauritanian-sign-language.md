@@ -20,4 +20,4 @@ Work undertaken in a university research context, connecting corpus preparation 
 
 ---
 
-[← Back to the observatory](../README.md#user-content-research)
+[← Back to profile](../README.md#user-content-research)

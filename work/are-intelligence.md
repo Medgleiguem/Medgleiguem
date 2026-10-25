@@ -20,4 +20,4 @@ The work is developed collaboratively within Richat Partners’ AI and software 
 
 ---
 
-[← Back to the observatory](../README.md#user-content-systems)
+[← Back to profile](../README.md#user-content-systems)

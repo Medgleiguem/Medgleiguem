@@ -20,4 +20,4 @@ An independent project combining corpus engineering with reviewable linguistic h
 
 ---
 
-[← Back to the observatory](../README.md#user-content-research)
+[← Back to profile](../README.md#user-content-research)

@@ -129,7 +129,7 @@ class ActivityTests(unittest.TestCase):
 
     def test_rendered_variants_are_accessible_self_contained_svg(self):
         _, root = self.snapshot(payload([("2026-10-24", 3)]))
-        for name in ["workbench.svg", "workbench-mobile.svg", "workbench-static.svg", "workbench-mobile-static.svg"]:
+        for name in ["workbench.svg", "workbench-mobile.svg", "workbench-static.svg", "workbench-mobile-static.svg", "workbench-compact.svg", "workbench-compact-static.svg"]:
             self.assertTrue((root / 'assets' / name).exists(), 'Collector must publish the new workbench chart')
             text = (root / "assets" / name).read_text()
             svg = ET.fromstring(text)

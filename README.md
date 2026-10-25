@@ -16,8 +16,10 @@
 
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/workbench-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/workbench-compact-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/workbench-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/workbench-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/workbench-compact.svg" />
   <img src="./assets/workbench.svg" alt="Actual GitHub contribution calendar, contributions and active days for the displayed date range. Snapshot date and color scale appear in the panel; moving signals are decorative." width="100%" />
 </picture>
 
@@ -25,8 +27,10 @@
 
 <picture>
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-mobile-static.svg" />
+  <source media="(max-width: 1279px) and (prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-compact-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/tools-rail-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/tools-rail-mobile.svg" />
+  <source media="(max-width: 1279px)" srcset="./assets/tools-rail-compact.svg" />
   <img src="./assets/tools-rail.svg" alt="In the toolbox: Python, TypeScript, SQL and PostgreSQL, with sand-gold signal traces and geometric details." width="100%" />
 </picture>
 
