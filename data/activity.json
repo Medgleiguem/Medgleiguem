@@ -1,50 +1,22 @@
 {
   "schema_version": 1,
   "login": "Medgleiguem",
-  "as_of": "2026-10-24",
-  "updated_at": "2026-10-24T21:51:31Z",
+  "as_of": "2026-10-25",
+  "updated_at": "2026-10-25T01:02:23Z",
   "window": {
-    "start": "2025-10-19",
-    "end": "2026-10-24"
+    "start": "2025-10-26",
+    "end": "2026-10-25"
   },
   "stats": {
-    "total_contributions": 11161,
-    "active_days": 322,
-    "current_streak": 5,
+    "total_contributions": 11165,
+    "active_days": 317,
+    "current_streak": 6,
     "longest_streak": 126,
-    "last_30_days": 687,
+    "last_30_days": 691,
     "followers": 4,
     "public_stars": 0
   },
   "calendar": [
-    {
-      "date": "2025-10-19",
-      "count": 6
-    },
-    {
-      "date": "2025-10-20",
-      "count": 13
-    },
-    {
-      "date": "2025-10-21",
-      "count": 22
-    },
-    {
-      "date": "2025-10-22",
-      "count": 6
-    },
-    {
-      "date": "2025-10-23",
-      "count": 10
-    },
-    {
-      "date": "2025-10-24",
-      "count": 27
-    },
-    {
-      "date": "2025-10-25",
-      "count": 0
-    },
     {
       "date": "2025-10-26",
       "count": 10
@@ -1499,34 +1471,38 @@
     },
     {
       "date": "2026-10-24",
-      "count": 11
+      "count": 12
+    },
+    {
+      "date": "2026-10-25",
+      "count": 3
     }
   ],
   "public_languages": [
     {
       "name": "JavaScript",
       "bytes": 247367,
-      "percent": 50.17
+      "percent": 50.74
     },
     {
       "name": "Java",
       "bytes": 119551,
-      "percent": 24.25
+      "percent": 24.52
     },
     {
       "name": "CSS",
       "bytes": 60798,
-      "percent": 12.33
+      "percent": 12.47
     },
     {
       "name": "Python",
-      "bytes": 54622,
-      "percent": 11.08
+      "bytes": 49086,
+      "percent": 10.07
     },
     {
       "name": "HTML",
       "bytes": 10678,
-      "percent": 2.17
+      "percent": 2.19
     }
   ]
 }
