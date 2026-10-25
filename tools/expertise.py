@@ -1,5 +1,6 @@
 """Evidence-based domain content and original vector artwork for the profile."""
 import json
+import base64
 from desert_console import ROOT, INK, WHITE, GOLD, CYAN, MUTED, text, document, route
 
 DOMAINS = {
@@ -55,49 +56,47 @@ DOMAINS = {
 
 
 def hero(mobile=False):
-    width, height = (400, 500) if mobile else (1000, 470)
-    body = '<defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#102830"/><stop offset="1" stop-color="#101a20"/></linearGradient><linearGradient id="sun" x2="0" y2="1"><stop stop-color="#f0cf92"/><stop offset="1" stop-color="#ad7047"/></linearGradient><linearGradient id="dune" x2="0" y2="1"><stop stop-color="#805637"/><stop offset="1" stop-color="#312b27"/></linearGradient></defs>'
-    # A deliberately composed illustration, rather than a raster scene or dashboard.
-    scene = '<rect width="1000" height="470" fill="url(#sky)"/>'
-    for i in range(38):
-        x, y = (i*173+61)%1000, (i*i*19+29)%248
-        scene += f'<circle cx="{x}" cy="{y}" r="{.7+(i%3)*.3}" fill="{GOLD if i%4==0 else MUTED}" opacity=".5"/>'
-    scene += '<circle cx="801" cy="132" r="92" fill="url(#sun)"/>'
-    scene += '<g fill="none" stroke="#caa571" stroke-width=".7" opacity=".45"><circle cx="801" cy="132" r="112"/><path d="M671 132h24m213 0h24M801 1v22m0 219v22"/></g>'
-    scene += '<path d="M0 345Q125 220 275 291T554 278Q716 195 1000 287V470H0Z" fill="#1e383b"/>'
-    scene += '<path d="M0 352Q209 257 398 338T762 290Q890 266 1000 319V470H0Z" fill="#285153"/>'
-    # Stone-built silhouettes, with ornamental geometry derived from the small facade.
-    for x, y, w, h in [(660,229,52,98),(717,191,72,134),(801,214,63,117),(879,249,55,84)]:
-        scene += f'<path d="M{x} {y+h}V{y}h{w*.18}v-9h{w*.18}v9h{w*.24}v-9h{w*.18}v9h{w*.22}v{h}Z" fill="#172a2d" stroke="#b58d59" stroke-width="1"/>'
-        for yy in range(y+19,y+h-10,19):
-            scene += f'<path d="M{x+10} {yy}l5-4 5 4-5 4ZM{x+w-20} {yy}l5-4 5 4-5 4Z" fill="none" stroke="#9e8159" stroke-width=".8"/>'
-        scene += f'<path d="M{x+w*.38} {y+h}v-25q{w*.12}-15 {w*.24} 0v25" fill="#c28b4a" opacity=".7"/>'
-    scene += '<path d="M0 390Q160 300 340 371T702 351Q836 323 1000 368V470H0Z" fill="url(#dune)"/>'
-    scene += '<path d="M0 433Q208 348 408 416T802 391Q904 385 1000 412V470H0Z" fill="#142026"/>'
-    for i in range(4):
-        yy=396+i*13
-        scene += f'<path d="M590 {yy}Q790 {yy-65} 1000 {yy-4}" fill="none" stroke="#9e7950" opacity="{.24-i*.04}"/>'
-    scene += route('M475 374Q697 394 813 355T1000 365', GOLD, 0, 'slow')
-    scene += route('M555 420Q777 377 1000 412', CYAN, 5, 'slow')
-    scene += route('M638 44L749 90', GOLD, 3, 'slow')
+    """Live typography and vector motion over the locally stored environment art."""
+    width, height = (400, 480) if mobile else (1000, 430)
+    artwork = base64.b64encode((ROOT/'assets/artwork/desert/ksar-night-v2.jpg').read_bytes()).decode('ascii')
+    body = '<defs><linearGradient id="reading-shade"><stop stop-color="#080d12" stop-opacity=".65"/><stop offset=".66" stop-color="#080d12" stop-opacity=".18"/><stop offset="1" stop-color="#080d12" stop-opacity="0"/></linearGradient></defs>'
+    body += '<style>.header-trace{stroke-dasharray:12 88;animation-duration:14s}</style>'
     if mobile:
-        body += '<g transform="translate(-220 112) scale(.75)">'+scene+'</g>'
-        body += '<rect width="400" height="220" fill="url(#fade)" transform="rotate(180 200 110)"/>'
-        body += text(25, 41, '@Medgleiguem', 24, GOLD, 'class="mono"')
-        body += text(22, 109, 'Med', 65, WHITE, 'font-weight="800" letter-spacing="-2"')
-        body += text(22, 174, 'Gleiguem', 65, WHITE, 'font-weight="800" letter-spacing="-2"')
-        body += text(25, 433, 'SOFTWARE · DATA · AI', 25, WHITE, 'class="mono"')
-        body += text(25, 471, 'SECURITY · RESEARCH', 25, GOLD, 'class="mono"')
+        body += f'<image x="-615" width="1060" height="424" href="data:image/jpeg;base64,{artwork}"/>'
+        body += '<rect width="400" height="260" fill="url(#fade)" transform="rotate(180 200 130)"/>'
+        body += '<rect y="300" width="400" height="124" fill="url(#fade)"/>'
     else:
-        body += scene+'<rect width="690" height="470" fill="url(#shade)"/>'
-        body += text(42, 66, '@Medgleiguem', 25, GOLD, 'class="mono" letter-spacing="1"')
-        body += text(35, 159, 'Med', 91, WHITE, 'font-weight="800" letter-spacing="-3"')
-        body += text(35, 253, 'Gleiguem', 108, WHITE, 'font-weight="800" letter-spacing="-4"')
-        body += text(43, 318, 'SOFTWARE / DATA / AI', 25, WHITE, 'class="mono"')
-        body += text(43, 357, 'SECURITY / RESEARCH', 25, GOLD, 'class="mono"')
-        body += '<path d="M43 399h120" stroke="#e2b76f"/><path d="M175 399h8m8 0h8m8 0h8" stroke="#55dce3"/>'
-    body += '<path d="M1 28V1h28M'+str(width-29)+' 1h28v27M1 '+str(height-29)+'v28h28M'+str(width-29)+' '+str(height-1)+'h28v-28" fill="none" stroke="'+GOLD+'" stroke-width="2"/>'
-    return document(width, height, 'Med Gleiguem — software, data, AI, security and research', 'Med Gleiguem. Software, data, AI, security and research. Original night-desert illustration with geometric stone architecture, layered dunes and moving signals.', body, framed=False)
+        body += f'<image width="1000" height="430" preserveAspectRatio="xMidYMid slice" href="data:image/jpeg;base64,{artwork}"/>'
+        body += '<rect width="620" height="430" fill="url(#reading-shade)"/>'
+        body += '<rect y="340" width="1000" height="90" fill="url(#fade)"/>'
+    # Small original architectural mark. No simulated status or telemetry.
+    mark = '<path d="M0 11L11 0l11 11v21H0ZM6 32V17l5-5 5 5v15M-4 36h30M4 6l7 7 7-7"/>'
+    body += f'<g transform="translate({26 if mobile else 48} {24 if mobile else 31})" fill="none" stroke="{GOLD}" stroke-width="1.2">{mark}</g>'
+    body += text(62 if mobile else 85, 48 if mobile else 56, '@Medgleiguem', 21, GOLD, 'class="mono" letter-spacing=".7"')
+    if mobile:
+        body += text(22, 117, 'Med', 57, WHITE, 'font-weight="700" letter-spacing="-1.8"')
+        body += text(22, 174, 'Gleiguem', 57, WHITE, 'font-weight="700" letter-spacing="-1.8"')
+        body += text(25, 414, 'SOFTWARE / DATA / AI', 24, WHITE, 'class="mono"')
+        body += text(25, 449, 'SECURITY / RESEARCH', 24, MUTED, 'class="mono"')
+        signal_paths = [('M24 357Q119 345 193 367T385 362',GOLD,0),('M178 264L212 230 272 244 303 214',CYAN,3)]
+    else:
+        body += text(43, 148, 'Med', 70, WHITE, 'font-weight="700" letter-spacing="-2"')
+        body += text(43, 223, 'Gleiguem', 82, WHITE, 'font-weight="700" letter-spacing="-2.8"')
+        body += text(48, 282, 'SOFTWARE / DATA / AI', 23, WHITE, 'class="mono" letter-spacing=".5"')
+        body += text(48, 320, 'SECURITY / RESEARCH', 23, MUTED, 'class="mono" letter-spacing=".5"')
+        body += '<path d="M48 365h82m10 0h6m8 0h6" stroke="#c9a571" stroke-width="1"/>'
+        signal_paths = [('M446 336Q548 290 659 320T937 338',GOLD,0),('M578 106L630 75 698 94 746 64',CYAN,3),('M658 385Q778 329 967 375',CYAN,6)]
+    for path, color, delay in signal_paths:
+        body += route(path,color,delay,'header-trace')
+    # Subtle independent point light and sand drift keep the static illustration alive.
+    for x,y in ([(212,230),(303,214)] if mobile else [(630,75),(746,64)]):
+        body += f'<circle cx="{x}" cy="{y}" r="2" fill="{CYAN}" class="breathe"/>'
+    for index in range(7):
+        x = (28 if mobile else 472)+index*(49 if mobile else 69)
+        y = (343 if mobile else 350)+(index%3)*13
+        body += f'<circle cx="{x}" cy="{y}" r="1.3" fill="{GOLD}" opacity=".45"><animate attributeName="cx" values="{x};{x+24};{x}" dur="{7+index}s" repeatCount="indefinite"/><animate attributeName="opacity" values=".15;.6;.15" dur="{7+index}s" repeatCount="indefinite"/></circle>'
+    body += f'<path d="M1 21V1h20M{width-21} 1h20v20M1 {height-21}v20h20M{width-21} {height-1}h20v-20" fill="none" stroke="{GOLD}" stroke-width="1" opacity=".65"/>'
+    return document(width, height, 'Med Gleiguem — software, data, AI, security and research', 'Med Gleiguem. Software, data, AI, security and research. A painted night ksar and dunes, with live typography, a small crescent and animated sand and signal paths.', body, framed=False)
 
 
 def tool_mark(label, key, icons, x, y, size=22):

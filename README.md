@@ -2,7 +2,7 @@
   <source media="(max-width: 600px) and (prefers-reduced-motion: reduce)" srcset="./assets/desert-mobile-static.svg" />
   <source media="(prefers-reduced-motion: reduce)" srcset="./assets/desert-static.svg" />
   <source media="(max-width: 600px)" srcset="./assets/desert-mobile.svg" />
-  <img src="./assets/desert.svg" alt="Med Gleiguem — software, data, AI, cybersecurity and research. An original animated desert nightscape, stone architecture and signal trails." width="100%" />
+  <img src="./assets/desert.svg" alt="Med Gleiguem — software, data, AI, cybersecurity and research. An illustrated night ksar, warm stonework, dunes and animated sand and signal trails." width="100%" />
 </picture></h1>
 
 <p align="center"><a href="#user-content-systems">Domains &amp; tools</a> &nbsp;·&nbsp; <a href="./work/README.md">Work</a> &nbsp;·&nbsp; <a href="#user-content-workbench">Activity</a> &nbsp;·&nbsp; <a href="mailto:medgleiguem00@gmail.com">Contact</a></p>
