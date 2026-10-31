@@ -1,24 +1,24 @@
 # GitHub activity
 
-Calendar: **2025-10-30 → 2026-10-30**. Snapshot: **2026-10-30T12:13:52Z**.
+Calendar: **2025-10-31 → 2026-10-31**. Snapshot: **2026-10-31T11:45:39Z**.
 
 | Calendar metric | Value |
 | --- | ---: |
 | Calendar contributions | 10,985 |
 | Active days | 314 |
-| Current streak (days) | 0 |
+| Current streak (days) | 1 |
 | Longest streak (days) | 126 |
-| Last 30 days | 632 |
+| Last 30 days | 633 |
 
 Current streak ends today or yesterday. Longest streak covers the displayed calendar. Days missing inside the returned date window count as zero. Contributions are GitHub-visible activity, not work hours or a quality rating.
 
 ## Contribution types
 
-API collection: **2025-10-26T00:00:00Z → 2026-10-30T23:59:59Z**.
+API collection: **2025-10-26T00:00:00Z → 2026-10-31T23:59:59Z**.
 
 | API contribution type | Count |
 | --- | ---: |
-| Commits | 41 |
+| Commits | 42 |
 | Pull requests opened | 0 |
 | Issues opened | 0 |
 | Pull request reviews | 0 |
@@ -41,7 +41,7 @@ These are separate GitHub API collection counters. They reflect accessible contr
 | 2026-10-04 | 47 |
 | 2026-10-11 | 180 |
 | 2026-10-18 | 241 |
-| 2026-10-25 | 9 |
+| 2026-10-25 | 10 |
 
 The first and last weeks may be partial.
 
@@ -51,11 +51,11 @@ Public repositories only. Shares describe source bytes, not proficiency or the f
 
 | Language | Source bytes | Share |
 | --- | ---: | ---: |
-| JavaScript | 247,367 | 47.4% |
-| Java | 119,551 | 22.9% |
-| Python | 83,371 | 16.0% |
-| CSS | 60,798 | 11.7% |
-| HTML | 10,678 | 2.0% |
+| JavaScript | 408,209 | 52.4% |
+| Java | 203,553 | 26.1% |
+| Python | 91,948 | 11.8% |
+| CSS | 40,680 | 5.2% |
+| Other | 34,895 | 4.5% |
 
 [Raw snapshot](../data/activity.json) · [Profile](../README.md#user-content-workbench)
 
