@@ -1,6 +1,6 @@
 # GitHub activity
 
-Calendar: **2025-11-12 → 2026-11-12**. Snapshot: **2026-11-12T14:43:01Z**.
+Calendar: **2025-11-13 → 2026-11-13**. Snapshot: **2026-11-13T13:59:27Z**.
 
 | Calendar metric | Value |
 | --- | ---: |
@@ -8,13 +8,13 @@ Calendar: **2025-11-12 → 2026-11-12**. Snapshot: **2026-11-12T14:43:01Z**.
 | Active days | 316 |
 | Current streak (days) | 1 |
 | Longest streak (days) | 126 |
-| Last 30 days | 395 |
+| Last 30 days | 394 |
 
 Current streak ends today or yesterday. Longest streak covers the displayed calendar. Days missing inside the returned date window count as zero. Contributions are GitHub-visible activity, not work hours or a quality rating.
 
 ## Contribution types
 
-API collection: **2025-11-09T00:00:00Z → 2026-11-12T23:59:59Z**.
+API collection: **2025-11-09T00:00:00Z → 2026-11-13T23:59:59Z**.
 
 | API contribution type | Count |
 | --- | ---: |
