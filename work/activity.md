@@ -1,6 +1,6 @@
 # GitHub activity
 
-Calendar: **2025-11-26 → 2026-11-26**. Snapshot: **2026-11-26T16:29:25Z**.
+Calendar: **2025-11-27 → 2026-11-27**. Snapshot: **2026-11-27T16:14:42Z**.
 
 | Calendar metric | Value |
 | --- | ---: |
@@ -14,7 +14,7 @@ Current streak ends today or yesterday. Longest streak covers the displayed cale
 
 ## Contribution types
 
-API collection: **2025-11-23T00:00:00Z → 2026-11-26T23:59:59Z**.
+API collection: **2025-11-23T00:00:00Z → 2026-11-27T23:59:59Z**.
 
 | API contribution type | Count |
 | --- | ---: |
